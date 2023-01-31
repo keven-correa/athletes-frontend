@@ -1,0 +1,42 @@
+[
+    {
+        "id":1,
+        "idAtleta":1,
+        "atendidoPor":"Edgar Arias",
+        "referidoPor":"Jose Castillo",
+        "dxMedico":"Dolor de rodilla",
+        "fecha":"2020-04-13"
+    },
+    {
+        "id":2,
+        "idAtleta":1,
+        "atendidoPor":"Edgar Arias",
+        "referidoPor":"Jose Castillo",
+        "dxMedico":"Dolor de Espalda",
+        "fecha":"2019-12-28"
+    },
+    {
+        "id":3,
+        "idAtleta":2,
+        "atendidoPor":"Edgar Arias",
+        "referidoPor":"Jose Castillo",
+        "dxMedico":"Dolor de hombro",
+        "fecha":"2022-5-3"
+    },
+    {
+        "id":4,
+        "idAtleta":4,
+        "atendidoPor":"Luis David",
+        "referidoPor":"Jose Castillo",
+        "dxMedico":"Esguince de tobillo",
+        "fecha":"2021-06-12"
+    },
+    {
+        "id":5,
+        "idAtleta":8,
+        "atendidoPor":"Luis David",
+        "referidoPor":"Jose Castillo",
+        "dxMedico":"Esguince de tobillo",
+        "fecha":"2021-06-12"
+    }
+]

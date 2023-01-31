@@ -1,0 +1,815 @@
+<app-menu></app-menu>
+
+
+
+  <mat-stepper orientation="vertical"  #stepper>
+    <mat-step >
+      <form [formGroup]="formularioDG"> 
+        <ng-template class="color"  matStepLabel>Datos Personales</ng-template>
+        
+
+        <table class="example-full-width" cellspacing="3">
+                <tr class="row justify-content-around">
+        
+                    <td class="col-md-2 col-sm-12">
+                        <mat-form-field class="example-full-width " appearance="fill">
+                            <mat-label>Nombres</mat-label>
+                            <input formControlName="nombre" class="text-white" matInput type="text">
+                        </mat-form-field>
+                    </td>
+        
+                    <td class="col-md-2 col-sm-12">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Apellidos</mat-label>
+                            <input formControlName="apellido" class="text-white" matInput type="text">
+                        </mat-form-field>
+                    </td>
+        
+                    <td class="col-md-2 col-sm-12">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Edad</mat-label>
+                            <input formControlName="edad" class="text-white" matInput type="number">
+                        </mat-form-field>
+                    </td>
+        
+                    <td class="col-md-2 col-sm-12">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Fecha de nacimiento</mat-label>
+                            <input formControlName="fechaNacimiento" class="text-white" matInput type="date">
+                        </mat-form-field>
+                    </td>
+        
+                    <td class="col-md-2 col-sm-12">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Lugar de nacimiento</mat-label>
+                            <input formControlName="lugarNacimiento" class="text-white" matInput type="text">
+                        </mat-form-field>
+                    </td >
+        
+                    <td class="col-md-2 col-sm-12">
+                        <mat-form-field class="example-full-width" appearance="fill">
+                            <mat-label>Deporte</mat-label>
+                            <input formControlName="disciplina" class="text-white" matInput type="text">
+                        </mat-form-field>
+                    </td>
+                    
+                    <td class="col-md-2 col-sm-12">
+                        <mat-form-field appearance="fill" class="example-full-width">
+                            <mat-label>Sexo</mat-label>
+                            <mat-select formControlName="disciplina" class="text-white" disableRipple>
+                                <mat-option value="Femenino">Femenino</mat-option>
+                                <mat-option value="Masculino">Masculino</mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                    </td>
+        
+        
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Modalidad</mat-label>
+                        <input formControlName="modalidad" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Edad deportiva</mat-label>
+                        <input formControlName="edadDeportiva" class="text-white" matInput type="number">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Horas de practica</mat-label>
+                        <input formControlName="horasPractica" class="text-white" matInput type="number">
+                    </mat-form-field>
+                </td>
+    
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Dias a la semana</mat-label>
+                        <input matInput type="number">
+                    </mat-form-field>
+                </td>
+
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Escolaridad</mat-label>
+                        <mat-select formControlName="escolaridad" class="text-white">
+                            <mat-option value="Basica">Basica</mat-option>
+                            <mat-option value="Secundaria">Secundaria</mat-option>
+                            <mat-option value="Universitaria">Universitaria</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Seguro medico</mat-label>
+                        <input formControlName="seguroMedico" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width">
+                        <mat-label>Tipo de paciente</mat-label>
+                        <mat-select disableRipple>
+                            <mat-option value="A">Atleta</mat-option>
+                            <mat-option value="En">Entrenador</mat-option>
+                            <mat-option value="Em">Empleado</mat-option>
+                            <mat-option value="Ex">Externo</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                </td>
+                
+    
+                
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width">
+                        <mat-label>Horas de estudio</mat-label>
+                        <input formControlName="horasEstudio" class="text-white" matInput type="number">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Dias</mat-label>
+                        <input formControlName="diasEstudio" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Direccion actual</mat-label>
+                        <input formControlName="direccion" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Telefono celular</mat-label>
+                        <input formControlName="telefonoCelular" class="text-white" matInput type="number">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Telefono de casa</mat-label>
+                        <input formControlName="telefonoCasa" class="text-white" matInput type="number">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Tipo de sangre</mat-label>
+                        <input formControlName="tipoSangre" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Peso (KG.)</mat-label>
+                        <input formControlName="peso" class="text-white" matInput type="number">
+                    </mat-form-field>
+                </td>
+    
+             
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>TA</mat-label>
+                        <input formControlName="TA" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>FC</mat-label>
+                        <input formControlName="FC" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>FR</mat-label>
+                        <input formControlName="FR" class="text-white" matInput type="number">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Tempe.</mat-label>
+                        <input formControlName="tempe" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Cedula</mat-label>
+                        <input formControlName="cedula" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+    
+    
+            </tr>
+        </table>
+
+        <div>
+          <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+        </div>
+      </form>
+    </mat-step>
+    <mat-step >
+      <form [formGroup]="formularioAFP">
+        <ng-template class="color" matStepLabel>Anteccedentes familiares patologicos</ng-template>
+        
+        <div class="espacio"></div>
+
+        <table class="example-full-width" cellspacing="3">
+            <tr class="row justify-content-around"> 
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>HTA</mat-label>
+                        <input formControlName="HTA" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Diabetes</mat-label>
+                        <input formControlName="diabetes" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Colesterol</mat-label>
+                        <input formControlName="colesterol" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Cancer</mat-label>
+                        <input formControlName="cancer" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>ACV</mat-label>
+                        <input formControlName="ACV" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Asma</mat-label>
+                        <input formControlName="asma" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Renal</mat-label>
+                        <input formControlName="renal" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Gastrica</mat-label>
+                        <input formControlName="gastrica" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>IAM</mat-label>
+                        <input formControlName="IAM" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Depresion</mat-label>
+                        <input formControlName="depresion" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Psiquiatra</mat-label>
+                        <input formControlName="psiquiatra" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+    
+            </tr>
+        </table>
+
+
+        <div>
+          <button mat-raised-button color="secondary" matStepperPrevious>Atras</button>
+          <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+        </div>
+      </form>
+    </mat-step>
+
+    <mat-step >
+        <form [formGroup]="formularioAP">
+          <ng-template matStepLabel>Anteccedentes Personales</ng-template>
+
+          <div class="espacio"></div>
+          
+          <table class="example-full-width" cellspacing="3">
+            <tr class="row justify-content-around">
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Sarampion</mat-label>
+                        <input formControlName="sarampion" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Varicela</mat-label>
+                        <input formControlName="varicela" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Papera</mat-label>
+                        <input formControlName="papera" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Asma</mat-label>
+                        <input formControlName="asmnap" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Amigdalitis</mat-label>
+                        <input formControlName="HTamigdalitisA" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Hepatitis A</mat-label>
+                        <input formControlName="hepatitis" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Falsemia</mat-label>
+                        <input formControlName="falsemia" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+    
+            </tr>
+        </table>
+  
+          <div>
+            <button mat-raised-button color="secondary" matStepperPrevious>Atras</button>
+            <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step >
+        <form [formGroup]="formularioATX">
+          <ng-template matStepLabel>Anteccedentes Toxicos</ng-template>
+
+          <div class="espacio"></div>
+          
+          <table class="example-full-width" cellspacing="3">
+            <tr class="row">
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width derecha">
+                        <mat-label>Cafe</mat-label>
+                        <mat-select formControlName="cafe" class="text-white" disableRipple>
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                            <mat-option value="A">A veces</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width derecha">
+                        <mat-label>Alcohol</mat-label>
+                        <mat-select formControlName="alcohol" class="text-white" disableRipple>
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                            <mat-option value="A">A veces</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width derecha">
+                        <mat-label>Cigarros</mat-label>
+                        <mat-select formControlName="cigarros" class="text-white" disableRipple>
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                            <mat-option value="A">A veces</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-2 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width derecha">
+                        <mat-label>Te</mat-label>
+                        <mat-select formControlName="te" class="text-white" disableRipple>
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                            <mat-option value="A">A veces</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+    
+            </tr>
+        </table>
+  
+          <div>
+            <button mat-raised-button color="secondary" matStepperPrevious>Atras</button>
+            <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step >
+        <form [formGroup]="formularioATQ">
+          <ng-template matStepLabel>Anteccedentes Quirurgicos</ng-template>
+
+          <div class="espacio"></div>
+            
+          <table class="example-full-width" cellspacing="3">
+            <tr class="row">
+ 
+                <td class="col-md-4 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width derecha">
+                        <mat-label></mat-label>
+                        <mat-select formControlName="quirurgicos" class="text-white" disableRipple>
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                
+                <td class="col-md-8 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Especifique:</mat-label>
+                        <input formControlName="quirurgicosdetalle" class="text-white" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+
+            </tr>
+        </table>
+         
+          <div>
+            <button mat-raised-button color="secondary" matStepperPrevious>Atras</button>
+            <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step >
+        <form [formGroup]="formularioAL">
+          <ng-template matStepLabel>Anteccedentes Alergicos</ng-template>
+
+          <div class="espacio"></div>
+            
+            <table class="example-full-width" cellspacing="3">
+            <tr class="row">
+    
+                <td class="col-md-4 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width derecha">
+                        <mat-label>Alergia</mat-label>
+                        <mat-select formControlName="alergicos" class="text-white" disableRipple>
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-8 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Especifique:</mat-label>
+                        <input formControlName="alergicosdetalle" class="text-white" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>  
+    
+    
+            </tr>
+            </table>
+         
+          <div>
+            <button mat-raised-button color="secondary" matStepperPrevious>Atras</button>
+            <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step >
+        <form [formGroup]="formularioAG">
+          <ng-template matStepLabel>Anteccedentes ginecologicos</ng-template>
+
+          <div class="espacio"></div>
+            
+        <table class="example-full-width" cellspacing="3">
+            <tr class="row justify-content-around">
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Menarquia</mat-label>
+                        <input formControlName="menarquia" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Pubarquia</mat-label>
+                        <input formControlName="pubarquia" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>FUM</mat-label>
+                        <input formControlName="FUM" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Duracion</mat-label>
+                        <input formControlName="duracion" matInput type="number">
+                    </mat-form-field>
+                </td>
+
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width">
+                        <mat-label>Dismenorrea</mat-label>
+                        <mat-select formControlName="dismenorrea">
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+    
+
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Manejo</mat-label>
+                        <input formControlName="manejo" class="text-white" matInput type="number">
+                    </mat-form-field>
+                </td>
+
+
+
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width">
+                        <mat-label>Sexo</mat-label>
+                        <mat-select formControlName="sexo2">
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Inicio de relaciones</mat-label>
+                        <input formControlName="iniciorelaciones" class="text-white" matInput type="number">
+                    </mat-form-field>
+                </td>
+
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width">
+                        <mat-label>Pareja fija</mat-label>
+                        <mat-select formControlName="parejafija">
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+    
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width">
+                        <mat-label>Planificacion</mat-label>
+                        <mat-select formControlName="planificacion">
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width">
+                        <mat-label>Transtornos en la menstruacion con el ejercicio</mat-label>
+                        <mat-select formControlName="transfornosEnMenstruacion">
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+    
+            
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>G.P.A.C.</mat-label>
+                        <input formControlName="GPAC" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width">
+                        <mat-label>Secreciones anormales</mat-label>
+                        <mat-select formControlName="secrecionAnormal">
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Color</mat-label>
+                        <input formControlName="color" class="text-white" matInput type="text">
+                    </mat-form-field>
+                </td>
+    
+            </tr>
+        </table>
+         
+          <div>
+            <button mat-raised-button color="secondary" matStepperPrevious>Atras</button>
+            <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step> 
+      
+      <mat-step >
+        <form [formGroup]="formularioAM">
+          <ng-template matStepLabel>Anteccedentes medicamentosos</ng-template>
+
+          <div class="espacio"></div>
+            
+          <table class="example-full-width" cellspacing="3">
+            <tr class="row">
+    
+                <td class="col-md-8 col-sm-12">
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label></mat-label>
+                        <textarea formControlName="medicamentos" class="text-white" matInput cols="30" rows="5"></textarea>
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-4 col-sm-12 align-self-end">
+                    <mat-form-field appearance="fill" class="example-full-width ">
+                        <mat-label>Historia psicologia</mat-label>
+                        <mat-select formControlName="historiaPsicologa" disableRipple>
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                <td>
+    
+            </tr>
+        </table>
+         
+          <div>
+            <button mat-raised-button color="secondary" matStepperPrevious>Atras</button>
+            <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step>
+
+      <mat-step >
+        <form [formGroup]="formularioALD">
+          <ng-template matStepLabel>Anteccedentes de lesiones deportivas</ng-template>
+
+          <div class="espacio"></div>
+            
+          <table class="example-full-width" cellspacing="3">
+            <tr class="row justify-content-around">
+    
+
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width derecha">
+                        <mat-label>Contractura</mat-label>
+                        <mat-select formControlName="contractura" disableRipple>
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width derecha">
+                        <mat-label>Traumas</mat-label>
+                        <mat-select formControlName="traumas" disableRipple>
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width derecha">
+                        <mat-label>Esguinces</mat-label>
+                        <mat-select formControlName="esguinces" disableRipple>
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+                
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width derecha">
+                        <mat-label>Heridas</mat-label>
+                        <mat-select formControlName="heridas" disableRipple>
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width derecha">
+                        <mat-label>Luxaciones</mat-label>
+                        <mat-select formControlName="luxaciones" disableRipple>
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width derecha">
+                        <mat-label>Sinovitis</mat-label>
+                        <mat-select formControlName="sinovitis" disableRipple>
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+    
+    
+                <td class="col-md-3 col-sm-12">
+                    <mat-form-field appearance="fill" class="example-full-width derecha">
+                        <mat-label>Fracturas</mat-label>
+                        <mat-select formControlName="fractura" disableRipple>
+                            <mat-option value="Si">Si</mat-option>
+                            <mat-option value="No">No</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                </td>
+    
+                        
+                    <!-- </tr>
+                    <button color="primary" type="submit" mat-raised-button class="btn">Guardar</button> -->
+        </table>
+         
+          <div>
+            <button mat-raised-button color="secondary" matStepperPrevious>Atras</button>
+            <button mat-raised-button color="primary" matStepperNext>Siguiente</button>
+          </div>
+        </form>
+      </mat-step> 
+
+    <mat-step>
+      <ng-template matStepLabel>Finalizado</ng-template>
+      <p class="text-white">Al presionar guardar, toda informacion modificada tambien sera guardada</p>
+      <div class="espacio"></div>
+      <div>
+        <button mat-raised-button color="secondary" matStepperPrevious>Atras</button>
+        <button mat-raised-button color="primary" (click)="stepper.reset()">Guardar</button>
+      </div>
+    </mat-step>
+  </mat-stepper>
+  

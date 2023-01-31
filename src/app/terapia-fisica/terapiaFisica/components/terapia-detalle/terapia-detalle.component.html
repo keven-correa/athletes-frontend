@@ -1,0 +1,183 @@
+<app-menu></app-menu>
+
+
+<div class="container-fluid">
+
+    <form class="example-form" [formGroup]="formulario" >
+    
+        <div class="full">
+            <h3 class="text-white">Datos personales</h3>
+        </div>
+    
+        <table class="example-full-width" cellspacing="1">
+            <tr>
+    
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Nombres</mat-label>
+                        <input FormControlName="nombre" [value]="formulario.value.nombre" matInput disabled type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Apellidos</mat-label>
+                        <input matInput FormControlName="apellido" [value]="formulario.value.apellido" disabled type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Edad</mat-label>
+                        <input matInput FormControlName="edad" [value]="formulario.value.edad" disabled type="number">
+                    </mat-form-field>
+                </td>
+    
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Fecha de nacimiento</mat-label>
+                        <input matInput FormControlName="fechaNacimiento" [value]="formulario.value.fechaNacimiento" disabled type="date">
+                    </mat-form-field>
+                </td>
+    
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Lugar de nacimiento</mat-label>
+                        <input matInput FormControlName="lugarNacimiento" [value]="formulario.value.lugarNacimiento" disabled type="text">
+                    </mat-form-field>
+                </td>
+    
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Deporte</mat-label>
+                        <input matInput FormControlName="disciplina" [value]="formulario.value.disciplina" disabled type="text">
+                    </mat-form-field>
+                </td>
+    
+                <mat-form-field appearance="fill">
+                    <mat-label>Sexo</mat-label>
+                    <mat-select FormControlName="sexo" [value]="formulario.value.sexo" disabled disableRipple>
+                        <mat-option value="Femenino">Femenino</mat-option>
+                        <mat-option value="Masculino">Masculino</mat-option>
+                        
+                    </mat-select>
+                </mat-form-field>
+    
+    
+            </tr>
+        </table>
+    
+        <div class="full">
+            <h3></h3>
+        </div>
+    
+        <table class="example-full-width" cellspacing="3">
+            <tr>
+    
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill" >
+                        <mat-label>DX Medico: </mat-label>
+                        <textarea matInput FormControlName="dxMedico" [value]="formulario.value.dxMedico" disabled  rows="5"></textarea >
+                    </mat-form-field>
+                </td>
+    
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>DX Terapeutico: </mat-label>
+                        <textarea matInput FormControlName="dxterapeutico" [value]="formulario.value.dxterapeutico" disabled rows="5"></textarea>
+                    </mat-form-field>
+                </td>
+    
+            </tr>
+        </table>
+    
+        <div class="full">
+            <h3></h3>
+        </div>
+    
+        <table class="example-full-width" cellspacing="3">
+            <tr>
+    
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill" >
+                        <mat-label>Historia de la enfermedad y tratamiento: </mat-label>
+                        <textarea matInput FormControlName="dxHisEnfermedad" [value]="formulario.value.dxHisEnfermedad" disabled rows="10"></textarea >
+                    </mat-form-field>
+                </td>
+    
+            </tr>
+        </table>
+    
+        <div class="full">
+            <h3></h3>
+        </div>
+    
+        <table class="example-full-width" cellspacing="3">
+            <tr>
+    
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>ROM</mat-label>
+                        <input matInput FormControlName="ROM" [value]="formulario.value.ROM" disabled type="number">
+                    </mat-form-field>
+                </td>
+    
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Dolor</mat-label>
+                        <input matInput FormControlName="dolor" [value]="formulario.value.dolor" disabled type="number">
+                    </mat-form-field>
+                </td>
+
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Cantidad de terapias</mat-label>
+                        <input matInput FormControlName="cantidadTerapia" [value]="formulario.value.cantidadTerapia" disabled type="number">
+                    </mat-form-field>
+                </td>
+    
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill" >
+                        <mat-label>Observaciones: </mat-label>
+                        <textarea matInput FormControlName="observaciones" [value]="formulario.value.observaciones" disabled rows="1"></textarea >
+                    </mat-form-field>
+                </td>
+    
+    
+            </tr>
+        </table>
+    
+        <div class="full">
+            <h3>Historial de terapias</h3>
+        </div>
+    
+        <table class="example-full-width" cellspacing="3">
+            <tr>
+    
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Nombres</mat-label>
+                        <input form matInput formControlName="nombres" type="text" >
+                    </mat-form-field>
+                </td>
+    
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Fecha</mat-label>
+                        <input matInput formControlName="fecha" type="date">
+                    </mat-form-field>
+    
+                </td>
+                <button mat-flat-button color="primary"  type="button" >Guardar </button>
+                
+    
+            </tr>
+    
+            
+        </table>
+
+
+    </form>
+
+
+</div>

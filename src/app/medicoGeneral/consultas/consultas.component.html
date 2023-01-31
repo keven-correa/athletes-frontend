@@ -1,0 +1,58 @@
+<app-menu></app-menu>
+
+<mat-card>
+
+
+    <mat-form-field>
+        <mat-label>Buscar</mat-label>
+        <input matInput (keyup)="applyFilter($event)" #input>
+      </mat-form-field>
+    
+    
+    <div class="mat-elevation-z8">
+        <table mat-table [dataSource]="dataSource">
+      
+          <!-- Position Column -->
+          <ng-container matColumnDef="id" >
+            <th mat-header-cell *matHeaderCellDef> ID </th>
+            <td mat-cell *matCellDef="let element; let i=index" > {{i+1}} </td>
+          </ng-container>
+      
+          <!-- Name Column -->
+          <ng-container matColumnDef="nombre">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th> 
+            <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+          </ng-container>
+      
+          <!-- apellido Column -->
+          <ng-container matColumnDef="apellido">
+            <th mat-header-cell *matHeaderCellDef> Apellido </th>
+            <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+          </ng-container>
+      
+          <!-- disciplina Column -->
+          <ng-container matColumnDef="disciplina">
+            <th mat-header-cell *matHeaderCellDef> Disciplina </th>
+            <td mat-cell *matCellDef="let element"> {{element.disciplina}} </td>
+          </ng-container>
+
+
+        <!-- consulta Column -->
+        <ng-container matColumnDef="consulta">
+        <th mat-header-cell *matHeaderCellDef> Mas </th>
+        <td mat-cell *matCellDef="let element; let i=index"> <a color="primary" mat-raised-button (click)="envio(i+1)" >Realizar consulta</a></td>
+        </ng-container>
+    
+       
+      
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+        </table>
+      
+        <mat-paginator [pageSizeOptions]="[10, 15, 20]"
+                       showFirstLastButtons 
+                       aria-label="Select page of periodic elements">
+        </mat-paginator>
+      </div>
+
+</mat-card>

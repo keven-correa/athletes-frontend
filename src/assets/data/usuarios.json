@@ -1,0 +1,28 @@
+
+   [
+    {
+    "id":1,
+    "usuario":"admin",
+    "clave":12345,
+    "rol":"administrador"
+    },
+    {
+    "id":2,
+    "usuario":"mgeneral",
+    "clave":12345,
+    "rol":"medicoGeneral"
+    },
+    {
+    "id":2,
+    "usuario":"tfisica",
+    "clave":12345,
+    "rol":"terapeutaFisico"
+    },
+    {
+    "id":3,
+    "usuario":"secretaria",
+    "clave":12345,
+    "rol":"secretaria"
+    }
+
+   ]

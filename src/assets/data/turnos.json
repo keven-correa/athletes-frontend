@@ -1,0 +1,26 @@
+
+   [
+    {
+    "id":1,
+    "LugarVisita":"Medico",
+    "idAtleta":1
+    },
+    {
+    "id":2,
+    "LugarVisita":"Fisioterapeuta",
+    "idAtleta":2
+    },
+    {
+    "id":3,
+    "LugarVisita":"Medico",
+    "idAtleta":3
+    },
+    {
+    "id":2,
+    "LugarVisita":"Fisioterapeuta",
+    "idAtleta":4
+    }
+    
+    
+
+   ]

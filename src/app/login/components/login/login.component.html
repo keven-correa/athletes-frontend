@@ -1,0 +1,35 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row>
+      <span class="centrado">Login</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+
+<div class="container">
+  <mat-card class="exaple-card">
+    <span class="centrado">
+      <img src="/assets/img/JJOO.png" alt="Juegos olimpicos" class="img">
+    </span>
+
+    <form class="example-form" [formGroup]="formulario">
+      <mat-form-field class="example-full-width" >
+        <mat-label>Usuario</mat-label>
+        <input type="text" matInput formControlName="email" >
+      </mat-form-field>
+  
+      <mat-form-field class="example-full-width" >
+        <mat-label>Clave</mat-label>
+        <input type="password" matInput formControlName="password">
+      </mat-form-field>
+
+  
+      <button mat-flat-button color="primary" class="btn" type="submit" (click)="login()">Iniciar sesion</button>
+    </form>
+
+    <div *ngIf="mensaje">
+      <p>USUARIO O CLAVE INCORRECTOS </p>
+    </div>
+    
+  </mat-card>
+
+</div>
+   

@@ -1,0 +1,113 @@
+[
+    {
+        "id":1,
+        "nombre":"Antonio",
+        "apellido":"Guzman",
+        "disciplina":"Boxeo",
+        "edad":25,"sexo":"M",
+        "fechaNacimiento":"2001-12-15",
+        "lugarNacimiento":"Santiago"
+    },
+    {
+        "id":2,
+        "nombre":"Manuel",
+        "apellido":"Gonzalez",
+        "disciplina":"Basketball",
+        "edad":20,"sexo":"M",
+        "fechaNacimiento":"2000-03-15",
+        "lugarNacimiento":"Santo Domingo"
+    },
+    {
+        "id":3,
+        "nombre":"Juana",
+        "apellido":"Mendez",
+        "disciplina":"Basketball",
+        "edad":25,"sexo":"F",
+        "fechaNacimiento":"2000-12-15",
+        "lugarNacimiento":"La Romana"
+    },
+    {
+        "id":4,
+        "nombre":"Saldy",
+        "apellido":"Castillo",
+        "disciplina":"Voleibol",
+        "edad":29,
+        "sexo":"F",
+        "fechaNacimiento":"2000-12-15",
+        "lugarNacimiento":"Santo Domingo"
+        
+    },
+    {
+        "id":5,
+        "nombre":"Edgar",
+        "apellido":"Mena",
+        "disciplina":"Atletismo",
+        "edad":25,"sexo":"M",
+        "fechaNacimiento":"1997-12-15",
+        "lugarNacimiento":"Santo Domingo"
+    },
+    {
+        "id":6,
+        "nombre":"Keven",
+        "apellido":"Correa",
+        "disciplina":"Atletismo",
+        "edad":15,"sexo":"M",
+        "fechaNacimiento":"2000-07-15",
+        "lugarNacimiento":"Santo Domingo"
+    },
+    {
+        "id":7,
+        "nombre":"Nicol",
+        "apellido":"Borbon",
+        "disciplina":"Pesas",
+        "edad":25,"sexo":"F",
+        "fechaNacimiento":"2000-12-15",
+        "lugarNacimiento":"Barahona"
+    },
+    {
+        "id":8,
+        "nombre":"Julia",
+        "apellido":"Ruiz",
+        "disciplina":"Boxeo",
+        "edad":19,"sexo":"F",
+        "fechaNacimiento":"2003-11-15",
+        "lugarNacimiento":"San Juan"
+    },
+    {
+        "id":9,
+        "nombre":"Joan",
+        "apellido":"Sena",
+        "disciplina":"Judo",
+        "edad":22,"sexo":"M",
+        "fechaNacimiento":"1999-12-15",
+        "lugarNacimiento":"Santo Domingo"
+    },
+    {
+        "id":10,
+        "nombre":"Daniel",
+        "apellido":"Feliz",
+        "disciplina":"Salto alto",
+        "edad":25,"sexo":"M",
+        "fechaNacimiento":"2005-12-15",
+        "lugarNacimiento":"Santo Domingo"
+    },
+    {
+        "id":11,
+        "nombre":"Merly",
+        "apellido":"Benitez",
+        "disciplina":"Karate",
+        "edad":35,"sexo":"F",
+        "fechaNacimiento":"1988-12-15",
+        "lugarNacimiento":"Santo Domingo"
+    },
+    {
+        "id":12,
+        "nombre":"Daniela",
+        "apellido":"Paez",
+        "disciplina":"Lucha",
+        "edad":25,
+        "sexo":"F",
+        "fechaNacimiento":"1997-12-15",
+        "lugarNacimiento":"La vega"
+    }
+]

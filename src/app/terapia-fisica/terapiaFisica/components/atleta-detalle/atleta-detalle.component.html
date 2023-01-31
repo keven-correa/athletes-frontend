@@ -1,0 +1,33 @@
+<app-menu></app-menu>
+
+
+
+<mat-grid-list cols="1" rowHeight="800px">
+
+  <mat-grid-tile>
+    <mat-card class="example-card">
+      <mat-card-header>
+        <mat-card-title>Detalles</mat-card-title>
+      </mat-card-header>
+      <img mat-card-image src="../../../assets/img/images.png" alt="Atleta">        
+      <mat-card-content>
+        <p><strong>Nombres: </strong>{{atletas.nombre}} </p>
+        <p><strong>Apellidos: </strong>{{atletas.apellido}} </p>
+        <p><strong>Edad: </strong>{{atletas.edad}} </p>
+        <p><strong>Sexo: </strong>{{atletas.sexo}} </p>
+        <p><strong>Disciplina: </strong>{{atletas.disciplina}} </p>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-flat-button color="primary" class="btn" (click)="historial(id)">Historial</button>
+        <button mat-flat-button color="primary" class="btn" (click)="referimientos(id)">Referimientos</button>
+        <button mat-flat-button color="primary" class="btn" (click)="terapia(id)">Terapias</button>
+      </mat-card-actions>
+    </mat-card>
+
+
+  </mat-grid-tile>
+
+
+
+
+</mat-grid-list>
