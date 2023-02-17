@@ -5,35 +5,17 @@ import {MatDialog} from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { SecretariaService } from '../../services/secretaria.service';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { AtletaI } from '../../../shared/Models/atleta.interface';
 
 
-export interface Atleta {
-  id: number;
-  nombre: string;
-  apellido: string;
-  disciplina: string;
-  sexo:string;
-}
+
 @Component({
   selector: 'app-atletas',
   templateUrl: './atletas.component.html',
   styleUrls: ['./atletas.component.css']
 })
 export class AtletasComponent   implements AfterViewInit {
-  ELEMENT_DATA: Atleta[] = [
-    // {id: 1, nombre: 'Antonio', apellido:'Guzman' , disciplina: 'Boxeo', sexo:'M'},
-    // {id: 2, nombre: 'Manuel', apellido: 'Gonzalez' , disciplina: 'Basketball', sexo:'M'},
-    // {id: 3, nombre: 'Juana', apellido: 'Castillo', disciplina: 'Baseball', sexo:'F'},
-    // {id: 4, nombre: 'Saldy', apellido:'Amparo' , disciplina: 'Voleibol', sexo:'F'},
-    // {id: 5, nombre: 'Nicol', apellido: 'Borbon' , disciplina: 'Atletismo', sexo:'F'},
-    // {id: 6, nombre: 'Keven', apellido: 'Correa', disciplina: 'Natacion', sexo:'M'},
-    // {id: 7, nombre: 'Edgar', apellido: 'Mena', disciplina: 'Natacion', sexo:'M'},
-    // {id: 8, nombre: 'Julia', apellido: 'Ruiz', disciplina: 'Boxeo', sexo:'F'},
-    // {id: 9, nombre: 'Joan', apellido:'Sena' , disciplina: 'Judo', sexo:'M'},
-    // {id: 10, nombre: 'Daniel', apellido: 'Perez', disciplina: 'Boxeo', sexo:'M'},
-    // {id: 10, nombre: 'Daniel', apellido: 'Feliz', disciplina: 'Judo', sexo:'M'},
-    
-  ];
+  ELEMENT_DATA: AtletaI[] = [];
 
   mobileQuery: MediaQueryList; 
 
@@ -43,7 +25,7 @@ export class AtletasComponent   implements AfterViewInit {
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['id', 'nombre', 'apellido', 'disciplina','mas'];
+  displayedColumns: string[] = ['id', 'name', 'lastName', 'discipline','mas'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
 
@@ -69,10 +51,11 @@ export class AtletasComponent   implements AfterViewInit {
   
   ngOnInit(): void {
 
-    // this._secretariaService.ObtenerAtletas().subscribe(resp=>{
-    //   this.ELEMENT_DATA=resp
-    //   this.dataSource.data=this.ELEMENT_DATA
-    // })
+    this._secretariaService.getAtletas().subscribe(resp=>{
+      this.ELEMENT_DATA=resp
+      this.dataSource.data=this.ELEMENT_DATA
+      //console.log(this.ELEMENT_DATA)
+    })
   }
   
   ngAfterViewInit() {
@@ -105,7 +88,7 @@ export class AtletasComponent   implements AfterViewInit {
       this.router.navigate(['/secretaria/atletas'])
     }
     
-
+    
 
     
 }

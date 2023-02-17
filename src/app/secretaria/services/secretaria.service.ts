@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
 // import { collectionData, deleteDoc, doc, Firestore, getDoc, updateDoc } from '@angular/fire/firestore';
 // import { addDoc, collection,where,query } from '@firebase/firestore';
@@ -7,18 +7,36 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class SecretariaService {
+export class SecretariaService implements HttpInterceptor {
 
-  // constructor(private http:HttpClient, private firestore:Firestore) { }
+  url:string = "http://localhost:3000/api/"
 
-  // AgregarAtletas(atleta:any){
-  //   const ref= collection(this.firestore,'Atletas');
-  //   return addDoc(ref,atleta);
-  // }
+  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    let token =localStorage.getItem("token");
+    let jwt=req.clone({
+      setHeaders:{
+        Autorization:'bearer '+ token
+      }
+    })
+    console.log(token);
+    console.log(jwt);
+    return next.handle(jwt);
+  }
 
-  // ObtenerAtletas():Observable<any[]>{
-  //   const ref= collection(this.firestore,'Atletas');
-  //    return collectionData(ref,{idField:"id"}) as Observable<any[]>;
+
+   constructor(private http:HttpClient) { }
+
+  
+
+  getAtletas():Observable<any>{
+    const direccion = this.url+"athletes"
+   return this.http.get<any>(direccion)
+  }
+
+  detalleAtleta(id:any):Observable<any>{
+    const direccion = this.url +"athletes/"+ id
+   return this.http.get<any>(direccion)
+  }
     
   // }  
 
@@ -50,4 +68,8 @@ export class SecretariaService {
   //    return collectionData(ref,{idField:"id"}) as Observable<any[]>;
     
   // } 
+
+  logOut(){
+    localStorage.clear();
+  }
 }

@@ -4,36 +4,9 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SecretariaService } from '../../services/secretaria.service';
+import { AtletaI } from '../../../shared/Models/atleta.interface';
 
-interface atleta{
-  nombre: string,
-  apellido:string,
-  edad:string;
-  disciplina:string,
-  sexo:string;
-  estadoCivil:string,
-  fechaNacimiento:string,
-  lugarNacimiento:string,
-  modalidad:string,
-  edadDeportiva:string,
-  horasPractica:string,
-  diasPractica:string,
-  seguroMedico:string,
-  escolaridad:string,
-  horasEstudio:string,
-  diasEstudio:string,
-  direccion:string,
-  telefonoCelular:string,
-  telefonoCasa:string,
-  tipoSangre:string,
-  peso:string,
-  altura:string,
-  TA:string,
-  FC:string,
-  FR:string,
-  tempe:string,
-  cedula:string
-}
+
 
 @Component({
   selector: 'app-editar-atleta',
@@ -42,7 +15,7 @@ interface atleta{
 })
 export class EditarAtletaComponent implements OnInit {
   id!:number;
-  atleta:atleta;
+  atleta!:AtletaI;
 
   formulario!:FormGroup;
 
@@ -63,33 +36,6 @@ shouldRun = true;
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
       this.mobileQuery.addListener(this._mobileQueryListener);
 
-    this.atleta={ nombre: '',
-      apellido:'',
-      edad:'',
-      disciplina:'',
-      sexo:'',
-      estadoCivil:'',
-      fechaNacimiento:'',
-      lugarNacimiento:'',
-      modalidad:'',
-      edadDeportiva:'',
-      horasPractica:'',
-      diasPractica:'',
-      seguroMedico:'',
-      escolaridad:'',
-      horasEstudio:'',
-      diasEstudio:'',
-      direccion:'',
-      telefonoCelular:'',
-      telefonoCasa:'',
-      tipoSangre:'',
-      peso:'',
-      altura:'',
-      TA:'',
-      FC:'',
-      FR:'',
-      tempe:'',
-      cedula:'0'}
 
    }
 
@@ -99,79 +45,79 @@ shouldRun = true;
       
     })
     this.formulario=this.fb.group({
-      nombre:['',Validators.required],
-      apellido:['',Validators.required],
-      edad:['',Validators.required],
-      fechaNacimiento:['',Validators.required],
-      lugarNacimiento:['',Validators.required],
-      disciplina:['',Validators.required],
-      sexo:['',Validators.required],
-      estadoCivil:['',Validators.required],
-      modalidad:['',Validators.required],
-      edadDeportiva:['',Validators.required],
-      horasPractica:['',Validators.required],
-      diasPractica:['',Validators.required],
-      seguroMedico:[''],
-      escolaridad:['',Validators.required],
-      horasEstudio:['',Validators.required],
-      diasEstudio:['',Validators.required],
-      direccion:['',Validators.required],
-      telefonoCelular:['',Validators.required],
-      telefonoCasa:['',Validators.required],
-      tipoSangre:['',Validators.required],
-      peso:['',Validators.required],
-      altura:['',Validators.required],
-      TA:['',Validators.required],
-      FC:['',Validators.required],
-      FR:['',Validators.required],
-      tempe:['',Validators.required],
-      cedula:['0']
-      
-  }) 
-  // this.cargarDatos(this.id);
+      id:[''],
+      name:['',Validators.required],
+      lastName:['',Validators.required],
+      age:['',Validators.required],
+      dateOfBirth:['',Validators.required],
+      placeOfBirth:['',Validators.required],
+      discipline:[Validators.required],
+      gender:['',Validators.required],
+      maritalStatus:['',Validators.required],
+      //modalidad:['',Validators.required],
+      sportAge:['',Validators.required],
+      hoursOfPractice:['',Validators.required],
+      practiceDays:['',Validators.required],
+      healthInsurance:[''],
+      levelOfSchooling:['',Validators.required],
+      //horasEstudio:['',Validators.required],
+      //diasEstudio:['',Validators.required],
+      address:['',Validators.required],
+      cell:['',Validators.required],
+      phone:['',Validators.required],
+      bloodType:['',Validators.required],
+      weight:['',Validators.required],
+      height:['',Validators.required],
+      isActive:[true,Validators.required],
+      //TA:['',Validators.required],
+      //FC:['',Validators.required],
+      //FR:['',Validators.required],
+      //tempe:['',Validators.required],
+      document:[''],
+      created_by:['']
+    })
+
+   this.cargarDatos(this.id);
 }
 
-// cargarDatos(id:number){
+cargarDatos(id:number){
   
-//   const identificador:number=this.id;
-//   this._secretariaservice.ObtenerAtletas().subscribe(resp=>{
-//     for (let i = 0; i < resp.length; i++) {
-//       const element = resp[i];
-//       if(resp.find(item=>item.id==identificador)){
-//         this.atleta=resp.find(item=>item.id==identificador)
-//         return this.formulario.patchValue({
-//           nombre: this.atleta.nombre,
-//       apellido:this.atleta.apellido,
-//       edad:this.atleta.edad,
-//       disciplina:this.atleta.disciplina,
-//       sexo:this.atleta.sexo,
-//       estadoCivil:this.atleta.estadoCivil,
-//       fechaNacimiento:this.atleta.fechaNacimiento,
-//       lugarNacimiento:this.atleta.lugarNacimiento,
-//       modalidad:this.atleta.modalidad,
-//       edadDeportiva:this.atleta.edadDeportiva,
-//       horasPractica:this.atleta.horasPractica,
-//       diasPractica:this.atleta.diasPractica,
-//       seguroMedico:this.atleta.seguroMedico,
-//       escolaridad:this.atleta.escolaridad,
-//       horasEstudio:this.atleta.horasEstudio,
-//       diasEstudio:this.atleta.diasEstudio,
-//       direccion:this.atleta.direccion,
-//       telefonoCelular:this.atleta.telefonoCelular,
-//       telefonoCasa:this.atleta.telefonoCasa,
-//       tipoSangre:this.atleta.tipoSangre,
-//       peso:this.atleta.peso,
-//       altura:this.atleta.altura,
-//       TA:this.atleta.TA,
-//       FC:this.atleta.FC,
-//       FR:this.atleta.FR,
-//       tempe:this.atleta.tempe,
-//       cedula:this.atleta.cedula
-//         }) 
-//       }      
-//     }
-//   })
-// }
+  
+  this._secretariaservice.getAtletas().subscribe(resp=>{  
+      
+      
+        return this.formulario.patchValue({
+          name: this.atleta.name,
+      lastName:this.atleta.lastName,
+      age:this.atleta.age,
+      discipline:this.atleta.discipline,
+      //sexo:this.atleta.sexo,
+      maritalStatus:this.atleta.maritalStatus,
+      dateOfBirth:this.atleta.dateOfBirth,
+      //lugarNacimiento:this.atleta.lugarNacimiento,
+      //edadDeportiva:this.atleta.edadDeportiva,
+      //horasPractica:this.atleta.horasPractica,
+      //diasPractica:this.atleta.diasPractica,
+      //seguroMedico:this.atleta.seguroMedico,
+      levelOfSchooling:this.atleta.levelOfSchooling,
+      //horasEstudio:this.atleta.horasEstudio,
+      //diasEstudio:this.atleta.diasEstudio,
+      address:this.atleta.address,
+      cell:this.atleta.cell,
+      phone:this.atleta.phone,
+      bloodType:this.atleta.bloodType,
+      weight:this.atleta.weight,
+      height:this.atleta.height,
+      //TA:this.atleta.TA,
+      //FC:this.atleta.FC,
+      //FR:this.atleta.FR,
+      //tempe:this.atleta.tempe,
+      document:this.atleta.document
+        }) 
+      }      
+    
+  )
+}
 
  Actualizar(){
 //   this._secretariaservice.ActualizarAtleta(this.id,this.formulario.value)

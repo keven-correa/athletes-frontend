@@ -3,15 +3,9 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { SecretariaService } from '../../services/secretaria.service';
+import { AtletaI } from '../../../shared/Models/atleta.interface';
 
-interface Atleta{
-  id:number;
-  nombre:string;
-  apellido:string;
-  disciplina:string;
-  edad:number;
-  sexo:string;
-}
+
 @Component({
   selector: 'app-atletas-detalles',
   templateUrl: './atletas-detalles.component.html',
@@ -20,7 +14,8 @@ interface Atleta{
 export class AtletasDetallesComponent implements OnInit {
   
     id:number=0;
-    atletas:Atleta;
+    edad!:number;
+    atletas!:AtletaI;
 
   mobileQuery: MediaQueryList; 
 
@@ -35,9 +30,7 @@ export class AtletasDetallesComponent implements OnInit {
       this.mobileQuery = media.matchMedia('(max-width: 600px)');
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
       this.mobileQuery.addListener(this._mobileQueryListener);
-
-      this.atletas={nombre:'',id:0,apellido:'',disciplina:'',sexo:'',edad:0}   
-
+    
 }
 
 ngOnDestroy(): void {
@@ -49,9 +42,12 @@ shouldRun = true;
  ngOnInit(): void {
    this._ruta.params.subscribe((params:Params)=>{
      this.id=params['id'];
-     console.log(this.id)
    })
-  //  this.cargarDatos(this.id)
+    this._secretariaService.detalleAtleta(this.id).subscribe(resp=>{
+      this.atletas = resp;
+      console.log(resp)
+      this.edadAtleta();  
+    }) 
  }
 
 
@@ -62,6 +58,17 @@ shouldRun = true;
   eliminar(id:any){
 //   this._secretariaService.eliminarAtleta(id)
 //   this.router.navigate(['/secretaria/atletas'])
+  }
+
+  // Fecha de nacimiento a edad
+  edadAtleta(){
+    const calculateAge = (birthday:any) => {
+      const ageDifMs = Date.now() - new Date(birthday).getTime();
+      const ageDate = new Date(ageDifMs);
+      return Math.abs(ageDate.getUTCFullYear() - 1970);
+  }
+  var dia = this.atletas.dateOfBirth.toString().substring(0,10);
+  this.edad=(calculateAge(dia))
   }
 
 //  cargarDatos(id:number){

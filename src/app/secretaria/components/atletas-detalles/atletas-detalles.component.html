@@ -27,11 +27,11 @@
             </mat-card-header>
             <img mat-card-image src="../../../assets/img/images.png" alt="Atleta">
             <mat-card-content>
-              <p><strong>Nombres: </strong>{{atletas.nombre}} </p>
-              <p><strong>Apellidos: </strong>{{atletas.apellido}} </p>
-              <p><strong>Edad: </strong>{{atletas.edad}} </p>
-              <p><strong>Sexo: </strong>{{atletas.sexo}} </p>
-              <p><strong>Disciplina: </strong>{{atletas.disciplina}} </p>
+              <p><strong>Nombres: </strong>{{atletas.name}} </p>
+              <p><strong>Apellidos: </strong>{{atletas.lastName}} </p>
+              <p><strong>Edad: </strong>{{edad}} </p>
+              <!-- <p><strong>Sexo: </strong>{{atletas.gener}} </p> -->
+              <p><strong>Disciplina: </strong>{{atletas.discipline.name | json}} </p>
             </mat-card-content>
             <mat-card-actions>
               <button mat-flat-button color="primary" class="btn" (click)="editar(id)">Editar</button>

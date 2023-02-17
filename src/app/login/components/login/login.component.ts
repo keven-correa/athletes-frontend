@@ -41,31 +41,23 @@ export class LoginComponent implements OnInit {
 
     // this.getUsuarios();
     console.log(this.formulario.value)
-    
-    this.loginservice.getUsuarios(this.formulario.value).subscribe(data=>{
+    const body ={email: this.formulario.value.email, password: this.formulario.value.password}
+    this.loginservice.getUsuarios(body).subscribe(data=>{
       const respuesta:any =data
-      console.log(respuesta)
-
-      // if (respuesta.status!= '400') {
-      //   localStorage.setItem('token',respuesta.response.token)
         
         if(respuesta.role == "Administrator"){
         localStorage.setItem('token',respuesta.token)
         localStorage.setItem('role',respuesta.role)
 
           this.router.navigateByUrl('/secretaria/atletas')
-        }
-        
-      // }
-      else{
+        }else{
         this.mensajeError();
+
       }
     })
     
   }
-
-
-  
+    
   // getUsuarios(){
   //   this.loginservice.getUsuario().
   //   subscribe((resp)=>{

@@ -1,6 +1,7 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { SecretariaService } from '../../services/secretaria.service';
 
 @Component({
   selector: 'app-menu',
@@ -26,7 +27,8 @@ export class MenuComponent implements OnInit {
 
   private _mobileQueryListener: () => void;
 
-  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,private router:Router) {
+  constructor(changeDetectorRef: ChangeDetectorRef, media: MediaMatcher,private router:Router,
+              private secretariaService:SecretariaService) {
     this.mobileQuery = media.matchMedia('(max-width: 600px)');
     this._mobileQueryListener = () => changeDetectorRef.detectChanges();
     this.mobileQuery.addListener(this._mobileQueryListener);
@@ -43,6 +45,11 @@ export class MenuComponent implements OnInit {
 
   atletas(){
     this.router.navigate(['/secretaria/atletas'])
+  }
+  CerrarSesion(){
+
+    this.secretariaService.logOut();
+    this.router.navigate(['/login'])
   }
 
   

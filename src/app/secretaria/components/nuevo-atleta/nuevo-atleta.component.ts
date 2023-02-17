@@ -15,7 +15,7 @@ export class NuevoAtletaComponent implements OnInit {
   formulario!:FormGroup;
 
   public fechaNacimiento!:Date;
-  public edad!:number;
+  
 
   mobileQuery: MediaQueryList;
 
@@ -42,33 +42,35 @@ shouldRun = true;
   ngOnInit(): void {
     this.formulario=this.fb.group({
       id:[''],
-      nombre:['',Validators.required],
-      apellido:['',Validators.required],
-      edad:['',Validators.required],
-      fechaNacimiento:['',Validators.required],
-      lugarNacimiento:['',Validators.required],
-      disciplina:['',Validators.required],
-      sexo:['',Validators.required],
-      estadoCivil:['',Validators.required],
-      modalidad:['',Validators.required],
-      edadDeportiva:['',Validators.required],
-      horasPractica:['',Validators.required],
-      diasPractica:['',Validators.required],
-      seguroMedico:[''],
-      escolaridad:['',Validators.required],
-      horasEstudio:['',Validators.required],
-      diasEstudio:['',Validators.required],
-      direccion:['',Validators.required],
-      telefonoCelular:['',Validators.required],
-      telefonoCasa:['',Validators.required],
-      tipoSangre:['',Validators.required],
-      peso:['',Validators.required],
-      altura:['',Validators.required],
-      TA:['',Validators.required],
-      FC:['',Validators.required],
-      FR:['',Validators.required],
-      tempe:['',Validators.required],
-      cedula:['']
+      name:['',Validators.required],
+      lastName:['',Validators.required],
+      age:['',Validators.required],
+      dateOfBirth:['',Validators.required],
+      placeOfBirth:['',Validators.required],
+      discipline:[Validators.required],
+      gender:['',Validators.required],
+      maritalStatus:['',Validators.required],
+      //modalidad:['',Validators.required],
+      sportAge:['',Validators.required],
+      hoursOfPractice:['',Validators.required],
+      practiceDays:['',Validators.required],
+      healthInsurance:[''],
+      levelOfSchooling:['',Validators.required],
+      //horasEstudio:['',Validators.required],
+      //diasEstudio:['',Validators.required],
+      address:['',Validators.required],
+      cell:['',Validators.required],
+      phone:['',Validators.required],
+      bloodType:['',Validators.required],
+      weight:['',Validators.required],
+      height:['',Validators.required],
+      isActive:[true,Validators.required],
+      //TA:['',Validators.required],
+      //FC:['',Validators.required],
+      //FR:['',Validators.required],
+      //tempe:['',Validators.required],
+      document:[''],
+      created_by:['']
     })
   }
 
@@ -91,12 +93,6 @@ shouldRun = true;
   //   this.router.navigateByUrl("/secretaria/atletas");
    }
 
-  fecha(){
-    if (this.fechaNacimiento) {
-      var tiempo=Math.abs(Date.now() - Number(this.fechaNacimiento ));
-      this.edad = Math.floor((tiempo/(1000*3600*24))/365); 
-    }
-    console.log(this.edad);
-  }
+
 
 }

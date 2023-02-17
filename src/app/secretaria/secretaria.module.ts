@@ -12,6 +12,8 @@ import { TurnosComponent } from './components/turnos/turnos.component';
 import { EditarAtletaComponent } from './components/editar-atleta/editar-atleta.component';
 import { CrearTurnoComponent } from './components/crear-turno/crear-turno.component';
 import { NuevoTurnoComponent } from './components/nuevo-turno/nuevo-turno.component';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SecretariaService } from './services/secretaria.service';
 
 
 @NgModule({
@@ -31,6 +33,9 @@ import { NuevoTurnoComponent } from './components/nuevo-turno/nuevo-turno.compon
     SheredModule,
     FormsModule,
     ReactiveFormsModule
+  ], 
+  providers:[
+     {provide: HTTP_INTERCEPTORS,useClass:SecretariaService,multi:true}
   ]
 })
 export class SecretariaModule { }

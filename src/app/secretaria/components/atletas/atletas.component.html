@@ -20,8 +20,8 @@
         <mat-sidenav-content>
           
           <mat-card> 
+            <button color="primary" mat-raised-button (click)="nuevoAtleta()" style="max-width: 130px; margin-top: 10px; margin-bottom: 10px;" >Nuevo atleta</button>
 
-            <button color="primary" mat-raised-button (click)="nuevoAtleta()" >Nuevo atleta</button>
         
             <mat-form-field >
                 <mat-label>Buscar</mat-label>
@@ -39,26 +39,26 @@
                   </ng-container>
               
                   <!-- Name Column -->
-                  <ng-container matColumnDef="nombre">
+                  <ng-container matColumnDef="name">
                     <th mat-header-cell *matHeaderCellDef> Nombre </th> 
-                    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
                   </ng-container>
               
                   <!-- apellido Column -->
-                  <ng-container matColumnDef="apellido">
+                  <ng-container matColumnDef="lastName">
                     <th mat-header-cell *matHeaderCellDef> Apellido </th>
-                    <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
                   </ng-container>
               
                   <!-- disciplina Column -->
-                  <ng-container matColumnDef="disciplina">
+                  <ng-container matColumnDef="discipline">
                     <th mat-header-cell *matHeaderCellDef> Disciplina </th>
-                    <td mat-cell *matCellDef="let element"> {{element.disciplina}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.discipline.name | json}} </td>
                   </ng-container>
         
                   <ng-container matColumnDef="mas">
                     <th mat-header-cell *matHeaderCellDef> Mas </th>
-                    <td mat-cell *matCellDef="let element; let i=index"> <a color="primary" mat-raised-button (click)="envio(element.id)" >Ver mas</a></td>
+                    <td mat-cell *matCellDef="let element; let i=index"> <a color="primary" mat-raised-button (click)="envio(element.id)" style="max-width: 130px;" >Ver mas</a></td>
                     </ng-container>
             
         

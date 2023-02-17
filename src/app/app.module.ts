@@ -19,10 +19,11 @@ import { ConsultaDetalleComponent } from './medicoGeneral/consulta-detalle/consu
 import { AtletaDetalleComponent } from './medicoGeneral/atleta-detalle/atleta-detalle.component';
 import { ConsultaAtletaComponent } from './medicoGeneral/consulta-atleta/consulta-atleta.component';
 import { AnaliticaComponent } from './medicoGeneral/analitica/analitica.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
 // import { environment } from '../environments/environment';
 // import { provideFirestore,getFirestore } from '@angular/fire/firestore';
+import { LoginService } from './login/services/login.service';
 
 
 
@@ -48,12 +49,12 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     SheredModule,
     ReactiveFormsModule,
-     HttpClientModule,
-    // provideFirebaseApp(() => initializeApp(environment.firebase)),
-    // provideFirestore(() => getFirestore())
-    
+     HttpClientModule,    
   ],
-  providers: [],
+  providers:[
+    // {provide: HTTP_INTERCEPTORS,useClass:LoginService,multi:true}
+  ]
+  ,
   bootstrap: [AppComponent]
 })
 export class AppModule { }

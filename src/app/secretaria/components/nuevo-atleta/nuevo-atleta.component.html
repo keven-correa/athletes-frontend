@@ -40,13 +40,13 @@
                                     <div class="col-md-6">
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Nombres</mat-label>
-                                            <input formControlName="nombre" class="text-white" matInput type="text">
+                                            <input formControlName="name" class="text-white" matInput type="text">
                                         </mat-form-field>
                                     </div>
                                     <div class="col-md-6">
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Apellidos</mat-label>
-                                            <input matInput class="text-white" formControlName="apellido" type="text">
+                                            <input matInput class="text-white" formControlName="lastName" type="text">
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -68,14 +68,14 @@
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Fecha de nacimiento</mat-label>
                                             <input matInput class="text-white" [(ngModel)]="fechaNacimiento"
-                                                formControlName="fechaNacimiento" (change)="fecha()" type="date">
+                                                formControlName="dateOfBirth" type="date">
                                         </mat-form-field>
                                     </div>
                                     <div class="col-md-6">
 
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Cedula</mat-label>
-                                            <input matInput class="text-white" formControlName="cedula" type="text">
+                                            <input matInput class="text-white" formControlName="document" type="text">
                                         </mat-form-field>
 
                                     </div>
@@ -97,7 +97,7 @@
 
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Sexo</mat-label>
-                                            <mat-select class="text-white" formControlName="sexo" disableRipple>
+                                            <mat-select class="text-white" formControlName="gender" disableRipple>
                                                 <mat-option value="Femenino">Femenino</mat-option>
                                                 <mat-option value="Masculino">Masculino</mat-option>
                                             </mat-select>
@@ -106,7 +106,7 @@
                                     <div class="col-md-6">
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Tipo de sangre</mat-label>
-                                            <mat-select class="text-white" formControlName="tipoSangre" disableRipple>
+                                            <mat-select class="text-white" formControlName="bloodType" disableRipple>
                                                 <mat-option value="A+">A+</mat-option>
                                                 <mat-option value="A+">A-</mat-option>
                                                 <mat-option value="AB">AB+</mat-option>
@@ -135,7 +135,7 @@
                                     <div class="col-md-6">
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Estado civil</mat-label>
-                                            <mat-select class="text-white" formControlName="estadoCivil" disableRipple>
+                                            <mat-select class="text-white" formControlName="maritalStatus" disableRipple>
                                                 <mat-option value="Soltero">Soltero</mat-option>
                                                 <mat-option value="Casado">Casado</mat-option>
                                                 <mat-option value="Divorciado">Divorciado</mat-option>
@@ -146,7 +146,7 @@
                                     <div class="col-md-6">
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Lugar de nacimiento</mat-label>
-                                            <input class="text-white" matInput formControlName="lugarNacimiento"
+                                            <input class="text-white" matInput formControlName="placeOfBirth"
                                                 type="text">
                                         </mat-form-field>
                                     </div>
@@ -168,7 +168,7 @@
                                     <div class="col-md-6">
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Telefono de casa</mat-label>
-                                            <input class="text-white" matInput formControlName="telefonoCasa"
+                                            <input class="text-white" matInput formControlName="phone"
                                                 type="number">
                                         </mat-form-field>
                                         
@@ -176,7 +176,7 @@
                                     <div class="col-md-6">
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Telefono celular</mat-label>
-                                            <input class="text-white" matInput formControlName="telefonoCelular"
+                                            <input class="text-white" matInput formControlName="cell"
                                                 type="number">
                                         </mat-form-field>
                                     </div>
@@ -195,7 +195,7 @@
                                     <div class="col-md-12">
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Direccion actual</mat-label>
-                                            <input class="text-white" formControlName="direccion" matInput type="text">
+                                            <input class="text-white" formControlName="address" matInput type="text">
                                         </mat-form-field>
                                     </div>
     
@@ -223,7 +223,7 @@
                                     <div class="col-md-6">
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Seguro medico</mat-label>
-                                            <input class="text-white" matInput formControlName="seguroMedico" type="text">
+                                            <input class="text-white" matInput formControlName="healthInsurance" type="text">
                                         </mat-form-field>
                                     </div>
                                     <div class="col-md-6">
@@ -232,14 +232,14 @@
     
                                                 <mat-form-field class="example-full-width" appearance="fill">
                                                     <mat-label>Peso (KG.)</mat-label>
-                                                    <input class="text-white" formControlName="peso" matInput type="number">
+                                                    <input class="text-white" formControlName="weight" matInput type="number">
                                                 </mat-form-field>
                                             </div>
                                             <div class="col-md-6">
     
                                                 <mat-form-field class="example-full-width" appearance="fill">
                                                     <mat-label>Altura (Cm)</mat-label>
-                                                    <input class="text-white" formControlName="altura" matInput
+                                                    <input class="text-white" formControlName="height" matInput
                                                         type="number">
                                                 </mat-form-field>
                                             </div>
@@ -265,7 +265,7 @@
     
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Deporte</mat-label>
-                                            <mat-select class="text-white" formControlName="disciplina" disableRipple>
+                                            <mat-select class="text-white" formControlName="discipline" disableRipple>
                                                 <mat-option value="Atletismo">Atletismo</mat-option>
                                                 <mat-option value="Boxeo">Boxeo</mat-option>
                                                 <mat-option value="Baloncesto">Baloncesto</mat-option>
@@ -296,7 +296,7 @@
                                     <div class="col-md-6">
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Dias a la semana</mat-label>
-                                            <input class="text-white" matInput formControlName="diasPractica" type="number">
+                                            <input class="text-white" matInput formControlName="practiceDays" type="number">
                                         </mat-form-field>
                                     </div>
     
@@ -316,25 +316,25 @@
                                     <div class="col-md-6">
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Edad deportiva</mat-label>
-                                            <input class="text-white" formControlName="edadDeportiva" matInput
+                                            <input class="text-white" formControlName="sportAge" matInput
                                                 type="number">
                                         </mat-form-field>
-                                        <button [disabled]="formulario.invalid" color="primary" type="submit"
-                                                mat-raised-button class="btn" style="min-width: 30% ;">Guardar</button>
                                     </div>
                                     <div class="col-md-6">
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Horas de practica</mat-label>
-                                            <input class="text-white" formControlName="horasPractica" matInput
-                                                type="number">
+                                            <input class="text-white" formControlName="hoursOfPractice" matInput
+                                            type="number">
                                         </mat-form-field>
+                                        <button [disabled]="formulario.invalid" color="primary" type="submit"
+                                                mat-raised-button class="btn" style="min-width: 30% ;">Guardar</button>
                                         
                                     </div>
                                 </div>
                             </div>
 
                         </div>
-                    </div>
+                    </div> 
 
 
                     <div class="col-md-6">

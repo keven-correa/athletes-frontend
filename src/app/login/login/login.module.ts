@@ -14,6 +14,6 @@ import { SheredModule } from "../../shared/shered/shered.module";
     LoginRoutingModule,
     MatToolbarModule,
     SheredModule
-  ]
+  ],
 })
 export class LoginModule { }
