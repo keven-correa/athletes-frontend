@@ -49,7 +49,8 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('token',respuesta.token)
         localStorage.setItem('role',respuesta.role)
 
-          this.router.navigateByUrl('/secretaria/atletas')
+          // this.router.navigateByUrl('/secretaria/atletas')
+      window.location.replace('/secretaria/atletas')
         }else{
         this.mensajeError();
 

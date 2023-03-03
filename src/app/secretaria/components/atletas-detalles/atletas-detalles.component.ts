@@ -15,7 +15,8 @@ export class AtletasDetallesComponent implements OnInit {
   
     id:number=0;
     edad!:number;
-    atletas!:AtletaI;
+    atletas!:any;
+    fechaAtleta!:any;
 
   mobileQuery: MediaQueryList; 
 
@@ -45,8 +46,9 @@ shouldRun = true;
    })
     this._secretariaService.detalleAtleta(this.id).subscribe(resp=>{
       this.atletas = resp;
-      console.log(resp)
+      // console.log(resp)
       this.edadAtleta();  
+      
     }) 
  }
 
@@ -69,24 +71,9 @@ shouldRun = true;
   }
   var dia = this.atletas.dateOfBirth.toString().substring(0,10);
   this.edad=(calculateAge(dia))
+
+  this.fechaAtleta = this.atletas.dateOfBirth.toString().substring(0,10);
   }
-
-//  cargarDatos(id:number){
-  
-//   const identificador:number=this.id;
-//   this._secretariaService.ObtenerAtletas().subscribe(resp=>{
-//     for (let i = 0; i < resp.length; i++) {
-//       const element = resp[i];
-//       if(resp.find(item=>item.id==identificador)){
-//         return this.atletas=resp.find(item=>item.id==identificador)
-        
-
-//       }
-      
-//     }
-
-//   })
-// }
 
  //Navegar en el menu
  turnos(){

@@ -1,43 +1,45 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpEvent, HttpHandler, HttpInterceptor, HttpRequest } from '@angular/common/http';
 import { Observable } from 'rxjs';
-// import { collectionData, deleteDoc, doc, Firestore, getDoc, updateDoc } from '@angular/fire/firestore';
-// import { addDoc, collection,where,query } from '@firebase/firestore';
 
 @Injectable({
   providedIn: 'root'
 })
-export class SecretariaService implements HttpInterceptor {
+export class SecretariaService {
 
-  url:string = "http://localhost:3000/api/"
-
-  intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-    let token =localStorage.getItem("token");
-    let jwt=req.clone({
-      setHeaders:{
-        Autorization:'bearer '+ token
-      }
-    })
-    console.log(token);
-    console.log(jwt);
-    return next.handle(jwt);
+  url: string = "http://localhost:3000/api/"
+  options: any;
+  constructor(private http: HttpClient) {
+    let token = localStorage.getItem("token");
+    this.options = { headers: { 'Authorization': 'Bearer ' + token } }
   }
 
-
-   constructor(private http:HttpClient) { }
-
-  
-
-  getAtletas():Observable<any>{
-    const direccion = this.url+"athletes"
-   return this.http.get<any>(direccion)
+  getAtletas(): Observable<any> {
+    const direccion = this.url + "athletes"
+    return this.http.get<any>(direccion, this.options)
   }
 
-  detalleAtleta(id:any):Observable<any>{
-    const direccion = this.url +"athletes/"+ id
-   return this.http.get<any>(direccion)
+  detalleAtleta(id: any): Observable<any> {
+    const direccion = this.url + "athletes/" + id
+    return this.http.get<any>(direccion,this.options)
   }
-    
+
+  guardarAtleta(form: any): Observable<any> {
+    const direccion = this.url + 'athletes'
+    return this.http.post<any>(direccion, form,this.options)
+  }
+
+  actualizarAtleta(id: any, form:any): Observable<any> {
+    const direccion = this.url + "athletes/" + id
+    return this.http.patch<any>(direccion,form,this.options)
+  }
+
+  getTurnos() : Observable<any>{
+    const direccion = this.url + "appointment";
+    return this.http.get<any>(direccion, this.options)
+
+  }
+
   // }  
 
   // eliminarAtleta(id:any){
@@ -66,10 +68,10 @@ export class SecretariaService implements HttpInterceptor {
   // ObtenerTurnos():Observable<any[]>{
   //   const ref= collection(this.firestore,'Turnos');
   //    return collectionData(ref,{idField:"id"}) as Observable<any[]>;
-    
+
   // } 
 
-  logOut(){
+  logOut() {
     localStorage.clear();
   }
 }

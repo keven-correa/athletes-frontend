@@ -1,5 +1,6 @@
 .example-card {
-    max-width: 500px;
+    width: 800px;
+    margin-top: 20px;
   }
   
   .example-header-image {
@@ -9,14 +10,23 @@
 
   .btn{
       margin-right: 2%;
+    border: 2px solid rgb(216, 215, 215);
+    margin-top: 5px;
+    margin-left: 5px;
+
   }
 
   img{
-    width: 90%;
-    margin-left: auto;
-    margin-right: auto;
+    width: 25%;
+    /* margin-left: auto; */
+    margin-right: 10px;
   }
   
+  .example-full-width {
+    width: 100%;
+    /* margin-left: 3%; */
+    
+  }
 
 
   .example-is-mobile .example-toolbar {

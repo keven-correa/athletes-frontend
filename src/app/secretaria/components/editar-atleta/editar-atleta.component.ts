@@ -15,7 +15,8 @@ import { AtletaI } from '../../../shared/Models/atleta.interface';
 })
 export class EditarAtletaComponent implements OnInit {
   id!:number;
-  atleta!:AtletaI;
+  edad!:number;
+  atletas!:any;
 
   formulario!:FormGroup;
 
@@ -45,83 +46,94 @@ shouldRun = true;
       
     })
     this.formulario=this.fb.group({
-      id:[''],
-      name:['',Validators.required],
-      lastName:['',Validators.required],
-      age:['',Validators.required],
-      dateOfBirth:['',Validators.required],
-      placeOfBirth:['',Validators.required],
-      discipline:[Validators.required],
-      gender:['',Validators.required],
-      maritalStatus:['',Validators.required],
-      //modalidad:['',Validators.required],
-      sportAge:['',Validators.required],
-      hoursOfPractice:['',Validators.required],
-      practiceDays:['',Validators.required],
-      healthInsurance:[''],
-      levelOfSchooling:['',Validators.required],
-      //horasEstudio:['',Validators.required],
-      //diasEstudio:['',Validators.required],
-      address:['',Validators.required],
-      cell:['',Validators.required],
-      phone:['',Validators.required],
-      bloodType:['',Validators.required],
-      weight:['',Validators.required],
-      height:['',Validators.required],
-      isActive:[true,Validators.required],
-      //TA:['',Validators.required],
-      //FC:['',Validators.required],
-      //FR:['',Validators.required],
-      //tempe:['',Validators.required],
-      document:[''],
-      created_by:['']
+      name: ['',Validators.required],
+      lastName: ['',Validators.required],
+      document: ['',Validators.required],
+      age: [,Validators.required],
+      dateOfBirth: ['',Validators.required],
+      maritalStatus: ['',Validators.required],
+      levelOfSchooling: ['',Validators.required],
+      address: ['',Validators.required],
+      cell: ['',Validators.required],
+      phone: ['',Validators.required],
+      bloodType: ['',Validators.required],
+      weight: [10,Validators.required],
+      height: [30,Validators.required],
+      // disciplineId: ['',Validators.required],
+      birthPlace: ['',Validators.required],
+      gender: ['',Validators.required],
+      sportAge: ['',Validators.required],
+      practiceHours: [,Validators.required],
+      practiceDays: ['',Validators.required],
+      medicalInsurance: ['',Validators.required],
+      studyHours: [,Validators.required],
+      studyDays: ['',Validators.required],
+      TA: ['',Validators.required],
+      FC: ['',Validators.required],
+      FR: ['',Validators.required],      
+      isActive: [true,Validators.required],      
     })
 
-   this.cargarDatos(this.id);
+    
+    
+    this.datosAtleta();
+
+    this.edadAtleta();  
 }
 
-cargarDatos(id:number){
-  
-  
-  this._secretariaservice.getAtletas().subscribe(resp=>{  
-      
-      
-        return this.formulario.patchValue({
-          name: this.atleta.name,
-      lastName:this.atleta.lastName,
-      age:this.atleta.age,
-      discipline:this.atleta.discipline,
-      //sexo:this.atleta.sexo,
-      maritalStatus:this.atleta.maritalStatus,
-      dateOfBirth:this.atleta.dateOfBirth,
-      //lugarNacimiento:this.atleta.lugarNacimiento,
-      //edadDeportiva:this.atleta.edadDeportiva,
-      //horasPractica:this.atleta.horasPractica,
-      //diasPractica:this.atleta.diasPractica,
-      //seguroMedico:this.atleta.seguroMedico,
-      levelOfSchooling:this.atleta.levelOfSchooling,
-      //horasEstudio:this.atleta.horasEstudio,
-      //diasEstudio:this.atleta.diasEstudio,
-      address:this.atleta.address,
-      cell:this.atleta.cell,
-      phone:this.atleta.phone,
-      bloodType:this.atleta.bloodType,
-      weight:this.atleta.weight,
-      height:this.atleta.height,
-      //TA:this.atleta.TA,
-      //FC:this.atleta.FC,
-      //FR:this.atleta.FR,
-      //tempe:this.atleta.tempe,
-      document:this.atleta.document
-        }) 
-      }      
-    
-  )
+edadAtleta(){
+  const calculateAge = (birthday:any) => {
+    const ageDifMs = Date.now() - new Date(birthday).getTime();
+    const ageDate = new Date(ageDifMs);
+    return Math.abs(ageDate.getUTCFullYear() - 1970);
+}
+var dia = this.atletas.dateOfBirth.toString().substring(0,10);
+this.edad=(calculateAge(dia))
 }
 
  Actualizar(){
-//   this._secretariaservice.ActualizarAtleta(this.id,this.formulario.value)
-//   this.router.navigate(['/secretaria/atletas'])
+this._secretariaservice.actualizarAtleta(this.id,this.formulario.value).subscribe(resp=>{
+console.log(resp)
+this.router.navigate(['/secretaria/atletas'])
+
+})
+ }
+
+ datosAtleta(){
+  this._secretariaservice.detalleAtleta(this.id).subscribe(resp=>{
+    this.atletas = resp;
+    console.log(resp)
+
+    this.formulario.patchValue({
+      name:resp.name,
+      lastName: resp.lastName,
+      document: resp.document,
+      age: this.edad,
+      dateOfBirth: resp.dateOfBirth.toString().substring(0,10),
+      maritalStatus: resp.maritalStatus,
+      levelOfSchooling: resp.levelOsSchooling,
+      address: resp.address,
+      cell: resp.cell,
+      phone: resp.phone,
+      bloodType: resp.bloodType,
+      weight: resp.weight,
+      height: resp.height,
+      // disciplineId: resp.discipline.name,
+      birthPlace: resp.birthPlace,
+      gender: resp.gender,
+      sportAge: resp.sportAge,
+      practiceHours: resp.practiceHours,
+      practiceDays: resp.practiceDays,
+      medicalInsurance: resp.medicalInsurance,
+      studyHours: resp.studyHours,
+      studyDays: resp.studyDays,
+      TA: resp.TA,
+      FC: resp.FC,
+      FR: resp.FR,
+      isActive: resp.isActive
+    })
+    console.log(this.formulario.value)
+  }) 
  }
 
  //Navegar en el menu

@@ -21,6 +21,8 @@ import {MatListModule} from '@angular/material/list';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
+import { HTTP_INTERCEPTORS } from '@angular/common/http';
+import { SecretariaService } from '../../secretaria/services/secretaria.service';
 
 @NgModule({
   declarations: [
@@ -73,5 +75,10 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
     MatBottomSheetModule,
 
   ]
+  ,
+  providers:[
+    //  {provide: HTTP_INTERCEPTORS,useClass:SecretariaService,multi:true}
+  ]
+
 })
 export class SheredModule { }

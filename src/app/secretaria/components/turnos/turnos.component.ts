@@ -56,9 +56,14 @@ shouldRun = true;
   ngOnInit(): void {
     // this._secretariaService.ObtenerTurnos().subscribe(resp=>{
     //   this.turnosPendientes=resp
-    //   this.ELEMENT_DATA=resp
-    //   this.dataSource.data=this.ELEMENT_DATA
+    //   
+    //   
     // }) 
+    this._secretariaService.getTurnos().subscribe(resp=>{
+      this.ELEMENT_DATA=resp
+      this.dataSource.data=this.ELEMENT_DATA
+      console.log(resp)
+    })
       
     }
    

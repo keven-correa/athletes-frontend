@@ -67,7 +67,7 @@
                                     <div class="col-md-6">
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Fecha de nacimiento</mat-label>
-                                            <input matInput class="text-white" [(ngModel)]="fechaNacimiento"
+                                            <input matInput class="text-white"
                                                 formControlName="dateOfBirth" type="date">
                                         </mat-form-field>
                                     </div>
@@ -146,7 +146,7 @@
                                     <div class="col-md-6">
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Lugar de nacimiento</mat-label>
-                                            <input class="text-white" matInput formControlName="placeOfBirth"
+                                            <input class="text-white" matInput formControlName="birthPlace"
                                                 type="text">
                                         </mat-form-field>
                                     </div>
@@ -169,7 +169,7 @@
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Telefono de casa</mat-label>
                                             <input class="text-white" matInput formControlName="phone"
-                                                type="number">
+                                                type="text">
                                         </mat-form-field>
                                         
                                     </div>
@@ -177,7 +177,7 @@
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Telefono celular</mat-label>
                                             <input class="text-white" matInput formControlName="cell"
-                                                type="number">
+                                                type="text">
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -203,10 +203,19 @@
                             </div>
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <h5 class="text-white">Seguro medico: </h5>
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <h5 class="text-white">Seguro medico: </h5>
+
+                                            </div>
+                                            <div class="col-md-6">
+                                                <h5 class="text-white">Deporte: </h5>
+
+                                            </div>
+                                        </div>
                                     </div>
-                                    <div class="col-md-6">
+                                    <!-- <div class="col-md-6">
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <h5 class="text-white">Peso: </h5>
@@ -217,16 +226,52 @@
                                                 
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <mat-form-field class="example-full-width" appearance="fill">
-                                            <mat-label>Seguro medico</mat-label>
-                                            <input class="text-white" matInput formControlName="healthInsurance" type="text">
-                                        </mat-form-field>
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <mat-form-field class="example-full-width" appearance="fill">
+                                                    <mat-label>Seguro medico</mat-label>
+                                                    <input class="text-white" matInput formControlName="medicalInsurance" type="text">
+                                                </mat-form-field>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <mat-form-field class="example-full-width" appearance="fill">
+                                                    <mat-label>Deporte</mat-label>
+                                                    <mat-select class="text-white" formControlName="disciplineId" disableRipple type="number">
+                                                        <mat-option value="2">Atletismo</mat-option>
+                                                        <!-- <mat-option value="Boxeo">Boxeo</mat-option> -->
+                                                        <!-- <mat-option value="Baloncesto">Baloncesto</mat-option> -->
+                                                        <!-- <mat-option value="Balonmano">Balonmano</mat-option> -->
+                                                        <!-- <mat-option value="Beisbol">Beisbol</mat-option> -->
+                                                        <mat-option value=3>Badminton</mat-option>
+                                                        <!-- <mat-option value="Ciclismo">Ciclismo</mat-option> -->
+                                                        <!-- <mat-option value="Esgrima">Esgrima</mat-option> -->
+                                                        <mat-option value=1>Futbol</mat-option>
+                                                        <!-- <mat-option value="Gimnasia">Gimnasia</mat-option> -->
+                                                        <!-- <mat-option value="Halterofilia">Halterofilia</mat-option> -->
+                                                        <!-- <mat-option value="Judo">Judo</mat-option> -->
+                                                        <!-- <mat-option value="Karete">Karete</mat-option> -->
+                                                        <!-- <mat-option value="Lucha">Lucha</mat-option> -->
+                                                        <!-- <mat-option value="Natacion">Natacion</mat-option> -->
+                                                        <!-- <mat-option value="Patinaje">Patinaje</mat-option> -->
+                                                        <!-- <mat-option value="Pentatlon">Pentatlon</mat-option> -->
+                                                        <!-- <mat-option value="Triatlon">Triatlon</mat-option> -->
+                                                        <!-- <mat-option value="Rugby">Rugby</mat-option> -->
+                                                        <!-- <mat-option value="Taekwondo">Taekwondo</mat-option> -->
+                                                        <!-- <mat-option value="Tenis">Tenis</mat-option> -->
+                                                        <!-- <mat-option value="Vela">Vela</mat-option> -->
+                                                        <!-- <mat-option value="Voleibol">Voleibol</mat-option> -->
+            
+                                                    </mat-select>
+                                                </mat-form-field>
+                                            </div>
+                                        </div>
+                                        
                                     </div>
-                                    <div class="col-md-6">
+                                    <!-- <div class="col-md-6">
                                         <div class="row">
                                             <div class="col-md-6">
     
@@ -245,11 +290,11 @@
                                             </div>
     
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
     
-                            <h3 class="text-white text-center">Datos deportivos</h3>
+                            <!-- <h3 class="text-white text-center">Datos deportivos</h3>
     
                             <div class="form-group">
                                 <div class="row">
@@ -263,35 +308,7 @@
                                 <div class="row">
                                     <div class="col-md-6">
     
-                                        <mat-form-field class="example-full-width" appearance="fill">
-                                            <mat-label>Deporte</mat-label>
-                                            <mat-select class="text-white" formControlName="discipline" disableRipple>
-                                                <mat-option value="Atletismo">Atletismo</mat-option>
-                                                <mat-option value="Boxeo">Boxeo</mat-option>
-                                                <mat-option value="Baloncesto">Baloncesto</mat-option>
-                                                <mat-option value="Balonmano">Balonmano</mat-option>
-                                                <mat-option value="Beisbol">Beisbol</mat-option>
-                                                <mat-option value="Badminton">Badminton</mat-option>
-                                                <mat-option value="Ciclismo">Ciclismo</mat-option>
-                                                <mat-option value="Esgrima">Esgrima</mat-option>
-                                                <mat-option value="Futbol">Futbol</mat-option>
-                                                <mat-option value="Gimnasia">Gimnasia</mat-option>
-                                                <mat-option value="Halterofilia">Halterofilia</mat-option>
-                                                <mat-option value="Judo">Judo</mat-option>
-                                                <mat-option value="Karete">Karete</mat-option>
-                                                <mat-option value="Lucha">Lucha</mat-option>
-                                                <mat-option value="Natacion">Natacion</mat-option>
-                                                <mat-option value="Patinaje">Patinaje</mat-option>
-                                                <mat-option value="Pentatlon">Pentatlon</mat-option>
-                                                <mat-option value="Triatlon">Triatlon</mat-option>
-                                                <mat-option value="Rugby">Rugby</mat-option>
-                                                <mat-option value="Taekwondo">Taekwondo</mat-option>
-                                                <mat-option value="Tenis">Tenis</mat-option>
-                                                <mat-option value="Vela">Vela</mat-option>
-                                                <mat-option value="Voleibol">Voleibol</mat-option>
-    
-                                            </mat-select>
-                                        </mat-form-field>
+                                        
                                     </div>
                                     <div class="col-md-6">
                                         <mat-form-field class="example-full-width" appearance="fill">
@@ -326,12 +343,13 @@
                                             <input class="text-white" formControlName="hoursOfPractice" matInput
                                             type="number">
                                         </mat-form-field>
-                                        <button [disabled]="formulario.invalid" color="primary" type="submit"
-                                                mat-raised-button class="btn" style="min-width: 30% ;">Guardar</button>
+                                        
                                         
                                     </div>
                                 </div>
-                            </div>
+                            </div> -->
+
+                            <button color="primary" type="submit" mat-raised-button class="btn" style="min-width: 30% ;">Guardar</button>
 
                         </div>
                     </div> 

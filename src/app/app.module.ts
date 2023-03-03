@@ -24,6 +24,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 // import { environment } from '../environments/environment';
 // import { provideFirestore,getFirestore } from '@angular/fire/firestore';
 import { LoginService } from './login/services/login.service';
+import { SecretariaService } from './secretaria/services/secretaria.service';
 
 
 
@@ -52,7 +53,7 @@ import { LoginService } from './login/services/login.service';
      HttpClientModule,    
   ],
   providers:[
-    // {provide: HTTP_INTERCEPTORS,useClass:LoginService,multi:true}
+    //  {provide: HTTP_INTERCEPTORS,useClass:SecretariaService,multi:true}
   ]
   ,
   bootstrap: [AppComponent]
