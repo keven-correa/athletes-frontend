@@ -8,6 +8,10 @@ const routes: Routes = [
     loadChildren: ()=> import('./login/login/login.module').then(m=>m.LoginModule)
   },
   {
+    path:'administrador',
+    loadChildren: ()=> import('./administrador/admin/admin.module').then(m=>m.AdminModule)
+  },
+  {
     path:'medico-general',
     loadChildren:()=>import('./medicoGeneral/medico-general/medico-general.module').then(m=>m.MedicoGeneralModule)
   },

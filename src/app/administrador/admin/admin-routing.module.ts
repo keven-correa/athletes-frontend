@@ -1,12 +1,14 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { UsuariosComponent } from '../usuarios/usuarios/usuarios.component';
+import { UsuariosComponent } from '../components/usuarios/usuarios.component';
+import {  NuvoUsuarioComponent } from '../components/nuevoUsuario/nuvo-usuario/nuvo-usuario.component';
 
 const routes: Routes = [
   {
     path:'',
     children:[
-      {path:'usuarios', component:UsuariosComponent}
+      {path:'usuarios', component:UsuariosComponent},
+      {path:'nuevo-usuario', component:NuvoUsuarioComponent},
     ]
   },
   {

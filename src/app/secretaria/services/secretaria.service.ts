@@ -40,36 +40,6 @@ export class SecretariaService {
 
   }
 
-  // }  
-
-  // eliminarAtleta(id:any){
-  //   const ref= doc(this.firestore,`Atletas/${id}`);
-  //   return deleteDoc(ref);
-  // }
-
-  // ActualizarAtleta(id:any,data:any){
-  //   const ref= doc(this.firestore,`Atletas/${id}`);
-  //   return updateDoc(ref,data);
-  // }
-
-  // getAtletas():Observable<any[]>{
-  //   return this.http.get<any[]>('../../assets/data/atletas.json')
-  // }
-
-  // getTurnos():Observable<any[]>{
-  //   return this.http.get<any[]>('../../assets/data/turnos.json')
-  // }
-
-  // AgregarTurno(turno:any){
-  //   const ref= collection(this.firestore,'Turnos');
-  //   return addDoc(ref,turno);
-  // }
-
-  // ObtenerTurnos():Observable<any[]>{
-  //   const ref= collection(this.firestore,'Turnos');
-  //    return collectionData(ref,{idField:"id"}) as Observable<any[]>;
-
-  // } 
 
   logOut() {
     localStorage.clear();

@@ -9,7 +9,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { LoginComponent } from './login/components/login/login.component';
 import { SheredModule } from './shared/shered/shered.module';
-import { UsuariosComponent } from './administrador/usuarios/usuarios/usuarios.component';
+import { UsuariosComponent } from './administrador/components/usuarios/usuarios.component';
 import { AtletasComponent } from './medicoGeneral/atletas/atletas.component';
 import { HistorialComponent } from './medicoGeneral/historial/historial.component';
 import { DialogComponent } from './medicoGeneral/dialog/dialog.component';
@@ -20,11 +20,6 @@ import { AtletaDetalleComponent } from './medicoGeneral/atleta-detalle/atleta-de
 import { ConsultaAtletaComponent } from './medicoGeneral/consulta-atleta/consulta-atleta.component';
 import { AnaliticaComponent } from './medicoGeneral/analitica/analitica.component';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-// import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
-// import { environment } from '../environments/environment';
-// import { provideFirestore,getFirestore } from '@angular/fire/firestore';
-import { LoginService } from './login/services/login.service';
-import { SecretariaService } from './secretaria/services/secretaria.service';
 
 
 
@@ -41,7 +36,7 @@ import { SecretariaService } from './secretaria/services/secretaria.service';
     ConsultaDetalleComponent,
     AtletaDetalleComponent,
     ConsultaAtletaComponent,
-    AnaliticaComponent
+    AnaliticaComponent,
   ],
   entryComponents:[DialogComponent],
   imports: [

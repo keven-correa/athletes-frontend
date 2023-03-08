@@ -13,21 +13,21 @@ import { ResponseI } from '../../../shared/Models/response.interface';
 export class LoginComponent implements OnInit {
 
   formulario!: FormGroup;
-  mensaje:boolean=false; 
-  data:any[]=[]; 
+  mensaje: boolean = false;
+  data: any[] = [];
 
-  constructor( private fb: FormBuilder,
-               private router:Router,
-               private loginservice:LoginService) { }
+  constructor(private fb: FormBuilder,
+    private router: Router,
+    private loginservice: LoginService) { }
 
   ngOnInit(): void {
-    this.formulario=this.fb.group({
-      email:['',[Validators.required]],
-      password:['',[Validators.required]]
+    this.formulario = this.fb.group({
+      email: ['', [Validators.required]],
+      password: ['', [Validators.required]]
     })
   }
 
-  login(){
+  login() {
     // if(this.formulario.value.usuario==='admin'&& this.formulario.value.clave==='12345'){
 
     //   this.router.navigateByUrl('/admin/usuarios')
@@ -41,24 +41,34 @@ export class LoginComponent implements OnInit {
 
     // this.getUsuarios();
     console.log(this.formulario.value)
-    const body ={email: this.formulario.value.email, password: this.formulario.value.password}
-    this.loginservice.getUsuarios(body).subscribe(data=>{
-      const respuesta:any =data
-        
-        if(respuesta.role == "Administrator"){
-        localStorage.setItem('token',respuesta.token)
-        localStorage.setItem('role',respuesta.role)
+    const body = { email: this.formulario.value.email, password: this.formulario.value.password }
+    this.loginservice.getUsuarios(body).subscribe(data => {
+      const respuesta: any = data
 
-          // this.router.navigateByUrl('/secretaria/atletas')
-      window.location.replace('/secretaria/atletas')
-        }else{
-        this.mensajeError();
+      if (respuesta.role == "Administrator") {
+        localStorage.setItem('token', respuesta.token)
 
+        // this.router.navigateByUrl('/secretaria/atletas')
+        window.location.replace('/administrador/usuarios')
+      } else if (respuesta.role == "Secretary") {
+        localStorage.setItem('token', respuesta.token)
+
+        window.location.replace('/secretaria/atletas')
+      }
+      else if (respuesta.role == "MedicoGeneral") {
+        localStorage.setItem('token', respuesta.token)
+
+        window.location.replace('/medico-general/atletas')
+      }
+      else if (respuesta.role == "Fisioterapeuta") {
+        localStorage.setItem('token', respuesta.token)
+
+        window.location.replace('/terapia-fisica/atletas')
       }
     })
-    
+
   }
-    
+
   // getUsuarios(){
   //   this.loginservice.getUsuario().
   //   subscribe((resp)=>{
@@ -90,7 +100,7 @@ export class LoginComponent implements OnInit {
   //      else{
   //       this.mensaje=true
   //       }
-        
+
   //     } 
   //     if(this.mensaje==true){
   //       this.mensajeError()
@@ -98,17 +108,17 @@ export class LoginComponent implements OnInit {
   //     }
   //   })
 
-    
+
   // }
 
 
-  mensajeError(){
-    this.mensaje=true 
-        setTimeout(() => {
-          this.mensaje=false
-        }, 2000);
-        return
-      }
+  mensajeError() {
+    this.mensaje = true
+    setTimeout(() => {
+      this.mensaje = false
+    }, 2000);
+    return
   }
+}
 
 
