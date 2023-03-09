@@ -9,7 +9,7 @@ const routes: Routes = [
   },
   {
     path:'administrador',
-    loadChildren: ()=> import('./administrador/admin/admin.module').then(m=>m.AdminModule)
+    loadChildren: ()=> import('./administrador/admin.module').then(m=>m.AdminModule)
   },
   {
     path:'medico-general',

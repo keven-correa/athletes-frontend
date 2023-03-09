@@ -24,13 +24,10 @@ export class AdminServiceService {
     return this.http.post<any>(direccion, form,this.options)
   }
 
-
-
-
-
-
-
-
+  actualizarEstadoUsuario(id: any,estado:any): Observable<any> {
+    const direccion = this.url + "auth/" + id
+    return this.http.patch<any>(direccion,estado,this.options)
+  }
 
 
 

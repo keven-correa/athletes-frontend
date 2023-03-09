@@ -5,6 +5,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { AdminServiceService } from '../../services/admin-service.service';
+import { filter } from 'rxjs';
 
 @Component({
   selector: 'app-usuarios',
@@ -13,7 +14,7 @@ import { AdminServiceService } from '../../services/admin-service.service';
 })
 export class UsuariosComponent implements AfterViewInit {
   ELEMENT_DATA: any[] = [];
-  usuarios:any;
+  usuarios!:any[];
 
   mobileQuery: MediaQueryList; 
 
@@ -21,7 +22,7 @@ export class UsuariosComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'role','mas'];
+  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'role','estado','cambioEstado'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
 
@@ -56,7 +57,29 @@ export class UsuariosComponent implements AfterViewInit {
   }
 
   envio(id:number){
-    this.router.navigate(['/secretaria/atleta-detalle', id])
+    //this.router.navigate(['/administrador/detallesUsuario'])
+    let nuevoestado=
+    {
+      "isActive":true
+    }
+    let estado= this.usuarios.find(a=>a.id === id)
+     console.log(estado)
+    if(estado.isActive==true){
+      nuevoestado={
+        "isActive":false
+      }
+    }else if(estado.isActive==false){
+      nuevoestado={
+        "isActive":true
+      }
+    }    
+    console.log(nuevoestado)
+    this.adminService.actualizarEstadoUsuario(id, nuevoestado).subscribe(resp=>{
+      console.log(resp)
+      window.location.replace('/administrador/usuarios')
+    })
+
+
     }
 
     applyFilter(event: Event) {

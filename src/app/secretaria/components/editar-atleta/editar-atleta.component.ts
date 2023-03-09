@@ -132,7 +132,7 @@ this.router.navigate(['/secretaria/atletas'])
       FR: resp.FR,
       isActive: resp.isActive
     })
-    console.log(this.formulario.value)
+    // console.log(this.formulario.value)
   }) 
  }
 
