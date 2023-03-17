@@ -29,8 +29,6 @@ export class AtletasComponent  implements AfterViewInit {
   displayedColumns: string[] = ['id', 'name', 'lastName', 'discipline','mas'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
-
-
   constructor(public dialog: MatDialog,
               private router:Router,
               private medicoGeneralService:MedicoGeneralService,
