@@ -35,7 +35,7 @@ export class SecretariaService {
   }
 
   getTurnos() : Observable<any>{
-    const direccion = this.url + "appointment";
+    const direccion = this.url + "shifts";
     return this.http.get<any>(direccion, this.options)
 
   }

@@ -4,49 +4,6 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { MedicoGeneralService } from '../services/medico-general.service';
 
 
-interface atleta {
-  nombre: string,
-  apellido: string,
-  edad: string;
-  disciplina: string,
-  sexo: string;
-  estadoCivil: string,
-  fechaNacimiento: string,
-  lugarNacimiento: string,
-  modalidad: string,
-  edadDeportiva: string,
-  horasPractica: string,
-  diasPractica: string,
-  seguroMedico: string,
-  escolaridad: string,
-  horasEstudio: string,
-  diasEstudio: string,
-  direccion: string,
-  telefonoCelular: string,
-  telefonoCasa: string,
-  tipoSangre: string,
-  peso: string,
-  altura: string,
-  TA: string,
-  FC: string,
-  FR: string,
-  tempe: string,
-  cedula: string
-}
-
-const ELEMENT_DATA: atleta[] = [
-  // {id: 1, nombre: 'Antonio', apellido:'Guzman' , disciplina: 'Boxeo', sexo:'M'},
-  // {id: 2, nombre: 'Manuel', apellido: 'Gonzalez' , disciplina: 'Basketball', sexo:'M'},
-  // {id: 3, nombre: 'Juana', apellido: 'Castillo', disciplina: 'Baseball', sexo:'F'},
-  // {id: 4, nombre: 'Saldy', apellido:'Amparo' , disciplina: 'Voleibol', sexo:'F'},
-  // {id: 5, nombre: 'Nicol', apellido: 'Borbon' , disciplina: 'Atletismo', sexo:'F'},
-  // {id: 6, nombre: 'Keven', apellido: 'Correa', disciplina: 'Natacion', sexo:'M'},
-  // {id: 7, nombre: 'Edgar', apellido: 'Mena', disciplina: 'Natacion', sexo:'M'},
-  // {id: 8, nombre: 'Julia', apellido: 'Ruiz', disciplina: 'Boxeo', sexo:'F'},
-  // {id: 9, nombre: 'Joan', apellido:'Sena' , disciplina: 'Judo', sexo:'M'},
-  // {id: 10, nombre: 'Daniel', apellido: 'Perez', disciplina: 'Boxeo', sexo:'M'},
-
-];
 
 @Component({
   selector: 'app-consulta-detalle',
@@ -66,41 +23,41 @@ export class ConsultaDetalleComponent implements OnInit {
   formularioALD!: FormGroup;
 
 
-  atleta: atleta;
+  // atleta: atleta;
 
 
   id: number = 0;
 
   constructor(private _ruta: ActivatedRoute, private _formBuilder: FormBuilder, private medicoGeneralService: MedicoGeneralService) {
-    this.atleta = {
-      nombre: '',
-      apellido: '',
-      edad: '',
-      disciplina: '',
-      sexo: '',
-      estadoCivil: '',
-      fechaNacimiento: '',
-      lugarNacimiento: '',
-      modalidad: '',
-      edadDeportiva: '',
-      horasPractica: '',
-      diasPractica: '',
-      seguroMedico: '',
-      escolaridad: '',
-      horasEstudio: '',
-      diasEstudio: '',
-      direccion: '',
-      telefonoCelular: '',
-      telefonoCasa: '',
-      tipoSangre: '',
-      peso: '',
-      altura: '',
-      TA: '',
-      FC: '',
-      FR: '',
-      tempe: '',
-      cedula: '0'
-    }
+    // this.atleta = {
+    //   nombre: '',
+    //   apellido: '',
+    //   edad: '',
+    //   disciplina: '',
+    //   sexo: '',
+    //   estadoCivil: '',
+    //   fechaNacimiento: '',
+    //   lugarNacimiento: '',
+    //   modalidad: '',
+    //   edadDeportiva: '',
+    //   horasPractica: '',
+    //   diasPractica: '',
+    //   seguroMedico: '',
+    //   escolaridad: '',
+    //   horasEstudio: '',
+    //   diasEstudio: '',
+    //   direccion: '',
+    //   telefonoCelular: '',
+    //   telefonoCasa: '',
+    //   tipoSangre: '',
+    //   peso: '',
+    //   altura: '',
+    //   TA: '',
+    //   FC: '',
+    //   FR: '',
+    //   tempe: '',
+    //   cedula: '0'
+    // }
 
   }
 

@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-// import { collectionData, deleteDoc, doc, Firestore, getDoc, query, updateDoc, where } from '@angular/fire/firestore';
-// import { addDoc, collection } from '@firebase/firestore';
+
 
 
 
@@ -11,29 +10,33 @@ import { Observable } from 'rxjs';
 })
 export class MedicoGeneralService {
 
-  // constructor( private http:HttpClient, private firestore:Firestore) { }
+  url: string = "http://localhost:3000/api/"
+  options: any;
+  constructor(private http: HttpClient) {
+    let token = localStorage.getItem("token");
+    this.options = { headers: { 'Authorization': 'Bearer ' + token } }
 
-  // AgregarConsulta(consulta:any){
-  //   const ref= collection(this.firestore,'Consultas');
-  //   return addDoc(ref,consulta);
-  // }
+  }
 
-  // ObtenerAtletas():Observable<any[]>{
-  //   const ref= collection(this.firestore,'Atletas');
-  //    return collectionData(ref,{idField:"id"}) as Observable<any[]>;
-    
-  // } 
-  // AgregarDatosMedicos(datosMedicos:any){
-  //   const ref= collection(this.firestore,'DatosMedicos');
-  //   return addDoc(ref,datosMedicos);
-  // }
-   
+  getAtletas(): Observable<any> {
+    const direccion = this.url + "athletes"
+    console.log(direccion, this.options)
+    return this.http.get<any>(direccion, this.options)
+  }
 
-  // getAtletas():Observable<any[]>{
-  //   return this.http.get<any[]>('../../assets/data/atletas.json')
-  // }
+  detalleAtleta(id: any): Observable<any> {
+    const direccion = this.url + "athletes/" + id
+    return this.http.get<any>(direccion,this.options)
+  }
 
-  // addReferimiento(referimiento:any){
-  //   return this.http.post<any>('../../assets/data/referimientos.json',referimiento)
-  // }
+  Consultas(): Observable<any> {
+    const direccion = this.url + "appointment"
+    return this.http.get<any>(direccion,this.options)
+  }
+
+
+  logOut() {
+    localStorage.clear();
+  }
+
 }

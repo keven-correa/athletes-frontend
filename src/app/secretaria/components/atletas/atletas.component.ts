@@ -7,8 +7,6 @@ import { SecretariaService } from '../../services/secretaria.service';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { AtletaI } from '../../../shared/Models/atleta.interface';
 
-
-
 @Component({
   selector: 'app-atletas',
   templateUrl: './atletas.component.html',

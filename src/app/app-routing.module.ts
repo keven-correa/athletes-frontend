@@ -13,7 +13,7 @@ const routes: Routes = [
   },
   {
     path:'medico-general',
-    loadChildren:()=>import('./medicoGeneral/medico-general/medico-general.module').then(m=>m.MedicoGeneralModule)
+    loadChildren:()=>import('./medicoGeneral/medico-general.module').then(m=>m.MedicoGeneralModule)
   },
   {
     path:'terapia-fisica',

@@ -1,34 +1,146 @@
-<app-menu></app-menu>
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
+  <mat-toolbar color="primary" class="example-toolbar">
+
+    <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+    <app-menu style="width: 100%"></app-menu>
+
+  </mat-toolbar>
+
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+    <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+      fixedTopGap="56">
+      <mat-nav-list>
+        <a mat-list-item (click)="atletasR()">Atletas</a>
+        <a mat-list-item (click)="turnos()">Turnos</a>
+
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <button mat-flat-button color="secondary" class="btn" (click)="consulta()" >Consulta</button>
+      <button mat-flat-button color="secondary" class="btn" >Historial</button>
 
 
+      <mat-grid-list cols="1" rowHeight="850px">        
 
-<mat-grid-list cols="1" rowHeight="800px">
-
-    <mat-grid-tile>
-        <mat-card class="example-card">
+        <mat-grid-tile>
+          <mat-card class="example-card">
             <mat-card-header>
               <mat-card-title>Detalles</mat-card-title>
+              
             </mat-card-header>
-            <img mat-card-image src="../../../assets/img/images.png" alt="Atleta">
+            <!-- <img mat-card-image src="../../../assets/img/images.png" alt="Atleta"> -->
             <mat-card-content>
-              <p><strong>Nombres: </strong>{{atletas.nombre}} </p>
-              <p><strong>Apellidos: </strong>{{atletas.apellido}} </p>
-              <p><strong>Edad: </strong>{{atletas.edad}} </p>
-              <p><strong>Sexo: </strong>{{atletas.sexo}} </p>
-              <p><strong>Disciplina: </strong>{{atletas.disciplina}} </p>
-          </mat-card-content>
-            <mat-card-actions>
-              <button mat-flat-button color="primary" class="btn" (click)="consulta(id)">Consulta</button>
-              <button mat-flat-button color="primary" class="btn" (click)="historial(id)">Historial</button>
-              <button mat-flat-button color="primary" class="btn" (click)="datosMedicos(id)">Datos medicos</button>
-            </mat-card-actions>
+              <div class="row">
+
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="text-white">Nombres</mat-label>
+                    <input class="text-white" disabled="true" value="{{atletas.name}}" matInput type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="text-white">Apellidos</mat-label>
+                    <input class="text-white" disabled="true" value="{{atletas.lastName}}" matInput type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="text-white">Edad</mat-label>
+                    <input class="text-white" disabled="true" value="{{edad}}" matInput type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="text-white">Sexo</mat-label>
+                    <input class="text-white" disabled="true" value="{{atletas.gender}}" matInput type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="text-white">Disciplina</mat-label>
+                    <input class="text-white" disabled="true" value="{{atletas.discipline.name}}" matInput type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="text-white">Cedula</mat-label>
+                    <input class="text-white" disabled="true" value="{{atletas.document}}" matInput type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="text-white">Fecha de nacimiento</mat-label>
+                    <input class="text-white" disabled="true" value="{{fechaAtleta}}" matInput type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="text-white">Horas de practica</mat-label>
+                    <input class="text-white" disabled="true" value="{{atletas.practiceHours}}" matInput type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="text-white">Dias de practica</mat-label>
+                    <input class="text-white" disabled="true" value="{{atletas.practiceDays}}" matInput type="text">
+                  </mat-form-field>
+
+                </div>
+
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="text-white">Estado civil</mat-label>
+                    <input class="text-white" disabled="true" value="{{atletas.maritalStatus}}" matInput type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="text-white">Nivel de estudio</mat-label>
+                    <input class="text-white" disabled="true" value="{{atletas.levelOfSchooling}}" matInput type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="text-white">Direccion</mat-label>
+                    <input class="text-white" disabled="true" value="{{atletas.address}}" matInput type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="text-white">Celular</mat-label>
+                    <input class="text-white" disabled="true" value="{{atletas.cell}}" matInput type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="text-white">Telefono</mat-label>
+                    <input class="text-white" disabled="true" value="{{atletas.phone}}" matInput type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="text-white">Tipo de sangre</mat-label>
+                    <input class="text-white" disabled="true" value="{{atletas.bloodType}}" matInput type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="text-white">Peso</mat-label>
+                    <input class="text-white" disabled="true" value="{{atletas.weight}}" matInput type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="text-white">Altura</mat-label>
+                    <input class="text-white" disabled="true" value="{{atletas.height}}" matInput type="text">
+                  </mat-form-field>
+
+                  <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label class="text-white">Lugar de nacimiento</mat-label>
+                    <input class="text-white" disabled="true" value="{{atletas.birthPlace}}" matInput type="text">
+                  </mat-form-field>
+
+                </div>
+
+              </div>
+            </mat-card-content>
+            <!-- <mat-card-actions>
+
+            </mat-card-actions> -->
           </mat-card>
-          
 
-    </mat-grid-tile>
 
-    
-    
+        </mat-grid-tile>
 
-</mat-grid-list>
-  
+      </mat-grid-list>
+
+
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>

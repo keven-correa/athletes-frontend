@@ -4,60 +4,65 @@
 <form class="example-form" [formGroup]="formulario" (ngSubmit)="enviar()">
 
 
-    
+
     <h3 class="text-white">Datos personales</h3>
-    
+
 
     <table class="example-full-width" cellspacing="3">
         <tr class="row">
 
             <td class="col-md-2 col-sm-12">
-                <mat-form-field class="example-full-width"  >
+                <mat-form-field class="example-full-width">
                     <mat-label>Nombres</mat-label>
-                    <input class="text-white" disabled formGroupName="nombre" [value]="formulario.value.nombre" matInput type="text">
+                    <input class="text-white" disabled formGroupName="name" [value]="formulario.value.name" matInput
+                        type="text">
                 </mat-form-field>
             </td>
 
             <td class="col-md-2 col-sm-12">
-                <mat-form-field class="example-full-width"  >
+                <mat-form-field class="example-full-width">
                     <mat-label>Apellidos</mat-label>
-                    <input disabled formGroupName="apellido" [value]="formulario.value.apellido" matInput type="text">
+                    <input disabled formGroupName="lastName" [value]="formulario.value.lastName" matInput type="text">
                 </mat-form-field>
             </td>
 
             <td class="col-md-1 col-sm-12">
-                <mat-form-field class="example-full-width"  >
+                <mat-form-field class="example-full-width">
                     <mat-label>Edad</mat-label>
-                    <input class="text-white" disabled formGroupName="edad" [value]="formulario.value.edad" matInput type="number">
+                    <input class="text-white" disabled formGroupName="age" [value]="edad" matInput type="text">
                 </mat-form-field>
             </td>
 
             <td class="col-md-2 col-sm-12">
-                <mat-form-field class="example-full-width"  >
+                <mat-form-field class="example-full-width">
                     <mat-label>Fecha de nacimiento</mat-label>
-                    <input disabled class="text-white" formGroupName="fechaNacimiento" [value]="formulario.value.fechaNacimiento" matInput type="date">
+                    <input disabled class="text-white" formGroupName="dateOfBirth"
+                        [value]="formulario.value.dateOfBirth" matInput type="date">
                 </mat-form-field>
             </td>
 
             <td class="col-md-2 col-sm-12">
-                <mat-form-field class="example-full-width"  >
+                <mat-form-field class="example-full-width">
                     <mat-label>Lugar de nacimiento</mat-label>
-                    <input disabled class="text-white" formGroupName="lugarNacimiento" [value]="formulario.value.lugarNacimiento" matInput type="text">
+                    <input disabled class="text-white" formGroupName="birthPlace" [value]="formulario.value.birthPlace"
+                        matInput type="text">
                 </mat-form-field>
             </td>
 
             <td class="col-md-1 col-sm-12">
-                <mat-form-field class="example-full-width"  >
+                <mat-form-field class="example-full-width">
                     <mat-label>Disciplina</mat-label>
-                    <input disabled class="text-white" formGroupName="disciplina" [value]="formulario.value.disciplina" matInput type="text">
+                    <input disabled class="text-white" formGroupName="discipline"
+                        [value]="formulario.value.discipline.name" matInput type="text">
                 </mat-form-field>
             </td>
 
             <td class="col-md-2 col-sm-12">
-                
-                <mat-form-field  >
+
+                <mat-form-field>
                     <mat-label>Sexo</mat-label>
-                    <mat-select disabled formGroupName="sexo" class="text-white" [value]="formulario.value.sexo" disableRipple>
+                    <mat-select disabled formGroupName="gender" class="text-white" [value]="formulario.value.gender"
+                        disableRipple>
                         <mat-option value="Femenino">Femenino</mat-option>
                         <mat-option value="Masculino">Masculino</mat-option>
                     </mat-select>
@@ -68,18 +73,18 @@
         </tr>
     </table>
 
-    <table class="example-full-width" cellspacing="3">
+    <!-- <table class="example-full-width" cellspacing="3">
         <tr class="row">
-            
+
             <td class="col-md-6 col-sm-12">
-                <mat-form-field class="example-full-width"  >
+                <mat-form-field class="example-full-width">
                     <mat-label>Motivo de la consulta:</mat-label>
-                    <textarea class="text-white" matInput formControlName="motivoConsulta"  rows="5"></textarea>
+                    <textarea class="text-white" matInput formControlName="motivoConsulta" rows="5"></textarea>
                 </mat-form-field>
             </td>
 
             <td class="col-md-6 col-sm-12">
-                <mat-form-field class="example-full-width"  >
+                <mat-form-field class="example-full-width">
                     <mat-label>Descripcion:</mat-label>
                     <textarea class="text-white" matInput formControlName="descripcionConsulta" rows="5"></textarea>
                 </mat-form-field>
@@ -92,14 +97,15 @@
         <tr class="row">
 
             <td class="col-md-6 col-sm-12">
-                <mat-form-field class="example-full-width"  >
+                <mat-form-field class="example-full-width">
                     <mat-label>Manejo y tratamiento</mat-label>
-                    <textarea class="text-white" matInput formControlName="manejoYTratamientoConsulta" rows="5"></textarea>
+                    <textarea class="text-white" matInput formControlName="manejoYTratamientoConsulta"
+                        rows="5"></textarea>
                 </mat-form-field>
             </td>
-            
+
             <td class="col-md-6 col-sm-12">
-                <mat-form-field class="example-full-width" >
+                <mat-form-field class="example-full-width">
                     <mat-label>Dx Medico:</mat-label>
                     <textarea class="text-white" matInput formControlName="dxMedico" rows="5"></textarea>
                 </mat-form-field>
@@ -112,28 +118,17 @@
         <tr class="row">
 
             <td class="col-md-4 col-sm-12">
-                
-                <!-- <mat-form-field   class="example-full-width5">
-                    <mat-label>Referimiento:</mat-label>
-                    <mat-select formControlName="referimientoMedico" disableRipple>
-                        <mat-option value="PS">Psicologia</mat-option>
-                        <mat-option value="MF">Medicina familiar</mat-option>
-                        <mat-option value="TF">Terapia fisica</mat-option>
-                        <mat-option value="NN">Nutricionista</mat-option>
-                        <mat-option value="OR">Ortopeda</mat-option>
-                        <mat-option value="CA">Cardiologia</mat-option>
-                        <mat-option value="GI">Ginecologia</mat-option>
-                        <mat-option value="UR">Urologia</mat-option>
-                    </mat-select>
 
-                </mat-form-field> -->
-                <button color="primary" type="submit" mat-raised-button class="btn" (click)="enviar()">Enviar</button>
+
             <td>
 
             <td>
             </td>
 
         </tr>
-    </table>
+    </table> -->
+
+
+    <button color="primary" type="submit" mat-raised-button class="btn" (click)="enviar()">Enviar</button>
 
 </form>
