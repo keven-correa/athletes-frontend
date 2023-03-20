@@ -59,7 +59,7 @@ ngOnDestroy(): void {
     this.adminService.guardarUsuario(this.formulario.value).subscribe(resp=>{
       console.log(resp)
     })
-    //this.Usuarios();
+    this.Usuarios();
   }
   //Redireccionar en el menu
   Usuarios(){

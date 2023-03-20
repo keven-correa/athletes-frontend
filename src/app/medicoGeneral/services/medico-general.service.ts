@@ -34,6 +34,11 @@ export class MedicoGeneralService {
     return this.http.get<any>(direccion,this.options)
   }
 
+  NuevaConsulta(form:any): Observable<any> {
+    const direccion = this.url + "appointment"
+    return this.http.post<any>(direccion,form,this.options)
+  }
+
 
   logOut() {
     localStorage.clear();

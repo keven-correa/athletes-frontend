@@ -47,16 +47,19 @@ shouldRun = true;
 
     this.medicoGeneralService.detalleAtleta(this.id).subscribe(resp=>{
       this.atletas=resp
-      console.log(resp)
     })
+
+    //Convertir el id a int
+    let identificador = Number(this.id)
+
 
     this.formulario=this.fb.group({       
       reason: ['',Validators.required],      
       diagnostic: ['',Validators.required],      
       notes: ['',Validators.required],      
-      priority: ['',Validators.required],      
-      atlethe: [this.id,Validators.required],      
-      assignated_to: [0,Validators.required],      
+      priority: ['Baja',Validators.required],      
+      athlete: [identificador,Validators.required],      
+      assigned_to: [2,Validators.required],      
     })
 
 
@@ -80,9 +83,11 @@ shouldRun = true;
    
 
 enviar(){
-  // console.log(this.formulario.value)
-  // this._medicoGeneralService.AgregarConsulta(this.formulario.value)
-  // this.router.navigateByUrl("/medico-general/atletas");
+  console.log(this.formulario.value)
+  this.medicoGeneralService.NuevaConsulta(this.formulario.value).subscribe(resp=>{
+    console.log(resp);
+  })
+
 }
 
 

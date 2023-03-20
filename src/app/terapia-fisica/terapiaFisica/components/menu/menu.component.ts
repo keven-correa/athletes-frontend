@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { TerapiaFisicaService } from 'src/app/terapia-fisica/services/terapia-fisica.service';
 
 @Component({
   selector: 'app-menu',
@@ -8,21 +9,25 @@ import { Router } from '@angular/router';
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private router:Router) { }
+  constructor(private router:Router, private terapiaFisicaService:TerapiaFisicaService) { }
 
   ngOnInit(): void {
   }
-
   atletas(){
     this.router.navigateByUrl('terapia-fisica/atletas')
   }
+  historial(){
+    // this.router.navigateByUrl('/medico-general/historial')
+  }
 
-  // referimientos(){
-  //   this.router.navigateByUrl('terapia-fisica/referimientos')
-  // }
+  consultas(){
+    // this.router.navigateByUrl('/medico-general/consultas')
+  }
 
-  // terapia(){
-  //   this.router.navigateByUrl('terapia-fisica/terapia')
-  // }
+  CerrarSesion(){
+
+    this.terapiaFisicaService.logOut();
+    this.router.navigate(['/login'])
+  }
 
 }

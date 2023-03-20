@@ -1,19 +1,11 @@
-import { AfterViewInit, Component, ViewChild, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ViewChild, OnInit, ChangeDetectorRef } from '@angular/core';
 import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { TerapiaFisicaService } from '../../../services/terapia-fisica.service';
-
-
-export interface atleta {
-  id: number;
-  nombre: string;
-  apellido: string;
-  disciplina: string;
-  sexo:string;
-}
-
+import { MediaMatcher } from '@angular/cdk/layout';
+import { AtletaI } from 'src/app/shared/Models/atleta.interface';
 
 
 @Component({
@@ -21,49 +13,56 @@ export interface atleta {
   templateUrl: './atletas.component.html',
   styleUrls: ['./atletas.component.css']
 })
-export class AtletasComponent implements  AfterViewInit,OnInit {
+export class AtletasComponent implements  AfterViewInit {
+  ELEMENT_DATA: AtletaI[] = [];
 
-   ELEMENT_DATA: atleta[] = [
-    {id: 1, nombre: 'Antonio', apellido:'Guzman' , disciplina: 'Boxeo', sexo:'M'},
-    // {id: 2, nombre: 'Manuel', apellido: 'Gonzalez' , disciplina: 'Basketball', sexo:'M'},
-    // {id: 3, nombre: 'Juana', apellido: 'Castillo', disciplina: 'Baseball', sexo:'F'},
-    // {id: 4, nombre: 'Saldy', apellido:'Amparo' , disciplina: 'Voleibol', sexo:'F'},
-    // {id: 5, nombre: 'Nicol', apellido: 'Borbon' , disciplina: 'Atletismo', sexo:'F'},
-    // {id: 6, nombre: 'Keven', apellido: 'Correa', disciplina: 'Natacion', sexo:'M'},
-    // {id: 7, nombre: 'Edgar', apellido: 'Mena', disciplina: 'Natacion', sexo:'M'},
-    // {id: 8, nombre: 'Julia', apellido: 'Ruiz', disciplina: 'Boxeo', sexo:'F'},
-    // {id: 9, nombre: 'Joan', apellido:'Sena' , disciplina: 'Judo', sexo:'M'},
-    // {id: 10, nombre: 'Daniel', apellido: 'Perez', disciplina: 'Boxeo', sexo:'M'},
-    // {id: 10, nombre: 'Daniel', apellido: 'Feliz', disciplina: 'Judo', sexo:'M'},
-    
-  ];
+  mobileQuery: MediaQueryList; 
+
+  private _mobileQueryListener: () => void;
 
   atletas:any[]=[];
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['id', 'nombre', 'apellido', 'disciplina','mas'];
+  displayedColumns: string[] = ['id', 'name', 'lastName', 'discipline','mas'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
-
-
 
   constructor(public dialog: MatDialog,
               private router:Router,
-              private _terapiaFisicaService:TerapiaFisicaService){
+              private terapiaFisicaService:TerapiaFisicaService,
+              changeDetectorRef: ChangeDetectorRef, media: MediaMatcher){
+
+                this.mobileQuery = media.matchMedia('(max-width: 600px)');
+                this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+                this.mobileQuery.addListener(this._mobileQueryListener);
 
   }
+
+  ngOnDestroy(): void {
+    this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
+
+  shouldRun = true;
+
+  
   
   ngOnInit(): void {
-    // this._terapiaFisicaService.ObtenerAtletas().subscribe(resp=>{
-    //   this.ELEMENT_DATA=resp
-    //   this.dataSource.data=this.ELEMENT_DATA
-    // })
+
+    this.terapiaFisicaService.getAtletas().subscribe(resp=>{
+      this.ELEMENT_DATA=resp
+      this.dataSource.data=this.ELEMENT_DATA
+      //console.log(this.ELEMENT_DATA)
+    })
   }
   
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
 
   }
+
+  // nuevoAtleta(){
+  //   this.router.navigate(['/secretaria/nuevo-atleta'])
+  // }
 
   envio(id:number){
     this.router.navigate(['/terapia-fisica/atleta-detalle', id])
@@ -77,9 +76,15 @@ export class AtletasComponent implements  AfterViewInit,OnInit {
         this.dataSource.paginator.firstPage();
       }
     }
+    //Navegar en el menu
+    turnos(){
+      this.router.navigate(['/terapia-fisica/turnos'])
+    }
 
+    atletasR(){
+      this.router.navigate(['/terapia-fisica/atletas'])
+    }
     
-
-
+    
     
 }
