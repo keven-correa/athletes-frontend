@@ -1,76 +1,41 @@
-<app-menu></app-menu>
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
+  <mat-toolbar color="primary" class="example-toolbar">
 
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <app-menu style="width: 100%"></app-menu>
 
+  </mat-toolbar>
 
-<mat-grid-list cols="4" rowHeight="2:1">
+  <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+          fixedTopGap="56">
+          <mat-nav-list>
+              <a mat-list-item (click)="atletasR()">Atletas</a>
+              <a mat-list-item (click)="turnos()">Turnos</a>
 
-    <mat-grid-tile *ngFor="let item of consultas">
-        <mat-card class="example-card">
-            <mat-card-title class="text-white text-center">Consulta</mat-card-title>
+          </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+
+<div class="container " style="display: inline-flex;">
+
+        <mat-card class="example-card" *ngFor="let item of consultas">
+            <mat-card-title class="text-white ">Consulta</mat-card-title>
             <mat-card-content>
               <p class="text-white"><strong >Creado por: </strong> {{item.created_by.firstName}} {{item.created_by.lastName}}</p>
               <p class="text-white"><strong >Fecha: </strong> {{item.created_at|date}}</p>
               
             </mat-card-content>
             <mat-card-actions>
-              <button mat-flat-button color="primary" >Mas detalles </button>
+              <button mat-flat-button color="primary" (click)="detallesHistorial(item.id)">Mas detalles </button>
               
             </mat-card-actions>
         </mat-card>
 
-    </mat-grid-tile>
-<!-- 
-    <mat-grid-tile>
-      <mat-card class="example-card">
-          <mat-card-title>Atleta</mat-card-title>
-          <mat-card-content>
-            <p><strong>Referido por: </strong></p>
-            <p><strong>Atendido por: </strong></p>
-            
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-flat-button color="primary" >Mas detalles </button>
-            
-          </mat-card-actions>
-      </mat-card>
+      </div>
 
-  </mat-grid-tile>
-
-  <mat-grid-tile>
-    <mat-card class="example-card">
-        <mat-card-title>Atleta</mat-card-title>
-        <mat-card-content>
-          <p><strong>Referido por: </strong></p>
-          <p><strong>Atendido por: </strong></p>
-          
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-flat-button color="primary" >Mas detalles </button>
-          
-        </mat-card-actions>
-    </mat-card>
-
-</mat-grid-tile>
-
-<mat-grid-tile>
-  <mat-card class="example-card">
-      <mat-card-title>Atleta</mat-card-title>
-      <mat-card-content>
-        <p><strong>Referido por: </strong></p>
-        <p><strong>Atendido por: </strong></p>
-        
-      </mat-card-content>
-      <mat-card-actions>
-        <button mat-flat-button color="primary" >Mas detalles </button>
-        
-      </mat-card-actions>
-  </mat-card>
-
-</mat-grid-tile> -->
-
-
-    
-    
-
-</mat-grid-list>
   
+  
+</mat-sidenav-content>
+</mat-sidenav-container>
+</div>

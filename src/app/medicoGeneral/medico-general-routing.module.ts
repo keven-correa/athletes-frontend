@@ -7,6 +7,7 @@ import { ConsultaDetalleComponent } from './consulta-detalle/consulta-detalle.co
 import { AtletaDetalleComponent } from './atleta-detalle/atleta-detalle.component';
 import { ConsultaAtletaComponent } from './consulta-atleta/consulta-atleta.component';
 import { AnaliticaComponent } from './analitica/analitica.component';
+import { HistorialDetalleComponent } from './historial-detalle/historial-detalle.component';
 
 const routes: Routes = [
   {
@@ -14,6 +15,7 @@ const routes: Routes = [
     children:[
       {path:'atletas', component:AtletasComponent},
       {path:'historial/:id',component:HistorialComponent},
+      {path:'historial-detalle/:id',component:HistorialDetalleComponent},
       {path:'consulta/:id', component:ConsultasComponent},
       {path:'datos-medicos/:id',component:ConsultaDetalleComponent},
       {path:'atleta-detalle/:id', component:AtletaDetalleComponent},

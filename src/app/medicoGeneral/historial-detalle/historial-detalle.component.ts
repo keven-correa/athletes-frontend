@@ -1,18 +1,19 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { MedicoGeneralService } from '../services/medico-general.service';
-import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
+import { ActivatedRoute, Router, Params } from '@angular/router';
+import { MedicoGeneralService } from '../services/medico-general.service';
 
 @Component({
-  selector: 'app-historial',
-  templateUrl: './historial.component.html',
-  styleUrls: ['./historial.component.css'],
+  selector: 'app-historial-detalle',
+  templateUrl: './historial-detalle.component.html',
+  styleUrls: ['./historial-detalle.component.css']
 })
-export class HistorialComponent implements OnInit {
+export class HistorialDetalleComponent {
+
   id: any;
-  consultas: any[] = [];
+  Detalleconsulta: any;
 
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
@@ -40,15 +41,10 @@ export class HistorialComponent implements OnInit {
       this.id = params['id'];
     });
 
-    this.medicoGeneralService.ConsultaById(this.id).subscribe((resp) => {
-      this.consultas = resp;
+    this.medicoGeneralService.ConsultaDetalle(this.id).subscribe((resp) => {
+      this.Detalleconsulta = resp;
       console.log(resp);
     });
-  }
-
-  detallesHistorial(id:any){
-    this.router.navigate(['/medico-general/historial-detalle', id])
-
   }
 
   //Navegar en el menu
@@ -58,6 +54,12 @@ export class HistorialComponent implements OnInit {
 
   atletasR() {
     this.router.navigate(['/medico-general/atletas']);
+  }  
+
+  CerrarSesion(){
+
+    this.medicoGeneralService.logOut();
+    this.router.navigate(['/login'])
   }
-  
+
 }

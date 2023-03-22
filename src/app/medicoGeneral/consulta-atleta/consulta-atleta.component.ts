@@ -57,7 +57,7 @@ shouldRun = true;
       reason: ['',Validators.required],      
       diagnostic: ['',Validators.required],      
       notes: ['',Validators.required],      
-      // priority: ['Baja',Validators.required],      
+      priority: ['Media',Validators.required],      
       athlete: [identificador,Validators.required],      
       // assigned_to: [2,Validators.required],      
     })
