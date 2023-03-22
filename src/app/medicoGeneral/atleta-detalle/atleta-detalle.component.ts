@@ -92,7 +92,7 @@ atletasR(){
   this.router.navigate(['/medico-general/consulta-atleta', this.id])
  }
 
- historial(id:number){
+ historial(){
   this.router.navigate(['/medico-general/historial', this.id])
  }
 

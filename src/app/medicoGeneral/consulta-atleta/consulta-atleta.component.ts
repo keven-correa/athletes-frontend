@@ -57,37 +57,22 @@ shouldRun = true;
       reason: ['',Validators.required],      
       diagnostic: ['',Validators.required],      
       notes: ['',Validators.required],      
-      priority: ['Baja',Validators.required],      
+      // priority: ['Baja',Validators.required],      
       athlete: [identificador,Validators.required],      
-      assigned_to: [2,Validators.required],      
+      // assigned_to: [2,Validators.required],      
     })
-
-
-    // this.edadAtleta();  
-   }
-   
-   // Fecha de nacimiento a edad
-  //  edadAtleta(){
-  //    const calculateAge = (birthday:any) => {
-  //      const ageDifMs = Date.now() - new Date(birthday).getTime();
-  //      const ageDate = new Date(ageDifMs);
-  //      return Math.abs(ageDate.getUTCFullYear() - 1970);
-  //  }
-  //  var dia = this.atletas.dateOfBirth.toString().substring(0,10);
-  //  this.edad=(calculateAge(dia))
-  //  console.log(this.edad);
-   
-  // //  this.fechaAtleta = this.atletas.dateOfBirth.toString().substring(0,10);
-  //  }
-
-   
+     
+   }  
 
 enviar(){
   console.log(this.formulario.value)
   this.medicoGeneralService.NuevaConsulta(this.formulario.value).subscribe(resp=>{
     console.log(resp);
-  })
-
+    this.atletasR();
+  }, error=>{
+      console.log(error)
+  }
+  )
 }
 
 

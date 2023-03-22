@@ -39,6 +39,11 @@ export class MedicoGeneralService {
     return this.http.post<any>(direccion,form,this.options)
   }
 
+  ConsultaById(id:any): Observable<any> {
+    const direccion = this.url + "appointment/get-appointments-by-athlete/"+id
+    return this.http.get<any>(direccion,this.options)
+  }
+
 
   logOut() {
     localStorage.clear();
