@@ -29,7 +29,7 @@ export class TerapiaFisicaService {
     return this.http.get<any>(direccion,this.options)
   }
 
-  Consultas(): Observable<any> {
+  Referimientos(): Observable<any> {
     const direccion = this.url + "appointment"
     return this.http.get<any>(direccion,this.options)
   }

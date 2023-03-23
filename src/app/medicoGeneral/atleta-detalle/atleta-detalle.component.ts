@@ -4,14 +4,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MedicoGeneralService } from '../services/medico-general.service';
 
-interface Atleta{
-  id:number;
-  nombre:string;
-  apellido:string;
-  disciplina:string;
-  edad:number;
-  sexo:string;
-}
 
 @Component({
   selector: 'app-atleta-detalle',

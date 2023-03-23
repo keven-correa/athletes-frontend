@@ -84,6 +84,11 @@ export class AtletasComponent implements  AfterViewInit {
     atletasR(){
       this.router.navigate(['/terapia-fisica/atletas'])
     }
+
+    referimientos(){
+      this.router.navigate(['/terapia-fisica/referimientos'])
+
+    }
     
     
     

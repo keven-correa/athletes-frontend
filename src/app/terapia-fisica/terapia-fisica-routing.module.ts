@@ -14,7 +14,7 @@ const routes: Routes = [
     children:[
       {path:'atletas',component:AtletasComponent},
       {path:'atleta-detalle/:id',component:AtletaDetalleComponent},
-      {path:'referimientos/:id',component:ReferimientosComponent},
+      {path:'referimientos',component:ReferimientosComponent},
       {path:'historial/:id',component:HistorialComponent},
       {path:'terapia/:id',component:TerapiaComponent},
       {path:'terapia-detalle/:id',component:TerapiaDetalleComponent},
