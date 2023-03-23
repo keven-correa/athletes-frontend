@@ -39,6 +39,11 @@ export class TerapiaFisicaService {
     return this.http.post<any>(direccion,form,this.options)
   }
 
+  ConsultaDetalle(id:any): Observable<any> {
+    const direccion = this.url + "appointment/"+id
+    return this.http.get<any>(direccion,this.options)
+  }
+
   logOut() {
     localStorage.clear();
   }
