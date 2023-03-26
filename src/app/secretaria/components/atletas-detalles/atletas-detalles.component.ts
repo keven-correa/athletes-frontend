@@ -4,7 +4,9 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { SecretariaService } from '../../services/secretaria.service';
 import { AtletaI } from '../../../shared/Models/atleta.interface';
-
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
+import { NuevoTurnoComponent } from '../nuevo-turno/nuevo-turno.component';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-atletas-detalles',
@@ -25,6 +27,7 @@ export class AtletasDetallesComponent implements OnInit {
   constructor(public dialog: MatDialog,
     private _ruta:ActivatedRoute,
     private router:Router,
+    private bottomSheet:MatBottomSheet,
     private _secretariaService:SecretariaService,
     changeDetectorRef: ChangeDetectorRef, media: MediaMatcher){
 
@@ -38,7 +41,6 @@ ngOnDestroy(): void {
 this.mobileQuery.removeListener(this._mobileQueryListener);
 }
 
-shouldRun = true;
 
  ngOnInit(): void {
    this._ruta.params.subscribe((params:Params)=>{
@@ -83,6 +85,18 @@ shouldRun = true;
 atletasR(){
   this.router.navigate(['/secretaria/atletas'])
 }
+
+
+// crearTurno(){
+//   this.router.navigate(['/secretaria/nuevo-turno',this.id]);
+// }
+
+
+//modal
+crearTurno(){
+  this.bottomSheet.open(NuevoTurnoComponent,{
+    data:this.id
+  });}
 
 }
 

@@ -1,4 +1,4 @@
-<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
   <mat-toolbar color="primary" class="example-toolbar">
 
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
@@ -16,8 +16,8 @@
       </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav-content>
-      <button mat-flat-button color="secondary" class="btn" (click)="consulta()" >Consulta</button>
-      <button mat-flat-button color="secondary" class="btn" (click)="historial()" >Historial</button>
+      <button mat-flat-button color="secondary" class="btn" (click)="consulta()" >Nueva consulta</button>
+      <button mat-flat-button color="secondary" class="btn" (click)="historial()" >Consultas realizadas</button>
 
 
       <mat-grid-list cols="1" rowHeight="850px">        

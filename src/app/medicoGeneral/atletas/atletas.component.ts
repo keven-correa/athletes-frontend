@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { MedicoGeneralService } from '../services/medico-general.service';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { AtletaI } from 'src/app/shared/Models/atleta.interface';
+import Swal from 'sweetalert2';
 
 
 
@@ -44,17 +45,35 @@ export class AtletasComponent  implements AfterViewInit {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
 
-  shouldRun = true;
-
-  
-  
   ngOnInit(): void {
 
     this.medicoGeneralService.getAtletas().subscribe(resp=>{
       this.ELEMENT_DATA=resp
-      this.dataSource.data=this.ELEMENT_DATA
-      //console.log(this.ELEMENT_DATA)
-    })
+      this.dataSource.data=this.ELEMENT_DATA.reverse();
+
+    }, (error) => {
+      // Manejo de errores HTTP
+      if (error.status === 401) {
+  
+        this.mensajeError('Se ha producido un inconveniente al momento de la autenticacion, inicia sesion e intente de nuevo', 'error');
+        this.medicoGeneralService.logOut();
+        this.router.navigate(['/login'])
+  
+      } else if (error.status === 403) {
+  
+        this.mensajeError('No tienes permiso para acceder a este componente.', 'warning');
+        this.atletasR();
+      } else if (error.status === 404) {
+        this.mensajeError('Recurso no encontrado.', 'warning');
+  
+      } else if (error.status === 500) {
+        this.mensajeError('Error en el servidor, intente nuevamente.', 'warning');
+  
+      } else {
+        this.mensajeError('Error desconocido.', 'warning');
+      }
+    }
+    )
   }
   
   ngAfterViewInit() {
@@ -87,6 +106,22 @@ export class AtletasComponent  implements AfterViewInit {
       this.router.navigate(['/medico-general/atletas'])
     }
     
-    
+    mensajeError(mensaje: any, icono: any) {
+      Swal.fire({
+        title: mensaje,
+        icon: icono,
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Aceptar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          console.log('Ejecutando función...');
+          // Lógica para ejecutar la función
+        }
+      }).then(() => {
+        console.log('Modal cerrado');
+        // Lógica que se ejecuta al cerrar el modal
+      });
+    }
 
  }

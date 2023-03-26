@@ -15,129 +15,132 @@ import Swal from 'sweetalert2';
 })
 export class NuevaTerapiaComponent {
 
-  id:number=0;
-  idTerapeuta!:number
-  formulario!:FormGroup;
-  terapiasAtleta:any[]=[]
-  detallesEvaluacion:any;
-  cantidadTerapiasRegistradas:any
-  mobileQuery: MediaQueryList; 
-  
-  btnNuevaTerapia:boolean=false;
+  id: number = 0;
+  idTerapeuta!: number
+  formulario!: FormGroup;
+  terapiasAtleta: any[] = []
+  detallesEvaluacion: any;
+  cantidadTerapiasRegistradas: any
+  mobileQuery: MediaQueryList;
+
+  btnNuevaTerapia: boolean = false;
 
   private _mobileQueryListener: () => void;
-  
+
   @ViewChild(MatPaginator) paginator!: MatPaginator;
-  
-  constructor(private fb:FormBuilder,
+
+  constructor(private fb: FormBuilder,
     public dialog: MatDialog,
-              private _ruta:ActivatedRoute,
-              private _terapiaFisicaService:TerapiaFisicaService,
-              private router:Router,
-              changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-  
-                this.mobileQuery = media.matchMedia('(max-width: 600px)');
-                this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-                this.mobileQuery.addListener(this._mobileQueryListener);
-   }
-  
-    ngOnInit(){
-    this._ruta.params.subscribe((params:Params)=>{
-      this.id=params['id'];
-      
+    private _ruta: ActivatedRoute,
+    private _terapiaFisicaService: TerapiaFisicaService,
+    private router: Router,
+    changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
+  }
+
+  ngOnInit() {
+    this._ruta.params.subscribe((params: Params) => {
+      this.id = params['id'];
+
     });
 
-    this.idTerapeuta=Number(localStorage.getItem('idTerapeuta'));
-    
-    this._terapiaFisicaService.EvaluacionDetalle(this.id).subscribe(resp=>{
+    this.idTerapeuta = Number(localStorage.getItem('idTerapeuta'));
 
-      this.detallesEvaluacion=resp 
-      console.log(resp)    
-    },(error) => {
+    this._terapiaFisicaService.EvaluacionDetalle(this.id).subscribe(resp => {
+
+      this.detallesEvaluacion = resp
+      console.log(resp)
+    }, (error) => {
       // Manejo de errores HTTP
       if (error.status === 401) {
-        console.log();
-      this.mensajeError('Error: Autenticación fallida','warning');
+
+        this.mensajeError('Se ha producido un inconveniente al momento de la autenticacion, inicia sesion e intente de nuevo', 'error');
         this._terapiaFisicaService.logOut();
-    this.router.navigate(['/login'])
+        this.router.navigate(['/login'])
 
       } else if (error.status === 403) {
-        console.log();
-      this.mensajeError('Error: Acceso denegado','warning');
 
+        this.mensajeError('No tienes permiso para acceder a este componente.', 'warning');
+        this.atletasR();
       } else if (error.status === 404) {
-        console.log('Error: Recurso no encontrado');
+        this.mensajeError('Recurso no encontrado.', 'warning');
+
       } else if (error.status === 500) {
-        console.log('Error: Error interno del servidor');
+        this.mensajeError('Error en el servidor, intente nuevamente.', 'warning');
+
       } else {
-        console.log('Error desconocido');
+        this.mensajeError('Error desconocido.', 'warning');
+
       }
 
     }
-    ) 
+    )
 
-    this._terapiaFisicaService.TerapiasPorAtleta(Number(localStorage.getItem('idAtleta'))).subscribe(resp=>{
-      console.log(resp,'Cantidad')
-      this.terapiasAtleta= resp
+    this._terapiaFisicaService.TerapiasPorAtleta(Number(localStorage.getItem('idAtleta'))).subscribe(resp => {
+      console.log(resp, 'Cantidad')
+      this.terapiasAtleta = resp
 
-        this.cantidadTerapiasRegistradas= this.terapiasAtleta.filter(x=>x.evaluation.id==this.id)
-        console.log(this.cantidadTerapiasRegistradas)
+      this.cantidadTerapiasRegistradas = this.terapiasAtleta.filter(x => x.evaluation.id == this.id)
+      console.log(this.cantidadTerapiasRegistradas)
     })
-  
-    this.formulario=this.fb.group({    
-      schedulingDate:[new Date,Validators.required],
-      therapist:[this.idTerapeuta,Validators.required],
-      remarks:['',Validators.required],
-      athlete:[Number(localStorage.getItem("idAtleta")),Validators.required],
-      evaluation:[Number(this.id),Validators.required],
-      
+
+    this.formulario = this.fb.group({
+      schedulingDate: [new Date, Validators.required],
+      therapist: [this.idTerapeuta, Validators.required],
+      remarks: ['', Validators.required],
+      athlete: [Number(localStorage.getItem("idAtleta")), Validators.required],
+      evaluation: [Number(this.id), Validators.required],
+
     })
 
     // console.log(Number((<HTMLInputElement>document.getElementById("tbxCantidadTerapiaR")).value) )
   }
-  
+
   ngOnDestroy(): void {
     this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-  
-// Declara la función en el componente
-validarCantidadTerapiasRegistradas(): boolean {
-  // Comprueba si las propiedades necesarias están definidas
-  if (this.cantidadTerapiasRegistradas && this.detallesEvaluacion && this.detallesEvaluacion.numberOfTherapies) {
-    // Comprueba si la longitud del array es menor que numberOfTherapies
-    return this.cantidadTerapiasRegistradas.length < this.detallesEvaluacion.numberOfTherapies;
-  } else {
-    // Si alguna propiedad no está definida, devuelve false
-    return false;
-  }
-}
 
-  
+  // Declara la función en el componente
+  validarCantidadTerapiasRegistradas(): boolean {
+    // Comprueba si las propiedades necesarias están definidas
+    if (this.cantidadTerapiasRegistradas && this.detallesEvaluacion && this.detallesEvaluacion.numberOfTherapies) {
+      // Comprueba si la longitud del array es menor que numberOfTherapies
+      return this.cantidadTerapiasRegistradas.length < this.detallesEvaluacion.numberOfTherapies;
+    } else {
+      // Si alguna propiedad no está definida, devuelve false
+      return false;
+    }
+  }
+
+
   //Navegar en el menu
-  turnos(){
+  turnos() {
     this.router.navigate(['/terapia-fisica/turnos'])
   }
-  
-  atletasR(){
+
+  atletasR() {
     this.router.navigate(['/terapia-fisica/atletas'])
   }
-  
-  referimientos(){
+
+  referimientos() {
     this.router.navigate(['/terapia-fisica/referimientos'])
   }
-  
-  guardar(){
+
+  guardar() {
     console.log(this.formulario.value)
-    this._terapiaFisicaService.NuevaTerapia(this.formulario.value).subscribe(resp=>{
+    this._terapiaFisicaService.NuevaTerapia(this.formulario.value).subscribe(resp => {
       console.log(resp)
       this.router.navigateByUrl("/terapia-fisica/atletas")
-    },err=>{
+    }, err => {
       console.log(err)
     })
-  
+
   }
 
-  mensajeError(mensaje:any, icono:any) {
+  mensajeError(mensaje: any, icono: any) {
     Swal.fire({
       title: mensaje,
       icon: icono,
@@ -154,8 +157,7 @@ validarCantidadTerapiasRegistradas(): boolean {
       // Lógica que se ejecuta al cerrar el modal
     });
   }
-  
-  
-  
+
+
 
 }

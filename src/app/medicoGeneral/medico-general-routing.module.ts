@@ -6,8 +6,8 @@ import { ConsultasComponent } from './consultas/consultas.component';
 import { ConsultaDetalleComponent } from './consulta-detalle/consulta-detalle.component';
 import { AtletaDetalleComponent } from './atleta-detalle/atleta-detalle.component';
 import { ConsultaAtletaComponent } from './consulta-atleta/consulta-atleta.component';
-import { AnaliticaComponent } from './analitica/analitica.component';
 import { HistorialDetalleComponent } from './historial-detalle/historial-detalle.component';
+import { TurnosComponent } from './turnos/turnos.component';
 
 const routes: Routes = [
   {
@@ -20,7 +20,7 @@ const routes: Routes = [
       {path:'datos-medicos/:id',component:ConsultaDetalleComponent},
       {path:'atleta-detalle/:id', component:AtletaDetalleComponent},
       {path:'consulta-atleta/:id', component:ConsultaAtletaComponent},
-      {path:'analitica/:id',component:AnaliticaComponent}
+      {path:'turnos',component:TurnosComponent}
     ]
   },
   {

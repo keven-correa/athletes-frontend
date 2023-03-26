@@ -3,4 +3,6 @@
 html, body { height: 100%; background-color: #313131;}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; height: auto; }
 
-
+mat-sidenav-content{
+    height: 723px;
+  }

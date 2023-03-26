@@ -50,8 +50,49 @@ export class MedicoGeneralService {
   }
 
 
+  
+  getTurnos() : Observable<any>{
+    const direccion = this.url + "shifts";
+    return this.http.get<any>(direccion, this.options)
+
+  }
+
+  EditarTurno(id: any,form:any): Observable<any> {
+    const direccion = this.url + "shifts/" + id
+    return this.http.patch<any>(direccion,form,this.options)
+  }
+
+  ObtenerTurnoById(id: any): Observable<any> {
+    const direccion = this.url + "shifts/" + id
+    return this.http.get<any>(direccion,this.options)
+  }
+
+
+  EvaluacionesPorAtleta(id:any): Observable<any> {
+    const direccion = this.url + "evaluation/evaluations-by-athlete/"+id
+    return this.http.get<any>(direccion,this.options)
+  }
+
+  Evaluaciones(): Observable<any> {
+    const direccion = this.url + "evaluation"
+    return this.http.get<any>(direccion,this.options)
+  }
+
+  EvaluacionDetalle(id:any): Observable<any> {
+    const direccion = this.url + "evaluation/"+id
+    return this.http.get<any>(direccion,this.options)
+  }
+
   logOut() {
     localStorage.clear();
+    window.location.replace('/login');
+
+  }
+
+
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('token');
+    return token !== null;
   }
 
 }

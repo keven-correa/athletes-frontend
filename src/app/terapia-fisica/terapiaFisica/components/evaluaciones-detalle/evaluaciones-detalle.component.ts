@@ -79,24 +79,27 @@ this.router.navigate(['/login'])
 
       this._terapiaFisicaService.EvaluacionDetalle(this.id).subscribe(resp=>{
       this.detallesEvaluacion=resp     
-    },(error) => {
+    }, (error) => {
       // Manejo de errores HTTP
       if (error.status === 401) {
-        console.log();
-      this.mensajeError('Error: Autenticación fallida','warning');
+
+        this.mensajeError('Se ha producido un inconveniente al momento de la autenticacion, inicia sesion e intente de nuevo', 'error');
         this._terapiaFisicaService.logOut();
-    this.router.navigate(['/login'])
+        this.router.navigate(['/login'])
 
       } else if (error.status === 403) {
-        console.log();
-      this.mensajeError('Error: Acceso denegado','warning');
 
+        this.mensajeError('No tienes permiso para acceder a este componente.', 'warning');
+        this.atletasR();
       } else if (error.status === 404) {
-        console.log('Error: Recurso no encontrado');
+        this.mensajeError('Recurso no encontrado.', 'warning');
+
       } else if (error.status === 500) {
-        console.log('Error: Error interno del servidor');
+        this.mensajeError('Error en el servidor, intente nuevamente.', 'warning');
+
       } else {
-        console.log('Error desconocido');
+        this.mensajeError('Error desconocido.', 'warning');
+
       }
 
     }

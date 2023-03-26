@@ -26,11 +26,9 @@
 <div class="container-fluid">
 
     <form class="example-form" [formGroup]="formulario"  >
-    
-<button mat-flat-button color="primary" class="btn btn-primary" (click)="nuevaTerapia()" >Nueva terapia</button>
+        <h2 class="text-white w-100">Detalles de la evaluacion</h2>
         
-            <h2 class="text-white">Detalles de la evaluacion</h2>
-
+        <button mat-flat-button color="primary" class="btn btn-primary" (click)="nuevaTerapia()" style="margin-left: 0px;">Nueva terapia</button>
         
         <table class="example-full-width" cellspacing="3">
             <tr>
@@ -106,12 +104,12 @@
                     </mat-form-field>
                 </td>
     
-                <td>
+                <!-- <td>
                     <mat-form-field class="example-full-width" appearance="fill" >
                         <mat-label>Observaciones: </mat-label>
                         <textarea matInput class="text-white" [value]="detallesEvaluacion.remarks" disabled  rows="1"></textarea >
                     </mat-form-field>
-                </td>                
+                </td>                 -->
                 
             </tr>
 

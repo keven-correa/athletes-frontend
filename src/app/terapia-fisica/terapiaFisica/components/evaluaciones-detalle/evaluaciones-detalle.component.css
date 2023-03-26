@@ -89,3 +89,92 @@
   mat-sidenav{
   width: 15%;
   }
+
+  
+mat-sidenav-content{
+    min-height: 723px;
+  }
+
+
+
+
+
+
+
+
+  .example-form {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 800px;
+    width: 100%;
+  }
+  
+  .example-form h2, .example-form h3 {
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .example-full-width {
+    width: 100%;
+  }
+  
+  .text-white {
+    color: white;
+  }
+  
+  .mat-form-field {
+    margin: 10px 0;
+  }
+  
+  .mat-form-field-label {
+    color: white !important;
+  }
+  
+  .mat-form-field-infix {
+    border-color: white !important;
+  }
+  
+  .mat-input-element::-webkit-input-placeholder {
+    color: white;
+  }
+  
+  .mat-input-element:-moz-placeholder {
+    color: white;
+  }
+  
+  .mat-input-element::-moz-placeholder {
+    color: white;
+  }
+  
+  .mat-input-element:-ms-input-placeholder {
+    color: white;
+  }
+  
+  textarea.mat-input-element {
+    resize: none;
+  }
+  
+  .btn {
+    margin: 10px 0;
+    width: 200px;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .example-form {
+      max-width: 500px;
+    }
+  
+    .example-form h2, .example-form h3 {
+      font-size: 24px;
+    }
+  
+    .mat-form-field {
+      margin: 5px 0;
+    }
+  
+    .btn {
+      width: 150px;
+    }
+  }
+  

@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { TerapiaFisicaService } from 'src/app/terapia-fisica/services/terapia-fisica.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -45,7 +46,30 @@ constructor(private fb:FormBuilder,
   
 this._terapiaFisicaService.ConsultaDetalle(this.id).subscribe(resp=>{
   this.consulta=resp; 
-})
+}, (error) => {
+  // Manejo de errores HTTP
+  if (error.status === 401) {
+
+    this.mensajeError('Se ha producido un inconveniente al momento de la autenticacion, inicia sesion e intente de nuevo', 'error');
+    this._terapiaFisicaService.logOut();
+    this.router.navigate(['/login'])
+
+  } else if (error.status === 403) {
+
+    this.mensajeError('No tienes permiso para acceder a este componente.', 'warning');
+    this.atletasR();
+  } else if (error.status === 404) {
+    this.mensajeError('Recurso no encontrado.', 'warning');
+
+  } else if (error.status === 500) {
+    this.mensajeError('Error en el servidor, intente nuevamente.', 'warning');
+
+  } else {
+    this.mensajeError('Error desconocido.', 'warning');
+  }
+
+}
+)
 
   this.formulario=this.fb.group({    
     therapeuticDiagnosis:['',Validators.required],
@@ -86,6 +110,24 @@ guardar(){
     console.log(err)
   })
 
+}
+
+mensajeError(mensaje: any, icono: any) {
+  Swal.fire({
+    title: mensaje,
+    icon: icono,
+    showCancelButton: false,
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: 'Aceptar',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      console.log('Ejecutando función...');
+      // Lógica para ejecutar la función
+    }
+  }).then(() => {
+    console.log('Modal cerrado');
+    // Lógica que se ejecuta al cerrar el modal
+  });
 }
 
 }

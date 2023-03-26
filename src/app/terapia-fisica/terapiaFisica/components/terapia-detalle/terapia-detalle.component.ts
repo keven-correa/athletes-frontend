@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
-import {MatTable} from '@angular/material/table';
+
 import { Params, ActivatedRoute } from '@angular/router';
 import { TerapiaFisicaService } from '../../../services/terapia-fisica.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-terapia-detalle',

@@ -16,6 +16,7 @@ import { TerapiaDetalleComponent } from './terapiaFisica/components/terapia-deta
 import { EvaluacionesDetalleComponent } from './terapiaFisica/components/evaluaciones-detalle/evaluaciones-detalle.component';
 import { NuevaTerapiaComponent } from './terapiaFisica/components/nueva-terapia/nueva-terapia.component';
 import { EvaluacionesPorAtletaComponent } from './terapiaFisica/components/evaluaciones-por-atleta/evaluaciones-por-atleta.component';
+import { TurnosComponent } from './terapiaFisica/components/turnos/turnos.component';
 
 
 @NgModule({
@@ -30,7 +31,8 @@ import { EvaluacionesPorAtletaComponent } from './terapiaFisica/components/evalu
     TerapiaDetalleComponent,
     EvaluacionesDetalleComponent,
     NuevaTerapiaComponent,
-    EvaluacionesPorAtletaComponent
+    EvaluacionesPorAtletaComponent,
+    TurnosComponent
   ],
   imports: [
     CommonModule,

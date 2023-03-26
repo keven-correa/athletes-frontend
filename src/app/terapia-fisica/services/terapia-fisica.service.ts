@@ -68,8 +68,34 @@ export class TerapiaFisicaService {
     return this.http.get<any>(direccion,this.options)
   }
 
+    
+  getTurnos() : Observable<any>{
+    const direccion = this.url + "shifts";
+    return this.http.get<any>(direccion, this.options)
+
+  }
+
+  EditarTurno(id: any,form:any): Observable<any> {
+    const direccion = this.url + "shifts/" + id
+    return this.http.patch<any>(direccion,form,this.options)
+  }
+
+  ObtenerTurnoById(id: any): Observable<any> {
+    const direccion = this.url + "shifts/" + id
+    return this.http.get<any>(direccion,this.options)
+  }
+
+
   logOut() {
     localStorage.clear();
+    window.location.replace('/login');
+
+  }
+
+
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('token');
+    return token !== null;
   }
 
 

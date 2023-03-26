@@ -18,7 +18,7 @@ import { ConsultasComponent } from './medicoGeneral/consultas/consultas.componen
 import { ConsultaDetalleComponent } from './medicoGeneral/consulta-detalle/consulta-detalle.component';
 import { AtletaDetalleComponent } from './medicoGeneral/atleta-detalle/atleta-detalle.component';
 import { ConsultaAtletaComponent } from './medicoGeneral/consulta-atleta/consulta-atleta.component';
-import { AnaliticaComponent } from './medicoGeneral/analitica/analitica.component';
+
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 
 
@@ -36,7 +36,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     ConsultaDetalleComponent,
     AtletaDetalleComponent,
     ConsultaAtletaComponent,
-    AnaliticaComponent,
+
   ],
   entryComponents:[DialogComponent],
   imports: [

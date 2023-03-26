@@ -33,6 +33,13 @@ export class AdminServiceService {
 
   logOut() {
     localStorage.clear();
+    window.location.replace('/login');
+
+  }
+
+  isLoggedIn(): boolean {
+    const token = localStorage.getItem('token');
+    return token !== null;
   }
 
 }

@@ -3,6 +3,7 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router, Params } from '@angular/router';
 import { TerapiaFisicaService } from '../../../services/terapia-fisica.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -45,10 +46,31 @@ ngOnInit(): void {
  })
   this.terapiaFisicaService.detalleAtleta(this.id).subscribe(resp=>{
     this.atletas = resp;
-    // console.log(resp)
-    this.edadAtleta();  
-    
-  }) 
+    this.edadAtleta();     
+  }, (error) => {
+    // Manejo de errores HTTP
+    if (error.status === 401) {
+
+      this.mensajeError('Se ha producido un inconveniente al momento de la autenticacion, inicia sesion e intente de nuevo', 'error');
+      this.terapiaFisicaService.logOut();
+      this.router.navigate(['/login'])
+
+    } else if (error.status === 403) {
+
+      this.mensajeError('No tienes permiso para acceder a este componente.', 'warning');
+      this.atletasR();
+    } else if (error.status === 404) {
+      this.mensajeError('Recurso no encontrado.', 'warning');
+
+    } else if (error.status === 500) {
+      this.mensajeError('Error en el servidor, intente nuevamente.', 'warning');
+
+    } else {
+      this.mensajeError('Error desconocido.', 'warning');
+
+    }
+  }
+  ) 
 }
 
 // Fecha de nacimiento a edad
@@ -95,22 +117,23 @@ terapia(id:any){
   this.router.navigate(['/terapia-fisica/evaluaciones-atleta', this.id])
  }
 
-//  cargarDatos(id:number){
-
-//   const identificador:number=this.id;
-//   this._terapiaFisicaService.ObtenerAtletas().subscribe(resp=>{
-//     for (let i = 0; i < resp.length; i++) {
-//       const element = resp[i];
-//       if(resp.find(item=>item.id==identificador)){
-//         return this.atletas=resp.find(item=>item.id==identificador)
-        
-
-//       }
-      
-//     }
-
-//   })
-// }
+ mensajeError(mensaje: any, icono: any) {
+  Swal.fire({
+    title: mensaje,
+    icon: icono,
+    showCancelButton: false,
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: 'Aceptar',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      console.log('Ejecutando función...');
+      // Lógica para ejecutar la función
+    }
+  }).then(() => {
+    console.log('Modal cerrado');
+    // Lógica que se ejecuta al cerrar el modal
+  });
+}
 
 
 }

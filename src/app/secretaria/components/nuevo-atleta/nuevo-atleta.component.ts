@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
 import { SecretariaService } from '../../services/secretaria.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-nuevo-atleta',
@@ -13,33 +14,7 @@ import { SecretariaService } from '../../services/secretaria.service';
 export class NuevoAtletaComponent implements OnInit {
 
   formulario!:FormGroup;
-  prueba:any= {
-    "name": "Saul",
-    "lastName": "Soriano",
-    "document": "015877178791",
-    "age": 19,
-    "dateOfBirth": "1999-05-01",
-    "maritalStatus": "Soltero",
-    "levelOfSchooling": "Medio",
-    "address": "Calle",
-    "cell": "8091119999",
-    "phone": "8491234577",
-    "bloodType": "A+",
-    "weight": 20.0,
-    "height": 70.0,
-    "disciplineId": "1",
-    "birthPlace": "Santo Domingo",
-    "gender": "Femenino",
-    "sportAge": "2021-7-01",
-    "practiceHours": 5,
-    "practiceDays": "15",
-    "medicalInsurance": "00000000",
-    "studyHours": 8,
-    "studyDays": "4",
-    "TA": "test",
-    "FC": "test",
-    "FR": "test"
-} 
+
 
   mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
@@ -57,34 +32,34 @@ export class NuevoAtletaComponent implements OnInit {
 ngOnDestroy(): void {
   this.mobileQuery.removeListener(this._mobileQueryListener);
 }
-shouldRun = true;
+
   ngOnInit(): void {
     this.formulario=this.fb.group({        
-      name: ['salul',Validators.required],
-        lastName: ['perez',Validators.required],
-        document: ['015877178791',Validators.required],
-        age: [19,Validators.required],
-        dateOfBirth: ['1999-05-01',Validators.required],
-        maritalStatus: ['Soltero',Validators.required],
+      name: ['',Validators.required],
+        lastName: ['',Validators.required],
+        document: ['',Validators.required],
+        age: [0,Validators.required],
+        dateOfBirth: ['',Validators.required],
+        maritalStatus: ['',Validators.required],
         levelOfSchooling: ['Medio',Validators.required],
-        address: ['calle',Validators.required],
-        cell: ['8091119999',Validators.required],
-        phone: ['8491234577',Validators.required],
-        bloodType: ['O+',Validators.required],
-        weight: [10,Validators.required],
-        height: [30,Validators.required],
-        disciplineId: ['1',Validators.required],
-        birthPlace: ['santo',Validators.required],
-        gender: ['Masculino',Validators.required],
+        address: ['',Validators.required],
+        cell: ['',Validators.required],
+        phone: ['',Validators.required],
+        bloodType: ['',Validators.required],
+        weight: [0,Validators.required],
+        height: [0,Validators.required],
+        disciplineId: ['',Validators.required],
+        birthPlace: ['',Validators.required],
+        gender: ['',Validators.required],
        // sportAge: ['',Validators.required],
         practiceHours: [0,Validators.required],
-        practiceDays: ['5',Validators.required],
-        medicalInsurance: ['00000002',Validators.required],
-        studyHours: [1,Validators.required],
-        studyDays: ['4',Validators.required],
-        TA: ['test',Validators.required],
-        FC: ['test',Validators.required],
-        FR: ['test',Validators.required],      
+        practiceDays: ['',Validators.required],
+        medicalInsurance: ['',Validators.required],
+        studyHours: [0,Validators.required],
+        studyDays: ['',Validators.required],
+        TA: ['',Validators.required],
+        FC: ['',Validators.required],
+        FR: ['',Validators.required],      
     })
   }
 
@@ -106,10 +81,49 @@ shouldRun = true;
   this.secretariaService.guardarAtleta(this.formulario.value).subscribe(resp=>{
     console.log(resp)
     this.atletas();   
+  }
+  , (error) => {
+    // Manejo de errores HTTP
+    if (error.status === 401) {
+
+      this.mensajeError('Se ha producido un inconveniente al momento de la autenticacion, inicia sesion e intente de nuevo', 'error');
+      this.secretariaService.logOut();
+      this.router.navigate(['/login'])
+
+    } else if (error.status === 403) {
+
+      this.mensajeError('No tienes permiso para acceder a este componente.', 'warning');
+      this.atletas();
+    } else if (error.status === 404) {
+      this.mensajeError('Recurso no encontrado.', 'warning');
+
+    } else if (error.status === 500) {
+      this.mensajeError('Error en el servidor, intente nuevamente.', 'warning');
+
+    } else {
+      this.mensajeError('Error desconocido.', 'warning');
+    }
   })
 
    }
 
+   mensajeError(mensaje: any, icono: any) {
+    Swal.fire({
+      title: mensaje,
+      icon: icono,
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Aceptar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log('Ejecutando función...');
+        // Lógica para ejecutar la función
+      }
+    }).then(() => {
+      console.log('Modal cerrado');
+      // Lógica que se ejecuta al cerrar el modal
+    });
+  }
 
 
 }

@@ -5,8 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SecretariaService } from '../../services/secretaria.service';
 import { AtletaI } from '../../../shared/Models/atleta.interface';
-
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-editar-atleta',
@@ -27,7 +26,6 @@ export class EditarAtletaComponent implements OnInit {
 ngOnDestroy(): void {
 this.mobileQuery.removeListener(this._mobileQueryListener);
 }
-shouldRun = true;
 
   constructor(public dialog: MatDialog, private _ruta:ActivatedRoute,private fb:FormBuilder,
      private _secretariaservice:SecretariaService, private router:Router,
@@ -102,8 +100,7 @@ this.router.navigate(['/secretaria/atletas'])
  datosAtleta(){
   this._secretariaservice.detalleAtleta(this.id).subscribe(resp=>{
     this.atletas = resp;
-    console.log(resp)
-
+  
     this.formulario.patchValue({
       name:resp.name,
       lastName: resp.lastName,
@@ -133,6 +130,27 @@ this.router.navigate(['/secretaria/atletas'])
       isActive: resp.isActive
     })
     // console.log(this.formulario.value)
+  }, (error) => {
+    // Manejo de errores HTTP
+    if (error.status === 401) {
+
+      this.mensajeError('Se ha producido un inconveniente al momento de la autenticacion, inicia sesion e intente de nuevo', 'error');
+      this._secretariaservice.logOut();
+      this.router.navigate(['/login'])
+
+    } else if (error.status === 403) {
+
+      this.mensajeError('No tienes permiso para acceder a este componente.', 'warning');
+      this.atletasR();
+    } else if (error.status === 404) {
+      this.mensajeError('Recurso no encontrado.', 'warning');
+
+    } else if (error.status === 500) {
+      this.mensajeError('Error en el servidor, intente nuevamente.', 'warning');
+
+    } else {
+      this.mensajeError('Error desconocido.', 'warning');
+    }
   }) 
  }
 
@@ -145,5 +163,21 @@ atletasR(){
   this.router.navigate(['/secretaria/atletas'])
 }
 
-
+mensajeError(mensaje: any, icono: any) {
+  Swal.fire({
+    title: mensaje,
+    icon: icono,
+    showCancelButton: false,
+    confirmButtonColor: '#3085d6',
+    confirmButtonText: 'Aceptar',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      console.log('Ejecutando función...');
+      // Lógica para ejecutar la función
+    }
+  }).then(() => {
+    console.log('Modal cerrado');
+    // Lógica que se ejecuta al cerrar el modal
+  });
+}
 }

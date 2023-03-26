@@ -10,10 +10,11 @@ import { NuevoAtletaComponent } from './components/nuevo-atleta/nuevo-atleta.com
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TurnosComponent } from './components/turnos/turnos.component';
 import { EditarAtletaComponent } from './components/editar-atleta/editar-atleta.component';
-import { CrearTurnoComponent } from './components/crear-turno/crear-turno.component';
+// import { CrearTurnoComponent } from './components/crear-turno/crear-turno.component';
 import { NuevoTurnoComponent } from './components/nuevo-turno/nuevo-turno.component';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SecretariaService } from './services/secretaria.service';
+import { EditarTurnoComponent } from './components/editar-turno/editar-turno.component';
 
 
 @NgModule({
@@ -24,8 +25,9 @@ import { SecretariaService } from './services/secretaria.service';
     NuevoAtletaComponent,
     TurnosComponent,
     EditarAtletaComponent,
-    CrearTurnoComponent,
-    NuevoTurnoComponent
+    // CrearTurnoComponent,
+    NuevoTurnoComponent,
+    EditarTurnoComponent
   ],
   imports: [
     CommonModule,
@@ -35,7 +37,7 @@ import { SecretariaService } from './services/secretaria.service';
     ReactiveFormsModule
   ], 
   providers:[
-     {provide: HTTP_INTERCEPTORS,useClass:SecretariaService,multi:true}
+    //  {provide: HTTP_INTERCEPTORS,useClass:SecretariaService,multi:true}
   ]
 })
 export class SecretariaModule { }

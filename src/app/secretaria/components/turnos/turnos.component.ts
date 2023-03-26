@@ -1,17 +1,15 @@
 import { MediaMatcher } from '@angular/cdk/layout';
 import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
+import { MatBottomSheet } from '@angular/material/bottom-sheet';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { SecretariaService } from '../../services/secretaria.service';
+import { EditarTurnoComponent } from '../editar-turno/editar-turno.component';
+import Swal from 'sweetalert2';
 
-interface ATL  {
-  atleta:string,
-  lugar:string
-
- }
 
 @Component({
   selector: 'app-turnos',
@@ -24,11 +22,11 @@ export class TurnosComponent implements AfterViewInit {
   ELEMENT_DATA: any[] = [];
 
   atletas:any[]=[];
-  turnosPendientes:ATL[] =[];
+
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['id', 'atleta', 'lugar'];
+  displayedColumns: string[] = ['atleta', 'lugar', 'fecha', 'estado','editar'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
   mobileQuery: MediaQueryList;
@@ -38,6 +36,7 @@ export class TurnosComponent implements AfterViewInit {
   constructor(public dialog: MatDialog,
     private fb:FormBuilder,
     private router:Router,
+    private bottomSheet:MatBottomSheet,
     private _secretariaService:SecretariaService,
     changeDetectorRef: ChangeDetectorRef, media: MediaMatcher){
 
@@ -51,19 +50,39 @@ ngOnDestroy(): void {
   this.mobileQuery.removeListener(this._mobileQueryListener);
 }
 
-shouldRun = true;
+
   
   ngOnInit(): void {
-    // this._secretariaService.ObtenerTurnos().subscribe(resp=>{
-    //   this.turnosPendientes=resp
-    //   
-    //   
-    // }) 
+
     this._secretariaService.getTurnos().subscribe(resp=>{
-      this.ELEMENT_DATA=resp
-      this.dataSource.data=this.ELEMENT_DATA
-      console.log(resp)
-    })
+      resp.sort((a:any, b:any) => new Date(a.createdat).getTime() - new Date(b.createdat).getTime());
+      this.ELEMENT_DATA = resp;
+      this.dataSource.data = this.ELEMENT_DATA.reverse(); 
+    }, (error) => {
+      // Manejo de errores HTTP
+      if (error.status === 401) {
+  
+        this.mensajeError('Se ha producido un inconveniente al momento de la autenticacion, inicia sesion e intente de nuevo', 'error');
+        this._secretariaService.logOut();
+        this.router.navigate(['/login'])
+  
+      } else if (error.status === 403) {
+  
+        this.mensajeError('No tienes permiso para acceder a este componente.', 'warning');
+        window.location.replace('/secretaria/atletas');
+
+      } else if (error.status === 404) {
+        this.mensajeError('Recurso no encontrado.', 'warning');
+  
+      } else if (error.status === 500) {
+        this.mensajeError('Error en el servidor, intente nuevamente.', 'warning');
+  
+      } else {
+        this.mensajeError('Error desconocido.', 'warning');
+      }
+    }
+    );
+    
       
     }
    
@@ -72,14 +91,15 @@ shouldRun = true;
     this.dataSource.paginator = this.paginator;
 
   }
-  
-
-  crearTurno(){
-    this.router.navigate(['/secretaria/nuevo-turno']);
-  }
 
   envio(id:number){
     this.router.navigate(['/secretaria/atleta-detalle', id])
+    }
+
+    EditarTurno(id:number){
+      this.bottomSheet.open(EditarTurnoComponent,{
+        data:id
+      });
     }
 
     applyFilter(event: Event) {
@@ -99,11 +119,23 @@ shouldRun = true;
     this.router.navigate(['/secretaria/turnos'])
   }
     
-  // obtenerTurnos(){
-  //   this._secretariaService.ObtenerTurnos().subscribe(resp=>{
-  //     this.atletas=resp
-  //   })
-  // }
+  mensajeError(mensaje: any, icono: any) {
+    Swal.fire({
+      title: mensaje,
+      icon: icono,
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Aceptar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log('Ejecutando función...');
+        // Lógica para ejecutar la función
+      }
+    }).then(() => {
+      console.log('Modal cerrado');
+      // Lógica que se ejecuta al cerrar el modal
+    });
+  }
 
     
 }

@@ -1,5 +1,5 @@
 
-<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" *ngIf="shouldRun">
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
   <mat-toolbar color="primary" class="example-toolbar">
   
     <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
@@ -20,7 +20,7 @@
     <mat-sidenav-content>
       
       <mat-card> 
-
+        <h2>Listado de atletas</h2>
     
         <mat-form-field >
             <mat-label>Buscar</mat-label>
@@ -52,7 +52,7 @@
               <!-- disciplina Column -->
               <ng-container matColumnDef="discipline">
                 <th mat-header-cell *matHeaderCellDef> Disciplina </th>
-                <td mat-cell *matCellDef="let element"> {{element.discipline.name | json}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.discipline.name}} </td>
               </ng-container>
     
               <ng-container matColumnDef="mas">

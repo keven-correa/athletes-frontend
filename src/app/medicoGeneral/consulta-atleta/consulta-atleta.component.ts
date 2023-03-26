@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MedicoGeneralService } from '../services/medico-general.service';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material/dialog';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-consulta-atleta',
@@ -47,7 +48,29 @@ shouldRun = true;
 
     this.medicoGeneralService.detalleAtleta(this.id).subscribe(resp=>{
       this.atletas=resp
-    })
+    }, (error) => {
+      // Manejo de errores HTTP
+      if (error.status === 401) {
+  
+        this.mensajeError('Se ha producido un inconveniente al momento de la autenticacion, inicia sesion e intente de nuevo', 'error');
+        this.medicoGeneralService.logOut();
+        this.router.navigate(['/login'])
+  
+      } else if (error.status === 403) {
+  
+        this.mensajeError('No tienes permiso para acceder a este componente.', 'warning');
+        this.atletasR();
+      } else if (error.status === 404) {
+        this.mensajeError('Recurso no encontrado.', 'warning');
+  
+      } else if (error.status === 500) {
+        this.mensajeError('Error en el servidor, intente nuevamente.', 'warning');
+  
+      } else {
+        this.mensajeError('Error desconocido.', 'warning');
+      }
+    }
+    )
 
     //Convertir el id a int
     let identificador = Number(this.id)
@@ -85,5 +108,22 @@ enviar(){
       this.router.navigate(['/medico-general/atletas'])
     }
     
+    mensajeError(mensaje: any, icono: any) {
+      Swal.fire({
+        title: mensaje,
+        icon: icono,
+        showCancelButton: false,
+        confirmButtonColor: '#3085d6',
+        confirmButtonText: 'Aceptar',
+      }).then((result) => {
+        if (result.isConfirmed) {
+          console.log('Ejecutando función...');
+          // Lógica para ejecutar la función
+        }
+      }).then(() => {
+        console.log('Modal cerrado');
+        // Lógica que se ejecuta al cerrar el modal
+      });
+    }
 
 }

@@ -10,6 +10,7 @@ import { TerapiaComponent } from './terapiaFisica/components/terapia/terapia.com
 import { EvaluacionesDetalleComponent } from './terapiaFisica/components/evaluaciones-detalle/evaluaciones-detalle.component';
 import { NuevaTerapiaComponent } from './terapiaFisica/components/nueva-terapia/nueva-terapia.component';
 import { EvaluacionesPorAtletaComponent } from './terapiaFisica/components/evaluaciones-por-atleta/evaluaciones-por-atleta.component';
+import { TurnosComponent } from './terapiaFisica/components/turnos/turnos.component';
 
 const routes: Routes = [
   {
@@ -24,7 +25,8 @@ const routes: Routes = [
       {path:'terapia-detalle/:id',component:TerapiaDetalleComponent},
       {path:'evaluacion/:id',component:EvaluacionComponent},
       {path:'evaluaciones-atleta/:id',component:EvaluacionesPorAtletaComponent},
-      {path:'evaluacion-Detalle/:id',component:EvaluacionesDetalleComponent}
+      {path:'evaluacion-Detalle/:id',component:EvaluacionesDetalleComponent},
+      {path:'turnos',component:TurnosComponent}
     ]
   },
   {path:'**', redirectTo:'atletas'}
