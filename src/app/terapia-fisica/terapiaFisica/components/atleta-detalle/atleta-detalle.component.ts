@@ -64,10 +64,6 @@ this.edad=(calculateAge(dia))
 this.fechaAtleta = this.atletas.dateOfBirth.toString().substring(0,10);
 }
 
-
-
-
-
  //Navegar en el menu
  turnos(){
   this.router.navigate(['/terapia-fisica/turnos'])
@@ -95,12 +91,12 @@ terapia(id:any){
   this.router.navigate(['/terapia-fisica/historial', this.id])
  }
 
- analitica(id:number){
-  this.router.navigate(['/medico-general/analitica', this.id])
+ evaluaciones(){
+  this.router.navigate(['/terapia-fisica/evaluaciones-atleta', this.id])
  }
 
 //  cargarDatos(id:number){
-  
+
 //   const identificador:number=this.id;
 //   this._terapiaFisicaService.ObtenerAtletas().subscribe(resp=>{
 //     for (let i = 0; i < resp.length; i++) {

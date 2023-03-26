@@ -52,6 +52,10 @@ export class AtletasComponent implements  AfterViewInit {
       this.ELEMENT_DATA=resp
       this.dataSource.data=this.ELEMENT_DATA
       //console.log(this.ELEMENT_DATA)
+    },err=>{
+      if(err){
+
+      }
     })
   }
   

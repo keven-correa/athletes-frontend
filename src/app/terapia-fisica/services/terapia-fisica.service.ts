@@ -33,14 +33,38 @@ export class TerapiaFisicaService {
     const direccion = this.url + "appointment"
     return this.http.get<any>(direccion,this.options)
   }
+  NuevaEvaluacion(form:any): Observable<any> {
+    const direccion = this.url + "evaluation"
+    return this.http.post<any>(direccion,form,this.options)
+  }
 
-  NuevaConsulta(form:any): Observable<any> {
-    const direccion = this.url + "appointment"
+  EvaluacionesPorAtleta(id:any): Observable<any> {
+    const direccion = this.url + "evaluation/evaluations-by-athlete/"+id
+    return this.http.get<any>(direccion,this.options)
+  }
+
+  Evaluaciones(): Observable<any> {
+    const direccion = this.url + "evaluation"
+    return this.http.get<any>(direccion,this.options)
+  }
+
+  EvaluacionDetalle(id:any): Observable<any> {
+    const direccion = this.url + "evaluation/"+id
+    return this.http.get<any>(direccion,this.options)
+  }
+
+  NuevaTerapia(form:any): Observable<any> {
+    const direccion = this.url + "therapy"
     return this.http.post<any>(direccion,form,this.options)
   }
 
   ConsultaDetalle(id:any): Observable<any> {
     const direccion = this.url + "appointment/"+id
+    return this.http.get<any>(direccion,this.options)
+  }
+
+  TerapiasPorAtleta(id:any): Observable<any> {
+    const direccion = this.url + "therapy/get-therapies-by-athlete/"+id
     return this.http.get<any>(direccion,this.options)
   }
 

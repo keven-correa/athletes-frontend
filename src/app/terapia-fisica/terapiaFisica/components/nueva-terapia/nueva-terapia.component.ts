@@ -1,0 +1,155 @@
+import { MediaMatcher } from '@angular/cdk/layout';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
+import { ActivatedRoute, Router, Params } from '@angular/router';
+import { TerapiaFisicaService } from 'src/app/terapia-fisica/services/terapia-fisica.service';
+import Swal from 'sweetalert2';
+
+
+@Component({
+  selector: 'app-nueva-terapia',
+  templateUrl: './nueva-terapia.component.html',
+  styleUrls: ['./nueva-terapia.component.css']
+})
+export class NuevaTerapiaComponent {
+
+  id:number=0;
+  idTerapeuta!:number
+  formulario!:FormGroup;
+  detallesEvaluacion!:any;
+  cantidadTerapiasRegistradas:any
+  mobileQuery: MediaQueryList; 
+  
+  btnNuevaTerapia:boolean=false;
+
+  private _mobileQueryListener: () => void;
+  
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  
+  constructor(private fb:FormBuilder,
+    public dialog: MatDialog,
+              private _ruta:ActivatedRoute,
+              private _terapiaFisicaService:TerapiaFisicaService,
+              private router:Router,
+              changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+  
+                this.mobileQuery = media.matchMedia('(max-width: 600px)');
+                this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+                this.mobileQuery.addListener(this._mobileQueryListener);
+   }
+  
+    ngOnInit(){
+    this._ruta.params.subscribe((params:Params)=>{
+      this.id=params['id'];
+      
+    });
+
+    this.idTerapeuta=Number(localStorage.getItem('idTerapeuta'));
+    
+    this._terapiaFisicaService.EvaluacionDetalle(this.id).subscribe(resp=>{
+      this.detallesEvaluacion=resp 
+      console.log(resp)    
+    },(error) => {
+      // Manejo de errores HTTP
+      if (error.status === 401) {
+        console.log();
+      this.mensajeError('Error: Autenticación fallida','warning');
+
+      } else if (error.status === 403) {
+        console.log();
+      this.mensajeError('Error: Acceso denegado','warning');
+
+      } else if (error.status === 404) {
+        console.log('Error: Recurso no encontrado');
+      } else if (error.status === 500) {
+        console.log('Error: Error interno del servidor');
+      } else {
+        console.log('Error desconocido');
+      }
+
+    }
+    ) 
+
+    this._terapiaFisicaService.TerapiasPorAtleta(Number(localStorage.getItem('idAtleta'))).subscribe(resp=>{
+      console.log(resp)
+        this.cantidadTerapiasRegistradas= resp
+    })
+  
+    this.formulario=this.fb.group({    
+      schedulingDate:[new Date,Validators.required],
+      therapist:[this.idTerapeuta,Validators.required],
+      remarks:['',Validators.required],
+      athlete:[Number(localStorage.getItem("idAtleta")),Validators.required],
+      evaluation:[Number(this.id),Validators.required],
+      
+    })
+
+    console.log(Number((<HTMLInputElement>document.getElementById("tbxCantidadTerapiaR")).value) )
+  }
+  
+  ngOnDestroy(): void {
+    this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
+  
+// Declara la función en el componente
+validarCantidadTerapiasRegistradas(): boolean {
+  // Comprueba si las propiedades necesarias están definidas
+  if (this.cantidadTerapiasRegistradas && this.detallesEvaluacion && this.detallesEvaluacion.numberOfTherapies) {
+    // Comprueba si la longitud del array es menor que numberOfTherapies
+    return this.cantidadTerapiasRegistradas.length < this.detallesEvaluacion.numberOfTherapies;
+  } else {
+    // Si alguna propiedad no está definida, devuelve false
+    return false;
+  }
+}
+
+  
+  //Navegar en el menu
+  turnos(){
+    this.router.navigate(['/terapia-fisica/turnos'])
+  }
+  
+  atletasR(){
+    this.router.navigate(['/terapia-fisica/atletas'])
+  }
+  
+  referimientos(){
+    this.router.navigate(['/terapia-fisica/referimientos'])
+  }
+  
+  guardar(){
+    console.log(this.formulario.value)
+    this._terapiaFisicaService.NuevaTerapia(this.formulario.value).subscribe(resp=>{
+      console.log(resp)
+      this.router.navigateByUrl("/terapia-fisica/atletas")
+    },err=>{
+      console.log(err)
+    })
+  
+  }
+
+  mensajeError(mensaje:any, icono:any) {
+    Swal.fire({
+      title: mensaje,
+      icon: icono,
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Ok',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log('Ejecutando función...');
+        // Lógica para ejecutar la función
+      }
+    }).then(() => {
+      console.log('Modal cerrado');
+      // Lógica que se ejecuta al cerrar el modal
+    });
+  }
+  
+  
+  
+
+}

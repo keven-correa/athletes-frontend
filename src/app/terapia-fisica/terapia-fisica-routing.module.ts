@@ -7,6 +7,9 @@ import { HistorialComponent } from './terapiaFisica/components/historial/histori
 import { ReferimientosComponent } from './terapiaFisica/components/referimientos/referimientos.component';
 import { TerapiaDetalleComponent } from './terapiaFisica/components/terapia-detalle/terapia-detalle.component';
 import { TerapiaComponent } from './terapiaFisica/components/terapia/terapia.component';
+import { EvaluacionesDetalleComponent } from './terapiaFisica/components/evaluaciones-detalle/evaluaciones-detalle.component';
+import { NuevaTerapiaComponent } from './terapiaFisica/components/nueva-terapia/nueva-terapia.component';
+import { EvaluacionesPorAtletaComponent } from './terapiaFisica/components/evaluaciones-por-atleta/evaluaciones-por-atleta.component';
 
 const routes: Routes = [
   {
@@ -17,8 +20,11 @@ const routes: Routes = [
       {path:'referimientos',component:ReferimientosComponent},
       {path:'historial/:id',component:HistorialComponent},
       {path:'terapia/:id',component:TerapiaComponent},
+      {path:'nueva-terapia/:id',component:NuevaTerapiaComponent},
       {path:'terapia-detalle/:id',component:TerapiaDetalleComponent},
-      {path:'evaluacion/:id',component:EvaluacionComponent}
+      {path:'evaluacion/:id',component:EvaluacionComponent},
+      {path:'evaluaciones-atleta/:id',component:EvaluacionesPorAtletaComponent},
+      {path:'evaluacion-Detalle/:id',component:EvaluacionesDetalleComponent}
     ]
   },
   {path:'**', redirectTo:'atletas'}

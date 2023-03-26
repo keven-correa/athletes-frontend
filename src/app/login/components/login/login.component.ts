@@ -41,7 +41,6 @@ export class LoginComponent implements OnInit {
     };
     this.loginservice.getUsuarios(body).subscribe((data) => {
       const respuesta: any = data;
-
         if (respuesta.role == 'Administrator') {
           localStorage.setItem('token', respuesta.token);
 
@@ -57,12 +56,27 @@ export class LoginComponent implements OnInit {
           window.location.replace('/medico-general/atletas');
         } else if (respuesta.role == 'Fisioterapeuta') {
           localStorage.setItem('token', respuesta.token);
+          localStorage.setItem('idTerapeuta', respuesta.id);
 
           window.location.replace('/terapia-fisica/atletas');
         }
       
-    },error =>{console.log(error.statusText)
-      this.mensajeError()
+    },(error) => {
+      // Manejo de errores HTTP
+      if (error.status === 401) {
+        console.log('Error: Autenticación fallida');
+      } else if (error.status === 403) {
+        console.log('Error: Acceso denegado');
+      } else if (error.status === 404) {
+        console.log('Error: Recurso no encontrado');
+      } else if (error.status === 500) {
+        console.log('Error: Error interno del servidor');
+      } else {
+        console.log('Error desconocido');
+      }
+      
+      // Mostrar mensaje de error en la interfaz de usuario
+      this.mensajeError();
     }
     )   ;
   }

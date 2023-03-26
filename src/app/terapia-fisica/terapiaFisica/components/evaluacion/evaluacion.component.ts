@@ -14,16 +14,14 @@ import { TerapiaFisicaService } from 'src/app/terapia-fisica/services/terapia-fi
 })
 export class EvaluacionComponent implements OnInit {
 
-id:number=0
+id:number=0;
+idTerapeuta:any= localStorage.getItem('idTerapeuta');
 formulario!:FormGroup;
-consulta:any;
-idAtleta:any;
+consulta!:any;
 
 mobileQuery: MediaQueryList; 
 
 private _mobileQueryListener: () => void;
-
-
 
 @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -39,35 +37,26 @@ constructor(private fb:FormBuilder,
               this.mobileQuery.addListener(this._mobileQueryListener);
  }
 
-
-
-
   ngOnInit(){
   this._ruta.params.subscribe((params:Params)=>{
     this.id=params['id'];
     
   });
-
-  this.formulario=this.fb.group({
-    idAtleta:[this.id],
-    nombre:['',Validators.required],
-    edad:['',Validators.required],
-    disciplina:['',Validators.required],
-    apellido:['',Validators.required],
-    fechaNacimiento:['',Validators.required],
-    lugarNacimiento:['',Validators.required],
-    sexo:['',Validators.required],
-    dxMedico:['',Validators.required],
-    dxterapeutico:['',Validators.required],
-    dxHisEnfermedad:['',Validators.required],
-    ROM:['',Validators.required],
-    dolor:['',Validators.required],
-    cantidadTerapia:['',Validators.required],
-    observaciones:[''],
-  }) 
+  
 this._terapiaFisicaService.ConsultaDetalle(this.id).subscribe(resp=>{
-  this.consulta=resp;
+  this.consulta=resp; 
 })
+
+  this.formulario=this.fb.group({    
+    therapeuticDiagnosis:['',Validators.required],
+    treatment:['',Validators.required],
+    ROM:[0,Validators.required],
+    remarks:['',Validators.required],
+    painLevel:['',Validators.required],
+    numberOfTherapies:['',Validators.required],
+    athlete:[Number(localStorage.getItem("idAtleta")),Validators.required],    
+  }) 
+
 }
 
 ngOnDestroy(): void {
@@ -86,12 +75,17 @@ atletasR(){
 
 referimientos(){
   this.router.navigate(['/terapia-fisica/referimientos'])
-
 }
 
 guardar(){
-  // this._terapiaFisicaService.AgregarTerapia(this.formulario.value);
-  this.router.navigateByUrl("/terapia-fisica/atletas")
+  console.log(this.formulario.value)
+  this._terapiaFisicaService.NuevaEvaluacion(this.formulario.value).subscribe(resp=>{
+    console.log(resp)
+    this.router.navigateByUrl("/terapia-fisica/atletas")
+  },err=>{
+    console.log(err)
+  })
+
 }
 
 }

@@ -1,21 +1,18 @@
 import { MediaMatcher } from '@angular/cdk/layout';
-import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
-import { Params, Router, ActivatedRoute } from '@angular/router';
-import { filter } from 'rxjs';
-import { ReferimientoService } from 'src/app/terapia-fisica/services/referimiento.service';
-import { TerapiaFisicaService } from '../../../services/terapia-fisica.service';
-
-
+import { ActivatedRoute, Router, Params } from '@angular/router';
+import { TerapiaFisicaService } from 'src/app/terapia-fisica/services/terapia-fisica.service';
 
 @Component({
-  selector: 'app-referimientos',
-  templateUrl: './referimientos.component.html',
-  styleUrls: ['./referimientos.component.css']
+  selector: 'app-evaluaciones-por-atleta',
+  templateUrl: './evaluaciones-por-atleta.component.html',
+  styleUrls: ['./evaluaciones-por-atleta.component.css']
 })
-export class ReferimientosComponent implements OnInit {
+export class EvaluacionesPorAtletaComponent {
+  id:any
   ELEMENT_DATA: any[] = [];
 
   mobileQuery: MediaQueryList; 
@@ -26,7 +23,7 @@ export class ReferimientosComponent implements OnInit {
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['id', 'name', 'lastName', 'discipline','date','mas'];
+  displayedColumns: string[] = ['id', 'fecha','mas'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   
 
@@ -49,16 +46,20 @@ this.mobileQuery.removeListener(this._mobileQueryListener);
 
 
 ngOnInit(): void {
-//  this._ruta.params.subscribe((params:Params)=>{
-//    this.id=params['id'];
-//  })
-  this.terapiaFisicaService.Referimientos().subscribe(resp=>{
+ this._ruta.params.subscribe((params:Params)=>{
+   this.id=params['id'];
+ })
+  // this.terapiaFisicaService.Referimientos().subscribe(resp=>{
+  //   this.ELEMENT_DATA=resp
+  //   this.dataSource.data=this.ELEMENT_DATA
+  //   console.log(resp)
+
+  // })
+
+  this.terapiaFisicaService.EvaluacionesPorAtleta(this.id).subscribe(resp=>{
     this.ELEMENT_DATA=resp
     this.dataSource.data=this.ELEMENT_DATA
     console.log(resp)
-
-    const cantidad = this.ELEMENT_DATA.filter(a=>a.created_by.id==17      )
-    console.log(cantidad)
   })
     
      
@@ -68,19 +69,18 @@ ngOnInit(): void {
 envio(id:number){
 
   this.terapiaFisicaService.ConsultaDetalle(id).subscribe(resp=>{
-    const respuesta= resp.athlete.id
-    // console.log(respuesta)
+
+    console.log(this.id)
 
     if(localStorage.getItem("idAtleta")){
       localStorage.removeItem("idAtleta")
     }{
-      localStorage.setItem("idAtleta",respuesta)
+      localStorage.setItem("idAtleta",this.id)
     }
 
-    // console.log(localStorage.getItem("idAtleta"))
-
   })
-  this.router.navigate(['/terapia-fisica/evaluacion', id])
+  console.log(id)
+  this.router.navigate(['/terapia-fisica/evaluacion-Detalle', id])
 
   }
 
@@ -109,10 +109,3 @@ referimientos(){
 }
 
 }
-  
-
-
-
-
-
-

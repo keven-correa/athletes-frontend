@@ -13,6 +13,9 @@ import { TerapiaComponent } from './terapiaFisica/components/terapia/terapia.com
 import { ReactiveFormsModule } from '@angular/forms';
 import { EvaluacionComponent } from './terapiaFisica/components/evaluacion/evaluacion.component';
 import { TerapiaDetalleComponent } from './terapiaFisica/components/terapia-detalle/terapia-detalle.component';
+import { EvaluacionesDetalleComponent } from './terapiaFisica/components/evaluaciones-detalle/evaluaciones-detalle.component';
+import { NuevaTerapiaComponent } from './terapiaFisica/components/nueva-terapia/nueva-terapia.component';
+import { EvaluacionesPorAtletaComponent } from './terapiaFisica/components/evaluaciones-por-atleta/evaluaciones-por-atleta.component';
 
 
 @NgModule({
@@ -24,7 +27,10 @@ import { TerapiaDetalleComponent } from './terapiaFisica/components/terapia-deta
     HistorialComponent,
     TerapiaComponent,
     EvaluacionComponent,
-    TerapiaDetalleComponent
+    TerapiaDetalleComponent,
+    EvaluacionesDetalleComponent,
+    NuevaTerapiaComponent,
+    EvaluacionesPorAtletaComponent
   ],
   imports: [
     CommonModule,

@@ -25,59 +25,26 @@
     <form class="example-form" [formGroup]="formulario"  >
     
         
-            <h2 class="text-white">Datos personales</h2>
+            <h2 class="text-white"> Nueva terapia</h2>
         
-    
-        <table class="example-full-width" cellspacing="3">
-            <tr>
-    
-                <td>
-                    <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Nombres</mat-label>
-                        <input disabled  [value]="consulta.athlete.name" matInput type="text">
-                    </mat-form-field>
-                </td>
-    
-                <td>
-                    <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Apellidos</mat-label>
-                        <input disabled  [value]="consulta.athlete.lastName" matInput type="text">
-                    </mat-form-field>
-                </td>    
-                
-                <td>
-                    <mat-form-field class="example-full-width" appearance="fill">
-                        <mat-label>Disciplina</mat-label>
-                        <input disabled  [value]="consulta.athlete.discipline.name" matInput type="text">
-                    </mat-form-field>
-                </td>
 
-    
-    
-            </tr>
-        </table>
-    
-        <div class="full">
-            <h3></h3>
-        </div>
-        
         <table class="example-full-width" cellspacing="3">
             <tr>
                 
-                <td>
+                <!-- <td>
                     <h2 class="text-white">Diagnostico medico</h2>
                     <mat-form-field class="example-full-width" appearance="fill" >
                         <mat-label>DX Medico: </mat-label>
                         <textarea matInput disabled  [value]="consulta.diagnostic"  rows="5"></textarea >
                     </mat-form-field>
                 </td>
-    
+     -->
                 <td>
                     <h2 class="text-white">Tratamiento</h2>
 
                     <mat-form-field class="example-full-width" appearance="fill" >
                         <mat-label>Historia de la enfermedad y tratamiento: </mat-label>
-                        <textarea matInput class="text-white" formControlName="treatment" rows="5"></textarea >
+                        <textarea matInput class="text-white" value="{{detallesEvaluacion.treatment}}" disabled="true" rows="5"></textarea >
                     </mat-form-field>
                 </td>
                 
@@ -100,7 +67,7 @@
 
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>DX Terapeutico: </mat-label>
-                        <textarea matInput class="text-white" formControlName="therapeuticDiagnosis"  rows="5"></textarea>
+                        <textarea matInput class="text-white" value="{{detallesEvaluacion.therapeuticDiagnosis}}" disabled="true" rows="5"></textarea>
                     </mat-form-field>
                 </td>
                 
@@ -117,33 +84,33 @@
                 <td>
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>ROM</mat-label>
-                        <input class="text-white" formControlName="ROM" matInput type="number">
+                        <input class="text-white" value="{{detallesEvaluacion.ROM}}" matInput disabled="true" type="number">
                     </mat-form-field>
                 </td>
     
                 <td>
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Dolor</mat-label>
-                        <input class="text-white" formControlName="painLevel" matInput type="number">
+                        <input class="text-white" value="{{detallesEvaluacion.painLevel}}" matInput disabled="true" type="number">
                     </mat-form-field>
                 </td>
 
                 <td>
                     <mat-form-field class="example-full-width" appearance="fill">
                         <mat-label>Cantidad de terapias</mat-label>
-                        <input class="text-white" formControlName="numberOfTherapies" matInput type="number">
+                        <input class="text-white" value="{{detallesEvaluacion.numberOfTherapies}}" matInput disabled="true" type="number">
                     </mat-form-field>
                 </td>
     
                 <td>
                     <mat-form-field class="example-full-width" appearance="fill" >
-                        <mat-label>Observaciones: </mat-label>
-                        <textarea matInput class="text-white" formControlName="remarks" rows="1"></textarea >
+                        <mat-label>Terapias registradas: </mat-label>
+                        <textarea matInput class="text-white" value="{{cantidadTerapiasRegistradas.length}}"  disabled="true" rows="1"></textarea >
                     </mat-form-field>
                 </td>                
                 
             </tr>
-            <button mat-flat-button (click)="guardar()" class="btn btn-lg" color="primary" style="margin-left: 30px;" type="submit">Guardar </button>
+            <button mat-flat-button *ngIf="validarCantidadTerapiasRegistradas()" (click)="guardar()" class="btn btn-lg" color="primary" style="margin-left: 30px;" type="submit">Registrar terapia</button>
 
         </table> 
         
