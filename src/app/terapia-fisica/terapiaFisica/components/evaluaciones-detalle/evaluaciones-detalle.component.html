@@ -1,11 +1,131 @@
 
-<button mat-flat-button color="primary" class="btn btn-primary" (click)="mostrar()" >Ver todas</button>
-<button mat-flat-button color="primary" class="btn btn-primary" (click)="mostrarDetalles()" >Ver detalles</button>
-<button mat-flat-button color="primary" class="btn btn-primary" (click)="mostrarPorAtleta()" >Ver por atleta</button>
 
 
 
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
+    <mat-toolbar color="primary" class="example-toolbar">
+    
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <app-menu style="width: 100%"></app-menu>
+  
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="example-sidenav-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+        <mat-nav-list>
+          <a mat-list-item (click)="atletasR()">Atletas</a>
+        <a mat-list-item (click)="turnos()">Turnos</a>
+        <a mat-list-item (click)="referimientos()">Referimientos</a>
+  
+        </mat-nav-list>
+      </mat-sidenav>  
+      <mat-sidenav-content>
+
+<div class="container-fluid">
+
+    <form class="example-form" [formGroup]="formulario"  >
+    
 <button mat-flat-button color="primary" class="btn btn-primary" (click)="nuevaTerapia()" >Nueva terapia</button>
+        
+            <h2 class="text-white">Detalles de la evaluacion</h2>
+
+        
+        <table class="example-full-width" cellspacing="3">
+            <tr>
+                
+                <td>
+                    <h2 class="text-white">Diagnostico medico</h2>
+                    <mat-form-field class="example-full-width" appearance="fill" >
+                        <mat-label>DX Medico: </mat-label>
+                        <textarea matInput disabled  [value]="consulta.diagnostic"  rows="5"></textarea >
+                    </mat-form-field>
+                </td>
+    
+                <td>
+                    <h2 class="text-white">Tratamiento</h2>
+
+                    <mat-form-field class="example-full-width" appearance="fill" >
+                        <mat-label>Historia de la enfermedad y tratamiento: </mat-label>
+                        <textarea matInput class="text-white" [value]="detallesEvaluacion.treatment" disabled rows="5"></textarea >
+                    </mat-form-field>
+                </td>
+                
+    
+            </tr>
+        </table>
+    
+        <div class="full">
+            <h3></h3>
+        </div>
+
+        
+        <table class="example-full-width" cellspacing="3">
+            <tr>
+    
+
+
+                <td>
+                    <h2 class="text-white">Diagnostico terapeutico</h2>
+
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>DX Terapeutico: </mat-label>
+                        <textarea matInput class="text-white" [value]="detallesEvaluacion.therapeuticDiagnosis" disabled   rows="5"></textarea>
+                    </mat-form-field>
+                </td>
+                
+            </tr>
+        </table>
+    
+        <div class="full">
+            <h3></h3>
+        </div>
+    
+        <table class="example-full-width "  cellspacing="3">
+            <tr>
+    
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>ROM</mat-label>
+                        <input class="text-white" [value]="detallesEvaluacion.ROM" disabled matInput type="number">
+                    </mat-form-field>
+                </td>
+    
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Dolor</mat-label>
+                        <input class="text-white" [value]="detallesEvaluacion.painLevel" disabled  matInput type="number">
+                    </mat-form-field>
+                </td>
+
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill">
+                        <mat-label>Cantidad de terapias</mat-label>
+                        <input class="text-white" [value]="detallesEvaluacion.numberOfTherapies" disabled  matInput type="number">
+                    </mat-form-field>
+                </td>
+    
+                <td>
+                    <mat-form-field class="example-full-width" appearance="fill" >
+                        <mat-label>Observaciones: </mat-label>
+                        <textarea matInput class="text-white" [value]="detallesEvaluacion.remarks" disabled  rows="1"></textarea >
+                    </mat-form-field>
+                </td>                
+                
+            </tr>
+
+        </table> 
+        
+    </form>
+    
+
+</div>
+
+
+</mat-sidenav-content>
+</mat-sidenav-container>
+</div>
 
 
 

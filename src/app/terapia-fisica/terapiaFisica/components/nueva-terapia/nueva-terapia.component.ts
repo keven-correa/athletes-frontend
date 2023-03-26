@@ -18,7 +18,8 @@ export class NuevaTerapiaComponent {
   id:number=0;
   idTerapeuta!:number
   formulario!:FormGroup;
-  detallesEvaluacion!:any;
+  terapiasAtleta:any[]=[]
+  detallesEvaluacion:any;
   cantidadTerapiasRegistradas:any
   mobileQuery: MediaQueryList; 
   
@@ -49,6 +50,7 @@ export class NuevaTerapiaComponent {
     this.idTerapeuta=Number(localStorage.getItem('idTerapeuta'));
     
     this._terapiaFisicaService.EvaluacionDetalle(this.id).subscribe(resp=>{
+
       this.detallesEvaluacion=resp 
       console.log(resp)    
     },(error) => {
@@ -56,6 +58,8 @@ export class NuevaTerapiaComponent {
       if (error.status === 401) {
         console.log();
       this.mensajeError('Error: Autenticación fallida','warning');
+        this._terapiaFisicaService.logOut();
+    this.router.navigate(['/login'])
 
       } else if (error.status === 403) {
         console.log();
@@ -73,8 +77,11 @@ export class NuevaTerapiaComponent {
     ) 
 
     this._terapiaFisicaService.TerapiasPorAtleta(Number(localStorage.getItem('idAtleta'))).subscribe(resp=>{
-      console.log(resp)
-        this.cantidadTerapiasRegistradas= resp
+      console.log(resp,'Cantidad')
+      this.terapiasAtleta= resp
+
+        this.cantidadTerapiasRegistradas= this.terapiasAtleta.filter(x=>x.evaluation.id==this.id)
+        console.log(this.cantidadTerapiasRegistradas)
     })
   
     this.formulario=this.fb.group({    
@@ -86,7 +93,7 @@ export class NuevaTerapiaComponent {
       
     })
 
-    console.log(Number((<HTMLInputElement>document.getElementById("tbxCantidadTerapiaR")).value) )
+    // console.log(Number((<HTMLInputElement>document.getElementById("tbxCantidadTerapiaR")).value) )
   }
   
   ngOnDestroy(): void {
@@ -134,10 +141,9 @@ validarCantidadTerapiasRegistradas(): boolean {
     Swal.fire({
       title: mensaje,
       icon: icono,
-      showCancelButton: true,
+      showCancelButton: false,
       confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Ok',
+      confirmButtonText: 'Aceptar',
     }).then((result) => {
       if (result.isConfirmed) {
         console.log('Ejecutando función...');

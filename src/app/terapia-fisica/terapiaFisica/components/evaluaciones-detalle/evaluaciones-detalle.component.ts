@@ -1,6 +1,11 @@
-import { Component } from '@angular/core';
+import { MediaMatcher } from '@angular/cdk/layout';
+import { ChangeDetectorRef, Component, ViewChild } from '@angular/core';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { MatDialog } from '@angular/material/dialog';
+import { MatPaginator } from '@angular/material/paginator';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { TerapiaFisicaService } from '../../../services/terapia-fisica.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-evaluaciones-detalle',
@@ -8,41 +13,136 @@ import { TerapiaFisicaService } from '../../../services/terapia-fisica.service';
   styleUrls: ['./evaluaciones-detalle.component.css']
 })
 export class EvaluacionesDetalleComponent {
-  id:any;
 
   detallesEvaluacion:any
+  id:number=0;
+  idTerapeuta:any= localStorage.getItem('idTerapeuta');
+  formulario!:FormGroup;
+  consulta!:any;
 
+mobileQuery: MediaQueryList; 
 
-  constructor(private _ruta:ActivatedRoute, private terapiaFisicaService:TerapiaFisicaService,
-              private router:Router){
+private _mobileQueryListener: () => void;
 
+@ViewChild(MatPaginator) paginator!: MatPaginator;
+
+constructor(private fb:FormBuilder,
+  public dialog: MatDialog,
+            private _ruta:ActivatedRoute,
+            private _terapiaFisicaService:TerapiaFisicaService,
+            private router:Router,
+            changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
+
+              this.mobileQuery = media.matchMedia('(max-width: 600px)');
+              this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+              this.mobileQuery.addListener(this._mobileQueryListener);
+ }
+
+  ngOnInit(){
+  this._ruta.params.subscribe((params:Params)=>{
+    this.id=params['id'];
+    
+  });
+  
+this._terapiaFisicaService.ConsultaDetalle(this.id).subscribe(resp=>{
+  this.consulta=resp; 
+},(error) => {
+  // Manejo de errores HTTP
+  if (error.status === 401) {
+    console.log();
+  this.mensajeError('Error: Autenticación fallida','warning');
+    this._terapiaFisicaService.logOut();
+this.router.navigate(['/login'])
+
+  } else if (error.status === 403) {
+    console.log();
+  this.mensajeError('Error: Acceso denegado','warning');
+
+  } else if (error.status === 404) {
+    console.log('Error: Recurso no encontrado');
+  } else if (error.status === 500) {
+    console.log('Error: Error interno del servidor');
+  } else {
+    console.log('Error desconocido');
   }
+}
+)
+  this.formulario=this.fb.group({    
+    therapeuticDiagnosis:['',Validators.required],
+    treatment:['',Validators.required],
+    ROM:[0,Validators.required],
+    remarks:['',Validators.required],
+    painLevel:['',Validators.required],
+    numberOfTherapies:['',Validators.required],
+    athlete:[Number(localStorage.getItem("idAtleta")),Validators.required],    
+  }) 
 
-  ngOnInit(): void {
-    this._ruta.params.subscribe((params:Params)=>{
-      this.id=params['id'];
-    })
-
-    this.terapiaFisicaService.EvaluacionDetalle(this.id).subscribe(resp=>{
+      this._terapiaFisicaService.EvaluacionDetalle(this.id).subscribe(resp=>{
       this.detallesEvaluacion=resp     
-    }) 
+    },(error) => {
+      // Manejo de errores HTTP
+      if (error.status === 401) {
+        console.log();
+      this.mensajeError('Error: Autenticación fallida','warning');
+        this._terapiaFisicaService.logOut();
+    this.router.navigate(['/login'])
 
-   }
+      } else if (error.status === 403) {
+        console.log();
+      this.mensajeError('Error: Acceso denegado','warning');
 
-   mostrar(){
-    // console.log(this.evaluaciones)       
-   }
-   mostrarPorAtleta(){
-    // console.log(this.evaluacionesDeAtleta)       
+      } else if (error.status === 404) {
+        console.log('Error: Recurso no encontrado');
+      } else if (error.status === 500) {
+        console.log('Error: Error interno del servidor');
+      } else {
+        console.log('Error desconocido');
+      }
 
-   }
+    }
+    ) 
 
-   mostrarDetalles(){
-    console.log(this.detallesEvaluacion)   
-   }
+}
+
+ngOnDestroy(): void {
+  this.mobileQuery.removeListener(this._mobileQueryListener);
+}
+
+
+//Navegar en el menu
+turnos(){
+  this.router.navigate(['/terapia-fisica/turnos'])
+}
+
+atletasR(){
+  this.router.navigate(['/terapia-fisica/atletas'])
+}
+
+referimientos(){
+  this.router.navigate(['/terapia-fisica/referimientos'])
+}
 
    nuevaTerapia(){
     this.router.navigate(['terapia-fisica/nueva-terapia',this.id])
    }
+
+
+   mensajeError(mensaje:any, icono:any) {
+    Swal.fire({
+      title: mensaje,
+      icon: icono,
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Aceptar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log('Ejecutando función...');
+        // Lógica para ejecutar la función
+      }
+    }).then(() => {
+      console.log('Modal cerrado');
+      // Lógica que se ejecuta al cerrar el modal
+    });
+  }
 
 }
