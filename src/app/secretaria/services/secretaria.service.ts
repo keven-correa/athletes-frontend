@@ -60,6 +60,11 @@ export class SecretariaService {
     return this.http.patch<any>(direccion,form,this.options)
   }
 
+  getDisciplinas(): Observable<any> {
+    const direccion = this.url + "discipline/all"
+    return this.http.get<any>(direccion, this.options)
+  }
+
 
   logOut() {
     localStorage.clear();

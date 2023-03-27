@@ -22,7 +22,7 @@ export class TurnosComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['atleta', 'lugar', 'fecha', 'estado','editar'];
+  displayedColumns: string[] = ['atleta', 'lugar', 'fecha', 'estado','editar','referimiento'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
   mobileQuery: MediaQueryList;
@@ -80,9 +80,44 @@ ngOnDestroy(): void {
 
   }
 
+
   envio(id:number){
-    this.router.navigate(['/secretaria/atleta-detalle', id])
+    this.terapiafisicaService.ObtenerTurnoById(id).subscribe(resp=>{
+      console.log(resp.athleteid)
+
+        const ActualizarTurno={
+          status:1,
+          speciality:"Fisioterapeuta",
+          remarks:""
+        }    
+        this.terapiafisicaService.EditarTurno(id,ActualizarTurno).subscribe(resp=>{
+          console.log(resp)
+        })
+
+        this.router.navigate(['/terapia-fisica/evaluaciones-atleta', id])
+
+    })
+
     }
+
+    envioReferimientos(id:number){
+      this.terapiafisicaService.ObtenerTurnoById(id).subscribe(resp=>{
+        console.log(resp.athleteid)
+  
+          const ActualizarTurno={
+            status:1,
+            speciality:"Fisioterapeuta",
+            remarks:""
+          }    
+          this.terapiafisicaService.EditarTurno(id,ActualizarTurno).subscribe(resp=>{
+            console.log(resp)
+          })
+  
+          this.router.navigate(['/terapia-fisica/referimientos'])
+  
+      })
+  
+      }
 
     applyFilter(event: Event) {
       const filterValue = (event.target as HTMLInputElement).value;
@@ -100,6 +135,12 @@ ngOnDestroy(): void {
   turnos(){
     this.router.navigate(['/medico-general/turnos'])
   }
+
+  
+referimientos(){
+  this.router.navigate(['/terapia-fisica/referimientos'])
+
+}
     
   CerrarSesion(){
 

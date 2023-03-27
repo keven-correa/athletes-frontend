@@ -59,12 +59,19 @@ ngOnDestroy(): void {
     this.adminService.guardarUsuario(this.formulario.value).subscribe(resp=>{
       console.log(resp)
     })
-    this.Usuarios();
+    this.usuariosR();
   }
   //Redireccionar en el menu
-  Usuarios(){
-    this.router.navigate(['/administrador/usuarios'])
-  }  
+
+     disciplina(){
+      this.router.navigate(['/administrador/disciplinas'])
+    }
+
+    usuariosR(){
+      this.router.navigate(['/administrador/usuarios'])
+    }
+  
+
  
   
   CerrarSesion(){

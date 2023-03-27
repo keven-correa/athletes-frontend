@@ -240,33 +240,12 @@
                                             <div class="col-md-6">
                                                 <mat-form-field class="example-full-width" appearance="fill">
                                                     <mat-label>Deporte</mat-label>
-                                                    <mat-select class="text-white" disabled="true" disableRipple type="number">
-                                                        <mat-option value="2">Atletismo</mat-option>
-                                                        <!-- <mat-option value="Boxeo">Boxeo</mat-option> -->
-                                                        <!-- <mat-option value="Baloncesto">Baloncesto</mat-option> -->
-                                                        <!-- <mat-option value="Balonmano">Balonmano</mat-option> -->
-                                                        <!-- <mat-option value="Beisbol">Beisbol</mat-option> -->
-                                                        <mat-option value=3>Badminton</mat-option>
-                                                        <!-- <mat-option value="Ciclismo">Ciclismo</mat-option> -->
-                                                        <!-- <mat-option value="Esgrima">Esgrima</mat-option> -->
-                                                        <mat-option value=1>Futbol</mat-option>
-                                                        <!-- <mat-option value="Gimnasia">Gimnasia</mat-option> -->
-                                                        <!-- <mat-option value="Halterofilia">Halterofilia</mat-option> -->
-                                                        <!-- <mat-option value="Judo">Judo</mat-option> -->
-                                                        <!-- <mat-option value="Karete">Karete</mat-option> -->
-                                                        <!-- <mat-option value="Lucha">Lucha</mat-option> -->
-                                                        <!-- <mat-option value="Natacion">Natacion</mat-option> -->
-                                                        <!-- <mat-option value="Patinaje">Patinaje</mat-option> -->
-                                                        <!-- <mat-option value="Pentatlon">Pentatlon</mat-option> -->
-                                                        <!-- <mat-option value="Triatlon">Triatlon</mat-option> -->
-                                                        <!-- <mat-option value="Rugby">Rugby</mat-option> -->
-                                                        <!-- <mat-option value="Taekwondo">Taekwondo</mat-option> -->
-                                                        <!-- <mat-option value="Tenis">Tenis</mat-option> -->
-                                                        <!-- <mat-option value="Vela">Vela</mat-option> -->
-                                                        <!-- <mat-option value="Voleibol">Voleibol</mat-option> -->
-            
+                                                    <mat-select class="text-white" formControlName="disciplineId" disableRipple type="number">
+                                                      <mat-option *ngFor="let item of disciplinas" [value]="item">{{item.name}}</mat-option>
                                                     </mat-select>
-                                                </mat-form-field>
+                                                  </mat-form-field>
+                                                  
+                                                  
                                             </div>
                                         </div>
                                         

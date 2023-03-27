@@ -7,6 +7,7 @@ import { SecretariaService } from '../../services/secretaria.service';
 import { AtletaI } from '../../../shared/Models/atleta.interface';
 import Swal from 'sweetalert2';
 
+
 @Component({
   selector: 'app-editar-atleta',
   templateUrl: './editar-atleta.component.html',
@@ -16,8 +17,9 @@ export class EditarAtletaComponent implements OnInit {
   id!:number;
   edad!:number;
   atletas!:any;
-
+  disciplinas:any[]=[]
   formulario!:FormGroup;
+  disciplinaId:any
 
   mobileQuery: MediaQueryList; 
 
@@ -91,16 +93,45 @@ this.edad=(calculateAge(dia))
 
  Actualizar(){
 this._secretariaservice.actualizarAtleta(this.id,this.formulario.value).subscribe(resp=>{
-console.log(resp)
 this.router.navigate(['/secretaria/atletas'])
+}, (error) => {
+  // Manejo de errores HTTP
+  if (error.status === 401) {
 
-})
+    this.mensajeError('Se ha producido un inconveniente al momento de la autenticacion, inicia sesion e intente de nuevo', 'error');
+    this._secretariaservice.logOut();
+    this.router.navigate(['/login'])
+
+  } else if (error.status === 403) {
+
+    this.mensajeError('No tienes permiso para acceder a este componente.', 'warning');
+    this.atletasR();
+  } else if (error.status === 404) {
+    this.mensajeError('Recurso no encontrado.', 'warning');
+
+  } else if (error.status === 500) {
+    this.mensajeError('Error en el servidor, intente nuevamente.', 'warning');
+
+  } else {
+    this.mensajeError('Error desconocido.', 'warning');
+  }
+}
+)
  }
 
+ selectedDisciplineIndex!: number;
+
  datosAtleta(){
-  this._secretariaservice.detalleAtleta(this.id).subscribe(resp=>{
+  this._secretariaservice.detalleAtleta(this.id).subscribe(resp => {
     this.atletas = resp;
-  
+    console.log(resp)
+    this.disciplinaId = resp.discipline.id;
+    this._secretariaservice.getDisciplinas().subscribe(response => {
+      this.disciplinas = response;
+      this.selectedDisciplineIndex = this.disciplinas.findIndex(item => item.id === this.disciplinaId);
+    });
+
+
     this.formulario.patchValue({
       name:resp.name,
       lastName: resp.lastName,
@@ -115,7 +146,7 @@ this.router.navigate(['/secretaria/atletas'])
       bloodType: resp.bloodType,
       weight: resp.weight,
       height: resp.height,
-      // disciplineId: resp.discipline.name,
+      disciplineId:{id: resp.discipline.id, name: resp.discipline.name},
       birthPlace: resp.birthPlace,
       gender: resp.gender,
       sportAge: resp.sportAge,
@@ -151,7 +182,9 @@ this.router.navigate(['/secretaria/atletas'])
     } else {
       this.mensajeError('Error desconocido.', 'warning');
     }
-  }) 
+  })
+  
+
  }
 
  //Navegar en el menu

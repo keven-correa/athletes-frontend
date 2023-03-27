@@ -75,7 +75,6 @@ shouldRun = true;
     //Convertir el id a int
     let identificador = Number(this.id)
 
-
     this.formulario=this.fb.group({       
       reason: ['',Validators.required],      
       diagnostic: ['',Validators.required],      
@@ -90,12 +89,12 @@ shouldRun = true;
 enviar(){
   console.log(this.formulario.value)
   this.medicoGeneralService.NuevaConsulta(this.formulario.value).subscribe(resp=>{
-    console.log(resp);
+
     this.atletasR();
-  }, error=>{
-      console.log(error)
   }
   )
+
+
 }
 
 

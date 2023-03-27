@@ -3,18 +3,19 @@ import { ChangeDetectorRef, Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AdminServiceService } from 'src/app/administrador/services/admin-service.service';
+import { AdminServiceService } from '../../services/admin-service.service';
 
 @Component({
-  selector: 'app-detalles-usuarios',
-  templateUrl: './detalles-usuarios.component.html',
-  styleUrls: ['./detalles-usuarios.component.css']
+  selector: 'app-nueva-disciplina',
+  templateUrl: './nueva-disciplina.component.html',
+  styleUrls: ['./nueva-disciplina.component.css']
 })
-export class DetallesUsuariosComponent {
+export class NuevaDisciplinaComponent {
 
   id!:number;
   edad!:number;
-  usuario:any;
+  
+
   formulario!:FormGroup;
 
   mobileQuery: MediaQueryList; 
@@ -26,7 +27,7 @@ export class DetallesUsuariosComponent {
 ngOnDestroy(): void {
   this.mobileQuery.removeListener(this._mobileQueryListener);
   }
-  shouldRun = true;
+
   
     constructor(public dialog: MatDialog, private _ruta:ActivatedRoute,private fb:FormBuilder,
         private router:Router, private adminService:AdminServiceService,
@@ -40,47 +41,30 @@ ngOnDestroy(): void {
      }
   
     ngOnInit(): void {
-      this._ruta.params.subscribe(resp=>{
-        this.id=resp['id'];
-        
-      })     
+     
       this.formulario=this.fb.group({
-        firstName: ['',Validators.required],
-        lastName: ['',Validators.required],
-        role: ['',Validators.required],
-        password: ['',Validators.required],
-        email: ['',Validators.required],             
-      })       
+        name: ['',Validators.required],
+        description: ['',Validators.required],             
+      })  
       
-      this.adminService.getUsuarioById(this.id).subscribe(resp=>{
-        this.usuario=resp
-        console.log(resp)
-      })    
       
-  }
-
-  editar(){
-    this.router.navigate(['/administrador/actualizarUsuario',this.id])
-
   }
 
   Guardar(){
     console.log(this.formulario.value)
-    this.adminService.guardarUsuario(this.formulario.value).subscribe(resp=>{
-      console.log(resp)
+    this.adminService.guardarDisciplina(this.formulario.value).subscribe(resp=>{
+      this.disciplina();
     })
-    this.Usuarios();
   }
-
-
   //Redireccionar en el menu
-  Usuarios(){
-    this.router.navigate(['/administrador/usuarios'])
-  }  
 
-       disciplina(){
-        this.router.navigate(['/administrador/disciplinas'])
-      }
+     disciplina(){
+      this.router.navigate(['/administrador/disciplinas'])
+    }
+
+    usuariosR(){
+      this.router.navigate(['/administrador/usuarios'])
+    }
   
 
  
@@ -90,10 +74,6 @@ ngOnDestroy(): void {
     this.adminService.logOut();
     this.router.navigate(['/login'])
   }
-
- 
-
-
 
 
 }

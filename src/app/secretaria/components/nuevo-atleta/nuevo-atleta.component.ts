@@ -14,6 +14,7 @@ import Swal from 'sweetalert2';
 export class NuevoAtletaComponent implements OnInit {
 
   formulario!:FormGroup;
+  disciplinas:any
 
 
   mobileQuery: MediaQueryList;
@@ -61,6 +62,12 @@ ngOnDestroy(): void {
         FC: ['',Validators.required],
         FR: ['',Validators.required],      
     })
+
+    this.secretariaService.getDisciplinas().subscribe(resp=>
+      {
+        this.disciplinas=resp
+        console.log(resp)
+      })
   }
 
  

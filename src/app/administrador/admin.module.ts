@@ -8,6 +8,8 @@ import { NuvoUsuarioComponent } from './components/nuevoUsuario/nuvo-usuario/nuv
 import { MenuComponent } from './components/menu/menu/menu.component';
 import { DetallesUsuariosComponent } from './components/detallesUsuario/detalles-usuarios/detalles-usuarios.component';
 import { ActualizarUsuarioComponent } from './components/actualizarUsuario/actualizar-usuario/actualizar-usuario.component';
+import { DisciplinasComponent } from './components/disciplinas/disciplinas.component';
+import { NuevaDisciplinaComponent } from './components/nueva-disciplina/nueva-disciplina.component';
 
 
 
@@ -17,6 +19,8 @@ import { ActualizarUsuarioComponent } from './components/actualizarUsuario/actua
     MenuComponent,
     DetallesUsuariosComponent,
     ActualizarUsuarioComponent,
+    DisciplinasComponent,
+    NuevaDisciplinaComponent,
 
   ],
   imports: [

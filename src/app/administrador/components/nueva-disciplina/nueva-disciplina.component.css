@@ -42,13 +42,11 @@
   }
   
   .btn{
-    margin-right: 2%;
-  border: 2px solid rgb(216, 215, 215);
-  margin-top: 5px;
-  margin-left: 5px;
-  width: 90px;
-
-}
+    font-size: 24px;
+    margin: 5px;
+    padding: 5px;
+    
+  }
 
   .boton-foto{
     font-size: 24px;
@@ -81,6 +79,7 @@
 mat-sidenav{
   width: 15%;
 }
+  
 
 mat-sidenav-content{
     height: 723px;

@@ -6,6 +6,7 @@ import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { AdminServiceService } from '../../services/admin-service.service';
 import { filter } from 'rxjs';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-usuarios',
@@ -40,9 +41,7 @@ export class UsuariosComponent implements AfterViewInit {
     ngOnDestroy(): void {
       this.mobileQuery.removeListener(this._mobileQueryListener);
     }
-  
-    shouldRun = true;
-  
+
     ngAfterViewInit() {
       this.dataSource.paginator = this.paginator;
   
@@ -52,32 +51,55 @@ export class UsuariosComponent implements AfterViewInit {
     this.adminService.getUsuarios().subscribe(resp=>{
       this.usuarios=resp
       this.ELEMENT_DATA=resp
-      this.dataSource.data=this.ELEMENT_DATA
-    })
+      this.dataSource.data=this.ELEMENT_DATA.reverse();
+    }, (error) => {
+      // Manejo de errores HTTP
+      if (error.status === 401) {
+  
+        this.mensajeError('Se ha producido un inconveniente al momento de la autenticacion, inicia sesion e intente de nuevo', 'error');
+        this.adminService.logOut();
+        this.router.navigate(['/login'])
+  
+      } else if (error.status === 403) {
+  
+        this.mensajeError('No tienes permiso para acceder a este componente.', 'warning');
+        window.location.replace('/administrador/usuarios');
+
+      } else if (error.status === 404) {
+        this.mensajeError('Recurso no encontrado.', 'warning');
+  
+      } else if (error.status === 500) {
+        this.mensajeError('Error en el servidor, intente nuevamente.', 'warning');
+  
+      } else {
+        this.mensajeError('Error desconocido.', 'warning');
+      }
+    }
+    )
   }
 
   envio(id:number){
-    //this.router.navigate(['/administrador/detallesUsuario'])
-    let nuevoestado=
-    {
-      "isActive":true
-    }
-    let estado= this.usuarios.find(a=>a.id === id)
-     console.log(estado)
-    if(estado.isActive==true){
-      nuevoestado={
-        "isActive":false
-      }
-    }else if(estado.isActive==false){
-      nuevoestado={
-        "isActive":true
-      }
-    }    
-    console.log(nuevoestado)
-    this.adminService.actualizarEstadoUsuario(id, nuevoestado).subscribe(resp=>{
-      console.log(resp)
-      window.location.replace('/administrador/usuarios')
-    })
+    this.router.navigate(['/administrador/detallesUsuario',id])
+    // let nuevoestado=
+    // {
+    //   "isActive":true
+    // }
+    // let estado= this.usuarios.find(a=>a.id === id)
+    //  console.log(estado)
+    // if(estado.isActive==true){
+    //   nuevoestado={
+    //     "isActive":false
+    //   }
+    // }else if(estado.isActive==false){
+    //   nuevoestado={
+    //     "isActive":true
+    //   }
+    // }    
+    // console.log(nuevoestado)
+    // this.adminService.actualizarEstadoUsuario(id, nuevoestado).subscribe(resp=>{
+    //   console.log(resp)
+    //   window.location.replace('/administrador/usuarios')
+    // })
 
 
     }
@@ -96,14 +118,13 @@ export class UsuariosComponent implements AfterViewInit {
     }
 
      //Navegar en el menu
-     turnos(){
-      this.router.navigate(['/secretaria/turnos'])
+     disciplina(){
+      this.router.navigate(['/administrador/disciplinas'])
     }
 
-    atletasR(){
-      this.router.navigate(['/secretaria/atletas'])
+    usuariosR(){
+      this.router.navigate(['/administrador/usuarios'])
     }
-    
 
 
     CerrarSesion(){
@@ -112,5 +133,21 @@ export class UsuariosComponent implements AfterViewInit {
       this.router.navigate(['/login'])
     }
 
-
+  mensajeError(mensaje: any, icono: any) {
+    Swal.fire({
+      title: mensaje,
+      icon: icono,
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Aceptar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log('Ejecutando función...');
+        // Lógica para ejecutar la función
+      }
+    }).then(() => {
+      console.log('Modal cerrado');
+      // Lógica que se ejecuta al cerrar el modal
+    });
+  }
 }

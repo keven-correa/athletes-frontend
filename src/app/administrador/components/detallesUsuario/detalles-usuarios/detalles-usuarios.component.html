@@ -15,19 +15,24 @@
             fixedTopGap="56">
             <mat-nav-list>
                 <a mat-list-item (click)="Usuarios()">Usuarios</a>
-                <!-- <a mat-list-item (click)="turnos()">Turnos</a> -->
+                <a mat-list-item (click)="disciplina()">Dicsiplinas</a>
             </mat-nav-list>
         </mat-sidenav>
         <mat-sidenav-content>
             <form class="example-form" [formGroup]="formulario" (ngSubmit)="Guardar()" style="max-width: 1250px ;">
 
-                <div>
-                    <h2 class="text-white">Actualizar Usuario</h2>
-                </div>
+
+
 
                 <div class="row" style="margin-left: auto; margin-right: auto;">
+                    <button mat-flat-button color="secondary" class="btn" (click)="editar()">Editar</button>
+
+
                     <div class="col-md-9" style="margin-left: auto; margin-right: auto;">
                         <div class="row">
+                            <h2 class="text-white">Datos del usuario</h2>
+
+
                             <!-- <h3 class="text-white text-center">Datos personales</h3> -->
                             <div class="form-group">
                                 <div class="row">
@@ -35,11 +40,11 @@
                                         <h5 class="text-white">Nombres</h5>
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Nombres</mat-label>
-                                            <input formControlName="firstName"  class="text-white"
+                                            <input disabled="true" value="{{usuario.firstName}}" class="text-white"
                                                 matInput type="text">
                                         </mat-form-field>
                                     </div>
-                                </div>                               
+                                </div>
 
                             </div>
 
@@ -49,11 +54,11 @@
                                         <h5 class="text-white">Apellidos</h5>
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Apellido</mat-label>
-                                            <input formControlName="lastName" class="text-white"
+                                            <input disabled="true" value="{{usuario.lastName}}" class="text-white"
                                                 matInput type="text">
                                         </mat-form-field>
                                     </div>
-                                </div>                               
+                                </div>
 
                             </div>
 
@@ -61,20 +66,21 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h5 class="text-white">Rol</h5>
-                                        
-                                            <mat-form-field class="example-full-width" appearance="fill">
-                                                <mat-label>Rol</mat-label>
-                                                <mat-select class="text-white" formControlName="role" disableRipple>
-                                                    <mat-option value="Administrator">Administrador</mat-option>
-                                                    <mat-option value="MedicoGeneral">Medico general-</mat-option>
-                                                    <mat-option value="Fisioterapeuta">Fisioterapeuta</mat-option>
-                                                    <mat-option value="Secretary">Secretaria</mat-option>
-                                                    
-                                                </mat-select>
+
+                                        <mat-form-field class="example-full-width" appearance="fill">
+                                            <mat-label>Rol</mat-label>
+                                            <mat-select class="text-white" disabled="true" value="{{usuario.role}}"
+                                                disableRipple>
+                                                <mat-option value="Administrator">Administrador</mat-option>
+                                                <mat-option value="MedicoGeneral">Medico general-</mat-option>
+                                                <mat-option value="Fisioterapeuta">Fisioterapeuta</mat-option>
+                                                <mat-option value="Secretary">Secretaria</mat-option>
+
+                                            </mat-select>
 
                                         </mat-form-field>
                                     </div>
-                                </div>                               
+                                </div>
 
                             </div>
 
@@ -84,15 +90,15 @@
                                         <h5 class="text-white">Correo</h5>
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Correo</mat-label>
-                                            <input formControlName="email"  class="text-white"
-                                                matInput type="text">
+                                            <input disabled="true" value="{{usuario.email}}" class="text-white" matInput
+                                                type="text">
                                         </mat-form-field>
                                     </div>
-                                </div>                               
+                                </div>
 
                             </div>
 
-                            <div class="form-group">
+                            <!-- <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-12">
                                         <h5 class="text-white">Contraseña</h5>
@@ -104,10 +110,10 @@
                                     </div>
                                 </div>                               
 
-                            </div>
+                            </div> -->
 
-                            <button color="primary" type="submit" mat-raised-button class="btn"
-                                style="max-width: 30% ;">Actualizar</button>
+                            <!-- <button color="primary" type="submit" mat-raised-button class="btn"
+                                style="max-width: 30% ;">Actualizar</button> -->
 
                         </div>
                     </div>

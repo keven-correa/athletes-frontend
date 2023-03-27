@@ -1,1 +1,123 @@
-<p>actualizar-usuario works!</p>
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
+    <mat-toolbar color="primary" class="example-toolbar">
+
+        <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+        <mat-toolbar color="primary" style="justify-content: space-between;">
+            <span>Administrador</span>
+            <button mat-flat-button color="primary" style="float: left;" (click)="CerrarSesion()"> Cerrar
+                sesion</button>
+        </mat-toolbar>
+
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+            fixedTopGap="56">
+            <mat-nav-list>
+                <a mat-list-item (click)="Usuarios()">Usuarios</a>
+                <a mat-list-item (click)="disciplina()">Disciplinas</a>
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+            <form class="example-form" [formGroup]="formulario" (ngSubmit)="Guardar()" style="max-width: 1250px ;">
+                
+                <div class="row" style="margin-left: auto; margin-right: auto;">
+        
+                    <div class="col-md-9" style="margin-left: auto; margin-right: auto;">
+                        <div class="row">
+                            <h2 class="text-white">Datos del usuario</h2>
+
+
+                            <!-- <h3 class="text-white text-center">Datos personales</h3> -->
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="text-white">Nombres</h5>
+                                        <mat-form-field class="example-full-width" appearance="fill">
+                                            <mat-label>Nombres</mat-label>
+                                            <input formControlName="firstName" class="text-white"
+                                                matInput type="text">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="text-white">Apellidos</h5>
+                                        <mat-form-field class="example-full-width" appearance="fill">
+                                            <mat-label>Apellido</mat-label>
+                                            <input formControlName="lastName" class="text-white"
+                                                matInput type="text">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="text-white">Rol</h5>
+
+                                        <mat-form-field class="example-full-width" appearance="fill">
+                                            <mat-label>Rol</mat-label>
+                                            <mat-select class="text-white" formControlName="role"
+                                                disableRipple>
+                                                <mat-option value="Administrator">Administrador</mat-option>
+                                                <mat-option value="MedicoGeneral">Medico general-</mat-option>
+                                                <mat-option value="Fisioterapeuta">Fisioterapeuta</mat-option>
+                                                <mat-option value="Secretary">Secretaria</mat-option>
+
+                                            </mat-select>
+
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="text-white">Correo</h5>
+                                        <mat-form-field class="example-full-width" appearance="fill">
+                                            <mat-label>Correo</mat-label>
+                                            <input formControlName="email" class="text-white" matInput
+                                                type="text">
+                                        </mat-form-field>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <h5 class="text-white">Contraseña</h5>
+                                        <mat-form-field class="example-full-width" appearance="fill">
+                                            <mat-label>Contraseña</mat-label>
+                                            <input formControlName="password"  class="text-white"
+                                                matInput type="text">
+                                        </mat-form-field>
+                                    </div>
+                                </div>                               
+
+                            </div>
+
+                            <button color="primary" type="submit" mat-raised-button class="btn"
+                                style="max-width: 30% ;">Actualizar</button>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+            </form>
+
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

@@ -19,17 +19,30 @@ export class AdminServiceService {
     return this.http.get<any>(direccion, this.options)
   }
 
+  getUsuarioById(id:any): Observable<any> {
+    const direccion = this.url + "auth/get-user/"+id
+    return this.http.get<any>(direccion, this.options)
+  }
+
   guardarUsuario(form: any): Observable<any> {
     const direccion = this.url + 'auth/register'
     return this.http.post<any>(direccion, form,this.options)
   }
 
-  actualizarEstadoUsuario(id: any,estado:any): Observable<any> {
-    const direccion = this.url + "auth/" + id
-    return this.http.patch<any>(direccion,estado,this.options)
+  actualizarUsuario(id: any,form:any): Observable<any> {
+    const direccion = this.url + "auth/update-user/" + id
+    return this.http.patch<any>(direccion,form,this.options)
   }
 
+  getDisciplinas(): Observable<any> {
+    const direccion = this.url + "discipline/all"
+    return this.http.get<any>(direccion, this.options)
+  }
 
+  guardarDisciplina(form: any): Observable<any> {
+    const direccion = this.url + 'discipline'
+    return this.http.post<any>(direccion, form,this.options)
+  }
 
   logOut() {
     localStorage.clear();
