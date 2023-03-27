@@ -20,6 +20,7 @@ import { AtletaDetalleComponent } from './medicoGeneral/atleta-detalle/atleta-de
 import { ConsultaAtletaComponent } from './medicoGeneral/consulta-atleta/consulta-atleta.component';
 
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { ReportComponent } from './shered/report/report.component';
 
 
 
@@ -36,6 +37,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
     ConsultaDetalleComponent,
     AtletaDetalleComponent,
     ConsultaAtletaComponent,
+    ReportComponent,
 
   ],
   entryComponents:[DialogComponent],
