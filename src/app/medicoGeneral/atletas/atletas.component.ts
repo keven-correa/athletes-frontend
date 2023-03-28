@@ -18,12 +18,12 @@ import Swal from 'sweetalert2';
 })
 export class AtletasComponent  implements AfterViewInit {
   ELEMENT_DATA: AtletaI[] = [];
+  atletas:any[]=[];
 
   mobileQuery: MediaQueryList; 
 
   private _mobileQueryListener: () => void;
 
-  atletas:any[]=[];
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -104,6 +104,11 @@ export class AtletasComponent  implements AfterViewInit {
 
     atletasR(){
       this.router.navigate(['/medico-general/atletas'])
+    }
+
+    resumen(){
+      this.router.navigate(['/medico-general/resumen'])
+
     }
     
     mensajeError(mensaje: any, icono: any) {
