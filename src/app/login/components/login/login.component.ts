@@ -43,15 +43,18 @@ export class LoginComponent implements OnInit {
       const respuesta: any = data;
         if (respuesta.role == 'Administrator') {
           localStorage.setItem('token', respuesta.token);
+          localStorage.setItem('idAdmin', respuesta.id);
 
           // this.router.navigateByUrl('/secretaria/atletas')
           window.location.replace('/administrador/usuarios');
         } else if (respuesta.role == 'Secretary') {
           localStorage.setItem('token', respuesta.token);
+          localStorage.setItem('idSecretaria', respuesta.id);
 
           window.location.replace('/secretaria/atletas');
         } else if (respuesta.role == 'MedicoGeneral') {
           localStorage.setItem('token', respuesta.token);
+          localStorage.setItem('idMedico', respuesta.id);
 
           window.location.replace('/medico-general/atletas');
         } else if (respuesta.role == 'Fisioterapeuta') {

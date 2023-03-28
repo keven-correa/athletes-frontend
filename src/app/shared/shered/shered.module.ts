@@ -23,6 +23,7 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SecretariaService } from '../../secretaria/services/secretaria.service';
+import { NgChartsModule } from 'ng2-charts/lib/ng-charts.module';
 
 @NgModule({
   declarations: [
@@ -49,7 +50,7 @@ import { SecretariaService } from '../../secretaria/services/secretaria.service'
     MatStepperModule,
     MatSidenavModule,
     MatBottomSheetModule,
-
+    // NgChartsModule,
     
 
   ],

@@ -86,13 +86,24 @@ export class MedicoGeneralService {
   logOut() {
     localStorage.clear();
     window.location.replace('/login');
-
   }
-
 
   isLoggedIn(): boolean {
     const token = localStorage.getItem('token');
     return token !== null;
+  }
+
+  ////Reporte
+  
+  AtletasPorDisciplina(id:any): Observable<any> {
+    const direccion = this.url + "auth/get-athletes-count-discipline/"+id
+    return this.http.get<any>(direccion,this.options)
+  }
+
+
+  getDisciplinas(): Observable<any> {
+    const direccion = this.url + "discipline/all"
+    return this.http.get<any>(direccion, this.options)
   }
 
 }

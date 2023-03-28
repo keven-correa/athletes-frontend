@@ -1,0 +1,12 @@
+<div id="chartDiv" class="container-fluid" style=" background-color: azure;">
+
+  <canvas baseChart class="chart"
+  [data]="pieChartData"
+  [type]="pieChartType"
+  [options]="pieChartOptions"
+  [plugins]="pieChartPlugins">
+
+</canvas>
+
+  </div>
+  <button (click)="printChart()">Imprimir gráfico</button>

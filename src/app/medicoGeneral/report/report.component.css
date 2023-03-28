@@ -1,0 +1,18 @@
+#chartDiv {
+    width: 90vw;
+    height: 90vh;
+  }
+
+  @media print {
+    body * {
+      visibility: hidden;
+    }
+    #chartDiv, #chartDiv * {
+      visibility: visible;
+    }
+    #chartDiv {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+  }

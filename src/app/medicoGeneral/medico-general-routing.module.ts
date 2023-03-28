@@ -8,12 +8,14 @@ import { AtletaDetalleComponent } from './atleta-detalle/atleta-detalle.componen
 import { ConsultaAtletaComponent } from './consulta-atleta/consulta-atleta.component';
 import { HistorialDetalleComponent } from './historial-detalle/historial-detalle.component';
 import { TurnosComponent } from './turnos/turnos.component';
+import { ReportComponent } from './report/report.component';
 
 const routes: Routes = [
   {
     path:'',
     children:[
       {path:'atletas', component:AtletasComponent},
+      {path:'resumen', component:ReportComponent},
       {path:'historial/:id',component:HistorialComponent},
       {path:'historial-detalle/:id',component:HistorialDetalleComponent},
       {path:'consulta/:id', component:ConsultasComponent},
