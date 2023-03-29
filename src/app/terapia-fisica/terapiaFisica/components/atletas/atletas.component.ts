@@ -110,6 +110,10 @@ export class AtletasComponent implements  AfterViewInit {
       this.router.navigate(['/terapia-fisica/referimientos'])
 
     }
+    resumen(){
+      this.router.navigate(['/terapia-fisica/resumen'])
+
+    }
     
     mensajeError(mensaje: any, icono: any) {
       Swal.fire({

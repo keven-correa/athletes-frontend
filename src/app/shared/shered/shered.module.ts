@@ -52,6 +52,7 @@ import { NgChartsModule } from 'ng2-charts/lib/ng-charts.module';
     MatBottomSheetModule,
     // NgChartsModule,
     
+    
 
   ],
   exports:[
@@ -74,6 +75,7 @@ import { NgChartsModule } from 'ng2-charts/lib/ng-charts.module';
     MatStepperModule,
     MatSidenavModule,
     MatBottomSheetModule,
+    
 
   ]
   ,

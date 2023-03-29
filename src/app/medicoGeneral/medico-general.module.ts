@@ -7,6 +7,7 @@ import { HistorialDetalleComponent } from './historial-detalle/historial-detalle
 import { TurnosComponent } from './turnos/turnos.component';
 import { ReportComponent } from './report/report.component';
 import { NgChartsModule } from 'ng2-charts';
+import { JsonCleanPipe } from "../shared/pipes/json-clean.pipe";
 
 
 
@@ -15,6 +16,7 @@ import { NgChartsModule } from 'ng2-charts';
     HistorialDetalleComponent,
     TurnosComponent,
     ReportComponent,
+    JsonCleanPipe
   ],
   imports: [
     CommonModule,

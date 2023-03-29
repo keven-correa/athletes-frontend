@@ -2,17 +2,17 @@ import { Component, ViewChild, OnInit, ChangeDetectorRef } from '@angular/core';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import { MedicoGeneralService } from '../services/medico-general.service';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { TerapiaFisicaService } from '../../services/terapia-fisica.service';
 
 @Component({
-  selector: 'app-report',
-  templateUrl: './report.component.html',
-  styleUrls: ['./report.component.css']
+  selector: 'app-reports',
+  templateUrl: './reports.component.html',
+  styleUrls: ['./reports.component.css']
 })
-export class ReportComponent implements OnInit {
+export class ReportsComponent  implements OnInit{
   public CantidadDisciplinas: string[] = [];
   public NombresDisciplinas: string[] = [];
   public objeto:any=[]
@@ -23,7 +23,7 @@ export class ReportComponent implements OnInit {
 
   constructor(public dialog: MatDialog,
     private router:Router,
-    private medicoGeneralService:MedicoGeneralService,
+    private terapiaFisicaService:TerapiaFisicaService,
     changeDetectorRef: ChangeDetectorRef, media: MediaMatcher){
 
       this.mobileQuery = media.matchMedia('(max-width: 600px)');
@@ -43,7 +43,7 @@ this.mobileQuery.removeListener(this._mobileQueryListener);
     console.log(idMedico)
     const etiquetas: any[] = [];
     const data: any[] = []
-    this.medicoGeneralService.AtletasPorDisciplina(idMedico).subscribe(resp => {
+    this.terapiaFisicaService.TerapiasPorDisciplina(idMedico).subscribe(resp => {
       console.log(resp)
 
       for (let index = 0; index < resp.length; index++) {
@@ -134,8 +134,10 @@ this.mobileQuery.removeListener(this._mobileQueryListener);
 
       CerrarSesion(){
 
-        this.medicoGeneralService.logOut();
+        this.terapiaFisicaService.logOut();
         // this.router.navigate(['/login'])
       }
   
+
+
 }

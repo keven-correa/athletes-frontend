@@ -17,6 +17,9 @@ import { EvaluacionesDetalleComponent } from './terapiaFisica/components/evaluac
 import { NuevaTerapiaComponent } from './terapiaFisica/components/nueva-terapia/nueva-terapia.component';
 import { EvaluacionesPorAtletaComponent } from './terapiaFisica/components/evaluaciones-por-atleta/evaluaciones-por-atleta.component';
 import { TurnosComponent } from './terapiaFisica/components/turnos/turnos.component';
+import { ReportsComponent } from './terapiaFisica/reports/reports.component';
+import { NgChartsModule } from 'ng2-charts';
+import { JsonCleanPipe } from '../shared/pipes/json-clean.pipe';
 
 
 @NgModule({
@@ -32,13 +35,17 @@ import { TurnosComponent } from './terapiaFisica/components/turnos/turnos.compon
     EvaluacionesDetalleComponent,
     NuevaTerapiaComponent,
     EvaluacionesPorAtletaComponent,
-    TurnosComponent
+    TurnosComponent,
+    ReportsComponent,
+    JsonCleanPipe
   ],
   imports: [
     CommonModule,
     TerapiaFisicaRoutingModule,
     SheredModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgChartsModule
+
   ]
 })
 export class TerapiaFisicaModule { }

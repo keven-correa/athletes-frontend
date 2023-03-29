@@ -1,0 +1,21 @@
+<h3 class="text-white text-center">Cantidad de terapias por disciplina </h3>
+
+<div id="chartDiv" class="container-fluid" >
+  
+  <canvas style="margin-left: auto; margin-right: auto;" baseChart class="chart"
+  [data]="pieChartData"
+  [type]="pieChartType"
+  [options]="pieChartOptions"
+  [plugins]="pieChartPlugins">
+
+</canvas>
+<h5 class="text-white text-center" > 
+  <span *ngFor="let item of objeto">{{item| jsonClean}}</span>
+</h5>
+
+  </div>
+  <div id="botones">
+    <button mat-flat-button color="primary" class="btn2" (click)="Volver()">Volver al area de trabajo</button>
+    <button mat-flat-button color="primary" class="btn" (click)="printChart()">Imprimir resumen</button>
+
+  </div>
