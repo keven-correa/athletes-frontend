@@ -42,24 +42,61 @@
           </mat-nav-list>
       </mat-sidenav>
       <mat-sidenav-content>
-
-<div class="container " style="display: inline-flex;">
-
-        <mat-card class="example-card" *ngFor="let item of consultas">
-            <mat-card-title class="text-white ">Consulta</mat-card-title>
-            <mat-card-content>
-              <p class="text-white"><strong >Creado por: </strong> {{item.created_by.firstName}} {{item.created_by.lastName}}</p>
-              <p class="text-white"><strong >Fecha: </strong> {{item.created_at|date}}</p>
-              
-            </mat-card-content>
-            <mat-card-actions>
-              <button mat-flat-button color="primary" (click)="detallesHistorial(item.id)">Mas detalles </button>
-              
-            </mat-card-actions>
-        </mat-card>
-
-      </div>
-
+        <mat-card> 
+          <h2>Listado de consultas</h2>
+      
+          <mat-form-field >
+              <mat-label>Buscar</mat-label>
+              <input matInput (keyup)="applyFilter($event)" #input>
+          </mat-form-field>
+          
+          
+          <div class="mat-elevation-z8">
+              <table mat-table [dataSource]="dataSource">
+            
+                <!-- Position Column -->
+                <ng-container matColumnDef="id" >
+                  <th mat-header-cell *matHeaderCellDef> ID </th>
+                  <td mat-cell *matCellDef="let element; let i=index" > {{i+1}} </td>
+                </ng-container>
+            
+                <!-- Name Column -->
+                <ng-container matColumnDef="creadopor">
+                  <th mat-header-cell *matHeaderCellDef> Medico </th> 
+                  <td mat-cell *matCellDef="let element"> {{element.created_by.firstName}} {{element.created_by.lastName}} </td>
+                </ng-container>
+            
+                <!-- apellido Column -->
+                <ng-container matColumnDef="fecha">
+                  <th mat-header-cell *matHeaderCellDef> Fecha </th>
+                  <td mat-cell *matCellDef="let element"> {{element.created_at|date}} </td>
+                </ng-container>
+            
+                <!-- disciplina Column -->
+                <ng-container matColumnDef="diagnostico">
+                  <th mat-header-cell *matHeaderCellDef> Diagnostico </th>
+                  <td mat-cell *matCellDef="let element"> {{element.diagnostic}} </td>
+                </ng-container>
+      
+                <ng-container matColumnDef="mas">
+                  <th mat-header-cell *matHeaderCellDef> Mas </th>
+                  <td mat-cell *matCellDef="let element; let i=index"> <a color="primary" mat-raised-button (click)="detallesHistorial(element.id)" style="max-width: 130px;" >Ver mas</a></td>
+                  </ng-container>
+          
+      
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+            
+              <mat-paginator [pageSizeOptions]="[10, 15, 20]"
+                             showFirstLastButtons 
+                             aria-label="Select page of periodic elements">
+              </mat-paginator>
+            </div>
+      
+      </mat-card>
+  
   
   
 </mat-sidenav-content>

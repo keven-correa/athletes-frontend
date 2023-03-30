@@ -1,10 +1,13 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import { MedicoGeneralService } from '../services/medico-general.service';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { FormBuilder } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import Swal from 'sweetalert2';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatTableDataSource } from '@angular/material/table';
+import { AtletaI } from 'src/app/shared/Models/atleta.interface';
 
 @Component({
   selector: 'app-historial',
@@ -16,13 +19,23 @@ export class HistorialComponent implements OnInit {
   consultas: any[] = [];
   evaluaciones: any[] = [];
 
-  mobileQuery: MediaQueryList;
+  ELEMENT_DATA: AtletaI[] = [];
+
+
+  mobileQuery: MediaQueryList; 
+
   private _mobileQueryListener: () => void;
+
+  
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
+
+  displayedColumns: string[] = ['id', 'creadopor', 'fecha', 'diagnostico','mas'];
+  dataSource = new MatTableDataSource(this.ELEMENT_DATA);
+
 
   constructor(
     private _ruta: ActivatedRoute,
     public dialog: MatDialog,
-    private fb: FormBuilder,
     private router: Router,
     private medicoGeneralService: MedicoGeneralService,
     changeDetectorRef: ChangeDetectorRef,
@@ -43,8 +56,9 @@ export class HistorialComponent implements OnInit {
     });
 
     this.medicoGeneralService.ConsultaById(this.id).subscribe((resp) => {
-      this.consultas = resp.reverse();
-      console.log(resp);
+      this.ELEMENT_DATA=resp
+      this.dataSource.data=this.ELEMENT_DATA.reverse();
+      console.log(resp)
     }, (error) => {
       // Manejo de errores HTTP
       if (error.status === 401) {
@@ -71,8 +85,22 @@ export class HistorialComponent implements OnInit {
 
     this.medicoGeneralService.EvaluacionesPorAtleta(this.id).subscribe((resp) => {
       this.evaluaciones = resp.reverse();
-      console.log(resp);
+      // console.log(resp);
     });
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+
+  }
+
+  applyFilter(event: Event) {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+    
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
   }
 
   detallesHistorial(id:any){
