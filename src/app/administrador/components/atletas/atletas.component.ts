@@ -3,10 +3,10 @@ import {MatPaginator} from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import {MatDialog} from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { SecretariaService } from '../../services/secretaria.service';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { AtletaI } from '../../../shared/Models/atleta.interface';
 import Swal from 'sweetalert2';
+import { AdminServiceService } from '../../services/admin-service.service';
 
 @Component({
   selector: 'app-atletas',
@@ -29,7 +29,7 @@ export class AtletasComponent   implements AfterViewInit {
 
   constructor(public dialog: MatDialog,
               private router:Router,
-              private _secretariaService:SecretariaService,
+              private adminService:AdminServiceService,
               changeDetectorRef: ChangeDetectorRef, media: MediaMatcher){
                 this.mobileQuery = media.matchMedia('(max-width: 600px)');
                 this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -42,7 +42,7 @@ export class AtletasComponent   implements AfterViewInit {
 
   ngOnInit(): void {
 
-    this._secretariaService.getAtletas().subscribe(resp=>{
+    this.adminService.getAtletas().subscribe(resp=>{
       this.ELEMENT_DATA=resp
       this.dataSource.data=this.ELEMENT_DATA
     }, (error) => {
@@ -50,7 +50,7 @@ export class AtletasComponent   implements AfterViewInit {
       if (error.status === 401) {
   
         this.mensajeError('Se ha producido un inconveniente al momento de la autenticacion, inicia sesion e intente de nuevo', 'error');
-        this._secretariaService.logOut();
+        this.adminService.logOut();
         this.router.navigate(['/login'])
   
       } else if (error.status === 403) {
@@ -76,11 +76,11 @@ export class AtletasComponent   implements AfterViewInit {
   }
 
   nuevoAtleta(){
-    this.router.navigate(['/secretaria/nuevo-atleta'])
+    this.router.navigate(['/administrador/nuevo-atleta'])
   }
 
   envio(id:number){
-    this.router.navigate(['/secretaria/atleta-detalle', id])
+    this.router.navigate(['/administrador/atleta-detalle', id])
     }
 
     applyFilter(event: Event) {
@@ -92,12 +92,17 @@ export class AtletasComponent   implements AfterViewInit {
       }
     }
     //Navegar en el menu
-    turnos(){
-      this.router.navigate(['/secretaria/turnos'])
-    }
+      //Navegar en el menu
+      disciplina(){
+        this.router.navigate(['/administrador/disciplinas'])
+      }
+  
+      usuariosR(){
+        this.router.navigate(['/administrador/usuarios'])
+      }
 
     atletasR(){
-      this.router.navigate(['/secretaria/atletas'])
+      this.router.navigate(['/administrador/atletas'])
     }
     
     mensajeError(mensaje: any, icono: any) {

@@ -31,16 +31,16 @@
         </mat-nav-list>
       </mat-sidenav>  
       <mat-sidenav-content>
-            <form class="example-form" [formGroup]="formulario" (ngSubmit)="guardar()" style="max-width: 1250px ;">
+            <form class="example-form" [formGroup]="formulario" (ngSubmit)="guardarAtletaModal()" style="max-width: 1250px ; margin-left: auto; margin-right: auto;">
 
                 <div>
                     <h2 class="text-white">Crear nuevo atleta</h2>
                 </div>
 
-                <div class="row" style="margin-left: auto; margin-right: auto;">
-                    <div class="col-md-9 offset-2">
+                <div class="row" >
+                    <div  >
                         <div class="row">
-                            <h3 class="text-white text-center">Datos personales</h3>
+                            <h3 class="text-white">Datos personales</h3>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -230,18 +230,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <h5 class="text-white">Peso: </h5>
-
-                                            </div>
-                                            <div class="col-md-6">
-                                                <h5 class="text-white">Altura: </h5>
-                                                
-                                            </div>
-                                        </div>
-                                    </div> -->
+                                   
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
@@ -264,26 +253,49 @@
                                         </div>
                                         
                                     </div>
-                                    <!-- <div class="col-md-6">
+                                    
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="row">
+                                    <div class="col-md-12">
                                         <div class="row">
-                                            <div class="col-md-6">
-    
-                                                <mat-form-field class="example-full-width" appearance="fill">
-                                                    <mat-label>Peso (KG.)</mat-label>
-                                                    <input class="text-white" formControlName="weight" matInput type="number">
-                                                </mat-form-field>
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h5 class="text-white">Peso: </h5>
+        
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <h5 class="text-white">Altura: </h5>
+                                                        
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div class="col-md-6">
-    
-                                                <mat-form-field class="example-full-width" appearance="fill">
-                                                    <mat-label>Altura (Cm)</mat-label>
-                                                    <input class="text-white" formControlName="height" matInput
-                                                        type="number">
-                                                </mat-form-field>
-                                            </div>
-    
                                         </div>
-                                    </div> -->
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-6">
+        
+                                                    <mat-form-field class="example-full-width" appearance="fill">
+                                                        <mat-label>Peso (KG.)</mat-label>
+                                                        <input class="text-white" formControlName="weight" matInput type="number">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-6">
+        
+                                                    <mat-form-field class="example-full-width" appearance="fill">
+                                                        <mat-label>Altura (Cm)</mat-label>
+                                                        <input class="text-white" formControlName="height" matInput
+                                                            type="number">
+                                                    </mat-form-field>
+                                                </div>
+        
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
     
@@ -342,9 +354,9 @@
                                 </div>
                             </div> -->
 
-                            <button color="primary" type="submit" mat-raised-button class="btn" style="min-width: 30% ;">Guardar</button>
-
+                            
                         </div>
+                        <button color="primary" type="submit" mat-raised-button class="btn" [disabled]="!formulario.valid" style="min-width: 10% ;">Guardar</button>
                     </div> 
 
 

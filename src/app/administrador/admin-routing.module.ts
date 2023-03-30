@@ -8,6 +8,10 @@ import { DisciplinasComponent } from './components/disciplinas/disciplinas.compo
 import { NuevaDisciplinaComponent } from './components/nueva-disciplina/nueva-disciplina.component';
 import { ReportMedicoComponent } from './components/report-medico/report-medico.component';
 import { ReportTerapeutaComponent } from './components/report-terapeuta/report-terapeuta.component';
+import { AtletasComponent } from './components/atletas/atletas.component';
+import { NuevoAtletaComponent } from './components/nuevo-atleta/nuevo-atleta.component';
+import { EditarAtletaComponent } from './components/editar-atleta/editar-atleta.component';
+import { AtletasDetallesComponent } from './components/atletas-detalles/atletas-detalles.component';
 
 
 const routes: Routes = [
@@ -22,6 +26,11 @@ const routes: Routes = [
       {path:'nuevaDisciplina', component:NuevaDisciplinaComponent},      
       {path:'reporteMedico/:id', component:ReportMedicoComponent},
       {path:'reporteTerapeuta/:id', component:ReportTerapeutaComponent},
+      {path:'atletas', component:AtletasComponent},
+      {path:'nuevo-atleta', component:NuevoAtletaComponent},
+      {path:'editar-atleta/:id',component:EditarAtletaComponent},
+      {path:'atleta-detalle/:id',component:AtletasDetallesComponent},
+
     ]
   },
   {

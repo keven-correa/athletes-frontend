@@ -3,8 +3,8 @@ import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { SecretariaService } from '../../services/secretaria.service';
 import Swal from 'sweetalert2';
+import { AdminServiceService } from '../../services/admin-service.service';
 
 @Component({
   selector: 'app-nuevo-atleta',
@@ -22,7 +22,7 @@ export class NuevoAtletaComponent implements OnInit {
   constructor(public dialog: MatDialog,
     private fb:FormBuilder,
     private router:Router,
-    private secretariaService:SecretariaService,
+    private adminService:AdminServiceService,
     changeDetectorRef: ChangeDetectorRef, media: MediaMatcher){
       this.mobileQuery = media.matchMedia('(max-width: 600px)');
       this._mobileQueryListener = () => changeDetectorRef.detectChanges();
@@ -63,7 +63,7 @@ ngOnDestroy(): void {
         FR: [''],      
     })
 
-    this.secretariaService.getDisciplinas().subscribe(resp=>
+    this.adminService.getDisciplinas().subscribe(resp=>
       {
         this.disciplinas=resp
         console.log(resp)
@@ -77,15 +77,21 @@ ngOnDestroy(): void {
   // }
 
 //redireccionar el menu
-  atletasR(){
-    this.router.navigate(['/secretaria/atletas'])
-  }
-  turnos(){
-    this.router.navigate(['/secretaria/turnos'])
-  }
+disciplina(){
+  this.router.navigate(['/administrador/disciplinas'])
+}
+
+usuariosR(){
+  this.router.navigate(['/administrador/usuarios'])
+}
+
+atletasR(){
+this.router.navigate(['/administrador/atletas'])
+}
+
 
   guardar(){
-  this.secretariaService.guardarAtleta(this.formulario.value).subscribe(resp=>{
+  this.adminService.guardarAtleta(this.formulario.value).subscribe(resp=>{
     console.log(resp)
   }
   , (error) => {
@@ -93,7 +99,7 @@ ngOnDestroy(): void {
     if (error.status === 401) {
 
       this.mensajeError('Se ha producido un inconveniente al momento de la autenticacion, inicia sesion e intente de nuevo', 'error');
-      this.secretariaService.logOut();
+      this.adminService.logOut();
 
     } else if (error.status === 403) {
 
@@ -159,7 +165,7 @@ ngOnDestroy(): void {
 
     })
     setTimeout(() => {
-    window.location.replace('/secretaria/atletas');
+    window.location.replace('/administrador/atletas');
       
     }, 3000);
   }

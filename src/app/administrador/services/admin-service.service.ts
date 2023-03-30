@@ -56,6 +56,27 @@ export class AdminServiceService {
   }
 
 
+  getAtletas(): Observable<any> {
+    const direccion = this.url + "athletes"
+    return this.http.get<any>(direccion, this.options)
+  }
+
+  detalleAtleta(id: any): Observable<any> {
+    const direccion = this.url + "athletes/" + id
+    return this.http.get<any>(direccion,this.options)
+  }
+
+  guardarAtleta(form: any): Observable<any> {
+    const direccion = this.url + 'athletes'
+    return this.http.post<any>(direccion, form,this.options)
+  }
+
+  actualizarAtleta(id: any, form:any): Observable<any> {
+    const direccion = this.url + "athletes/" + id
+    return this.http.patch<any>(direccion,form,this.options)
+  }
+
+
     ///Reporte
     ConsultasPorMedico(id:any): Observable<any> {
       const direccion = this.url + "auth/get-physician/"+id

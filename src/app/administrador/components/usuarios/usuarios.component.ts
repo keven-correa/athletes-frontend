@@ -126,6 +126,10 @@ export class UsuariosComponent implements AfterViewInit {
       this.router.navigate(['/administrador/usuarios'])
     }
 
+    atletasR(){
+      this.router.navigate(['/administrador/atletas'])
+    }
+
 
     CerrarSesion(){
 

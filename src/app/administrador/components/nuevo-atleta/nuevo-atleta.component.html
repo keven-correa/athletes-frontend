@@ -1,4 +1,4 @@
-<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches" >
     <mat-toolbar color="primary" class="example-toolbar">
     
       <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
@@ -19,28 +19,38 @@
                 </span>
                 <span style="display: inline-block; vertical-align: middle;">Atletas</span>
               </a>
-            
-            <a mat-list-item (click)="turnos()">
-              <span style="display: inline-block; vertical-align: middle;">
-                <span class="material-symbols-outlined">
-                  wc
+              
+              <a mat-list-item (click)="usuariosR()" > 
+                  <span style="display: inline-block; vertical-align: middle;">
+                    <span class="material-symbols-outlined">
+                      group
+                      </span>
+                  </span>
+                  <span style="display: inline-block; vertical-align: middle;">Usuarios</span>
+                </a>
+              
+              <a mat-list-item (click)="disciplina()" >
+                <span style="display: inline-block; vertical-align: middle;">
+                  <span class="material-symbols-outlined">
+                    sports_baseball 
+                  </span>
                 </span>
-              </span>
-              <span style="display: inline-block; vertical-align: middle;">Turnos</span>
-            </a>
+                <span style="display: inline-block; vertical-align: middle;">Disciplinas</span>
+              </a>
+              
         </mat-nav-list>
       </mat-sidenav>  
       <mat-sidenav-content>
-            <form class="example-form" [formGroup]="formulario" (ngSubmit)="Actualizar()" style="max-width: 1250px ;">
+            <form class="example-form" [formGroup]="formulario" (ngSubmit)="guardarAtletaModal()" style="max-width: 1250px ; margin-left: auto; margin-right: auto;">
 
                 <div>
-                    <h2 class="text-white">Editar atleta</h2>
+                    <h2 class="text-white">Crear nuevo atleta</h2>
                 </div>
 
-                <div class="row" style="margin-left: auto; margin-right: auto;">
-                    <div class="col-md-9 offset-2">
+                <div class="row" >
+                    <div  >
                         <div class="row">
-                            <h3 class="text-white text-center">Datos personales</h3>
+                            <h3 class="text-white">Datos personales</h3>
                             <div class="form-group">
                                 <div class="row">
                                     <div class="col-md-6">
@@ -55,13 +65,13 @@
                                     <div class="col-md-6">
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Nombres</mat-label>
-                                            <input formControlName="name" value="{{atletas.name}}" class="text-white" matInput type="text">
+                                            <input formControlName="name" class="text-white" matInput type="text">
                                         </mat-form-field>
                                     </div>
                                     <div class="col-md-6">
                                         <mat-form-field class="example-full-width" appearance="fill">
                                             <mat-label>Apellidos</mat-label>
-                                            <input matInput class="text-white" value="{{atletas.lastName}}" formControlName="lastName" type="text">
+                                            <input matInput class="text-white" formControlName="lastName" type="text">
                                         </mat-form-field>
                                     </div>
                                 </div>
@@ -224,78 +234,77 @@
                                                 <h5 class="text-white">Seguro medico: </h5>
 
                                             </div>
-                                            <!-- <div class="col-md-6">
+                                            <div class="col-md-6">
                                                 <h5 class="text-white">Deporte: </h5>
 
-                                            </div> -->
+                                            </div>
                                         </div>
                                     </div>
-                                    <!-- <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-md-6">
-                                                <h5 class="text-white">Peso: </h5>
-
-                                            </div>
-                                            <div class="col-md-6">
-                                                <h5 class="text-white">Altura: </h5>
-                                                
-                                            </div>
-                                        </div>
-                                    </div> -->
+                                   
                                 </div>
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="row">
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <mat-form-field class="example-full-width" appearance="fill">
                                                     <mat-label>Seguro medico</mat-label>
                                                     <input class="text-white" matInput formControlName="medicalInsurance" type="text">
                                                 </mat-form-field>
                                             </div>
-                                            <!-- <div class="col-md-6">
+                                            <div class="col-md-6">
                                                 <mat-form-field class="example-full-width" appearance="fill">
                                                     <mat-label>Deporte</mat-label>
                                                     <mat-select class="text-white" formControlName="disciplineId" disableRipple type="number">
-                                                      <mat-option *ngFor="let item of disciplinas" [value]="item">{{item.name}}</mat-option>
+                                                        <mat-option *ngFor="let item of disciplinas" value="{{item.id}}">{{item.name}}</mat-option>
                                                     </mat-select>
-                                                  </mat-form-field>
-                                                  
-                                                  
-                                            </div> -->
+                                                </mat-form-field>
+                                                
+                                            </div>
                                         </div>
                                         
                                     </div>
-                                    <!-- <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-md-6">
-    
-                                                <mat-form-field class="example-full-width" appearance="fill">
-                                                    <mat-label>Peso (KG.)</mat-label>
-                                                    <input class="text-white" formControlName="weight" matInput type="number">
-                                                </mat-form-field>
-                                            </div>
-                                            <div class="col-md-6">
-    
-                                                <mat-form-field class="example-full-width" appearance="fill">
-                                                    <mat-label>Altura (Cm)</mat-label>
-                                                    <input class="text-white" formControlName="height" matInput
-                                                        type="number">
-                                                </mat-form-field>
-                                            </div>
-    
-                                        </div>
-                                    </div> -->
+                                    
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-check form-switch">
-                                            <input class="form-check-input" type="checkbox" formControlName="isActive" >
-                                            <mat-label>Estado</mat-label>
-                                            
-                                          </div>
+                                    <div class="col-md-12">
+                                        <div class="row">
+                                            <div class="col-md-12">
+                                                <div class="row">
+                                                    <div class="col-md-6">
+                                                        <h5 class="text-white">Peso: </h5>
+        
+                                                    </div>
+                                                    <div class="col-md-6">
+                                                        <h5 class="text-white">Altura: </h5>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="row">
+                                                <div class="col-md-6">
+        
+                                                    <mat-form-field class="example-full-width" appearance="fill">
+                                                        <mat-label>Peso (KG.)</mat-label>
+                                                        <input class="text-white" formControlName="weight" matInput type="number">
+                                                    </mat-form-field>
+                                                </div>
+                                                <div class="col-md-6">
+        
+                                                    <mat-form-field class="example-full-width" appearance="fill">
+                                                        <mat-label>Altura (Cm)</mat-label>
+                                                        <input class="text-white" formControlName="height" matInput
+                                                            type="number">
+                                                    </mat-form-field>
+                                                </div>
+        
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -355,9 +364,9 @@
                                 </div>
                             </div> -->
 
-                            <button color="primary" type="submit" mat-raised-button class="btn" style="max-width: 30% ;">Actualizar</button>
-
+                            
                         </div>
+                        <button color="primary" type="submit" mat-raised-button class="btn" [disabled]="!formulario.valid" style="min-width: 10% ;">Guardar</button>
                     </div> 
 
 

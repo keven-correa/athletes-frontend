@@ -1,0 +1,119 @@
+
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="example-toolbar">
+    
+      <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+      <app-menu style="width: 100%"></app-menu>
+
+    </mat-toolbar>
+  
+    <mat-sidenav-container class="example-sidenav-container"
+                           [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+      <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'"
+                   [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
+        <mat-nav-list>
+
+<a mat-list-item (click)="atletasR()" class="active"> 
+  <span style="display: inline-block; vertical-align: middle;">
+    <span class="material-symbols-outlined">
+      sports_baseball 
+      </span>
+  </span>
+  <span style="display: inline-block; vertical-align: middle;">Atletas</span>
+</a>
+
+<a mat-list-item (click)="usuariosR()" > 
+    <span style="display: inline-block; vertical-align: middle;">
+      <span class="material-symbols-outlined">
+        group
+        </span>
+    </span>
+    <span style="display: inline-block; vertical-align: middle;">Usuarios</span>
+  </a>
+
+<a mat-list-item (click)="disciplina()" >
+  <span style="display: inline-block; vertical-align: middle;">
+    <span class="material-symbols-outlined">
+      sports_baseball 
+    </span>
+  </span>
+  <span style="display: inline-block; vertical-align: middle;">Disciplinas</span>
+</a>
+
+
+
+        </mat-nav-list>
+      </mat-sidenav>  
+      <mat-sidenav-content>
+        
+        <mat-card> 
+          <h2>Listado de atletas</h2>
+          <button color="primary" mat-raised-button (click)="nuevoAtleta()" style="max-width: 130px; margin-top: 10px; margin-bottom: 10px;" >Nuevo atleta</button>
+
+      
+          <mat-form-field >
+              <mat-label>Buscar</mat-label>
+              <input matInput (keyup)="applyFilter($event)" #input>
+          </mat-form-field>
+          
+          
+          <div class="mat-elevation-z8">
+              <table mat-table [dataSource]="dataSource">
+            
+                <!-- Position Column -->
+                <ng-container matColumnDef="id" >
+                  <th mat-header-cell *matHeaderCellDef> ID </th>
+                  <td mat-cell *matCellDef="let element; let i=index" > {{i+1}} </td>
+                </ng-container>
+            
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                  <th mat-header-cell *matHeaderCellDef> Nombre </th> 
+                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+            
+                <!-- apellido Column -->
+                <ng-container matColumnDef="lastName">
+                  <th mat-header-cell *matHeaderCellDef> Apellido </th>
+                  <td mat-cell *matCellDef="let element"> {{element.lastName}} </td>
+                </ng-container>
+            
+                <!-- disciplina Column -->
+                <ng-container matColumnDef="discipline">
+                  <th mat-header-cell *matHeaderCellDef> Disciplina </th>
+                  <td mat-cell *matCellDef="let element"> {{element.discipline.name }} </td>
+                </ng-container>
+      
+                <ng-container matColumnDef="mas">
+                  <th mat-header-cell *matHeaderCellDef> Mas </th>
+                  <td mat-cell *matCellDef="let element; let i=index"> <a color="primary" mat-raised-button (click)="envio(element.id)" style="max-width: 130px;" >Ver mas</a></td>
+                  </ng-container>
+          
+      
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+              </table>
+            
+              <mat-paginator [pageSizeOptions]="[10, 15, 20]"
+                             showFirstLastButtons 
+                             aria-label="Select page of periodic elements">
+              </mat-paginator>
+            </div>
+      
+      </mat-card>
+
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
+
+ 
+
+<!-- </mat-drawer-content>
+</mat-drawer-container> -->
+
+
+
+
+
+

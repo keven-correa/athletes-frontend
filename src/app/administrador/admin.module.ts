@@ -12,6 +12,10 @@ import { DisciplinasComponent } from './components/disciplinas/disciplinas.compo
 import { NuevaDisciplinaComponent } from './components/nueva-disciplina/nueva-disciplina.component';
 import { ReportMedicoComponent } from './components/report-medico/report-medico.component';
 import { ReportTerapeutaComponent } from './components/report-terapeuta/report-terapeuta.component';
+import { AtletasComponent } from './components/atletas/atletas.component';
+import { NuevoAtletaComponent } from './components/nuevo-atleta/nuevo-atleta.component';
+import { EditarAtletaComponent } from './components/editar-atleta/editar-atleta.component';
+import { AtletasDetallesComponent } from './components/atletas-detalles/atletas-detalles.component';
 
 
 
@@ -25,6 +29,10 @@ import { ReportTerapeutaComponent } from './components/report-terapeuta/report-t
     NuevaDisciplinaComponent,
     ReportMedicoComponent,
     ReportTerapeutaComponent,
+    AtletasComponent,
+    NuevoAtletaComponent,
+    EditarAtletaComponent,
+    AtletasDetallesComponent,
 
   ],
   imports: [
