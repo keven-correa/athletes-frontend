@@ -41,8 +41,10 @@
 
                 <div >
                     <button mat-flat-button color="secondary" class="btn" (click)="editar()">Editar</button>
-                    <button *ngIf="rol == 'Medico'" mat-flat-button color="secondary" class="btn" (click)="resumenMedico()">Resumen</button>
-                    <button *ngIf="rol =='Terapeuta'" mat-flat-button color="secondary" class="btn" (click)="resumenTerapeuta()">Resumen</button>
+
+
+                    <button *ngIf="usuario.role === 'MedicoGeneral'" mat-flat-button color="secondary" class="btn" (click)="resumenMedico()">Resumen</button>
+                    <button *ngIf="usuario.role ==='Fisioterapeuta'" mat-flat-button color="secondary" class="btn" (click)="resumenTerapeuta()">Resumen</button>
     
                 </div>
 
