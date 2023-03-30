@@ -129,18 +129,22 @@ ngOnDestroy(): void {
     }
 
     //redireccionar el menu
-  atletasR(){
-    this.router.navigate(['/medico-general/atletas'])
-  }
-  turnos(){
-    this.router.navigate(['/medico-general/turnos'])
-  }
+    turnos(){
+      this.router.navigate(['/terapia-fisica/turnos'])
+    }
 
-  
-referimientos(){
-  this.router.navigate(['/terapia-fisica/referimientos'])
+    atletasR(){
+      this.router.navigate(['/terapia-fisica/atletas'])
+    }
 
-}
+    referimientos(){
+      this.router.navigate(['/terapia-fisica/referimientos'])
+
+    }
+    resumen(){
+      this.router.navigate(['/terapia-fisica/resumen'])
+
+    }
     
   CerrarSesion(){
 

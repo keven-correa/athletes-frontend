@@ -19,7 +19,6 @@ import { EvaluacionesPorAtletaComponent } from './terapiaFisica/components/evalu
 import { TurnosComponent } from './terapiaFisica/components/turnos/turnos.component';
 import { ReportsComponent } from './terapiaFisica/reports/reports.component';
 import { NgChartsModule } from 'ng2-charts';
-import { JsonCleanPipe } from '../shared/pipes/json-clean.pipe';
 
 
 @NgModule({
@@ -36,8 +35,7 @@ import { JsonCleanPipe } from '../shared/pipes/json-clean.pipe';
     NuevaTerapiaComponent,
     EvaluacionesPorAtletaComponent,
     TurnosComponent,
-    ReportsComponent,
-    JsonCleanPipe
+    ReportsComponent
   ],
   imports: [
     CommonModule,

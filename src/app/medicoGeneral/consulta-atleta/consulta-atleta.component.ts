@@ -106,6 +106,12 @@ enviar(){
     atletasR(){
       this.router.navigate(['/medico-general/atletas'])
     }
+
+    
+    resumen(){
+      this.router.navigate(['/medico-general/resumen'])
+
+    }
     
     mensajeError(mensaje: any, icono: any) {
       Swal.fire({

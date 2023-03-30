@@ -50,7 +50,7 @@ export class EditarTurnoComponent {
         if(resp.speciality=="Fisioterapeuta"){
           this.formulario.patchValue({
             speciality:"MedicoGeneral",
-            status: resp.status
+            status: Number(resp.status)
           })
           this.secretariaService.EditarTurno(this.data,this.formulario.value).subscribe(resp=>{
             console.log(resp)
@@ -60,7 +60,7 @@ export class EditarTurnoComponent {
         else{
           this.formulario.patchValue({
             speciality:"Fisioterapeuta",
-            status: resp.status
+            status: Number(resp.status)
           })
           this.secretariaService.EditarTurno(this.data,this.formulario.value).subscribe(resp=>{
             console.log(resp)

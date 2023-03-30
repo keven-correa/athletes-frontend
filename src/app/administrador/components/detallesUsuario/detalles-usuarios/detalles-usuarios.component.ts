@@ -16,13 +16,10 @@ export class DetallesUsuariosComponent {
   edad!:number;
   usuario:any;
   formulario!:FormGroup;
-
+  rol:any;
   mobileQuery: MediaQueryList; 
 
   private _mobileQueryListener: () => void;
-
-
-  
 ngOnDestroy(): void {
   this.mobileQuery.removeListener(this._mobileQueryListener);
   }
@@ -30,13 +27,10 @@ ngOnDestroy(): void {
   
     constructor(public dialog: MatDialog, private _ruta:ActivatedRoute,private fb:FormBuilder,
         private router:Router, private adminService:AdminServiceService,
-       changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
-  
+       changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {  
         this.mobileQuery = media.matchMedia('(max-width: 600px)');
         this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-        this.mobileQuery.addListener(this._mobileQueryListener);
-  
-  
+        this.mobileQuery.addListener(this._mobileQueryListener);  
      }
   
     ngOnInit(): void {
@@ -55,6 +49,14 @@ ngOnDestroy(): void {
       this.adminService.getUsuarioById(this.id).subscribe(resp=>{
         this.usuario=resp
         console.log(resp)
+
+        if(resp.role==='MedicoGeneral'){
+          this.rol='Medico'
+        }
+        else{
+          this.rol='Terapeuta'
+
+        }
       })    
       
   }
@@ -63,18 +65,24 @@ ngOnDestroy(): void {
     this.router.navigate(['/administrador/actualizarUsuario',this.id])
 
   }
+  resumenMedico(){
+    this.router.navigate(['/administrador/reporteMedico',this.id])
+  }
+  resumenTerapeuta(){
+    this.router.navigate(['/administrador/reporteTerapeuta',this.id])
+  }
 
   Guardar(){
     console.log(this.formulario.value)
     this.adminService.guardarUsuario(this.formulario.value).subscribe(resp=>{
       console.log(resp)
     })
-    this.Usuarios();
+    this.usuariosR();
   }
 
 
   //Redireccionar en el menu
-  Usuarios(){
+  usuariosR(){
     this.router.navigate(['/administrador/usuarios'])
   }  
 

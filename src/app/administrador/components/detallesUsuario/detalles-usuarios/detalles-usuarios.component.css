@@ -86,3 +86,7 @@ mat-sidenav-content{
     height: 723px;
   }
   
+
+  .btn{
+    width: auto !important;
+  }

@@ -10,6 +10,8 @@ import { DetallesUsuariosComponent } from './components/detallesUsuario/detalles
 import { ActualizarUsuarioComponent } from './components/actualizarUsuario/actualizar-usuario/actualizar-usuario.component';
 import { DisciplinasComponent } from './components/disciplinas/disciplinas.component';
 import { NuevaDisciplinaComponent } from './components/nueva-disciplina/nueva-disciplina.component';
+import { ReportMedicoComponent } from './components/report-medico/report-medico.component';
+import { ReportTerapeutaComponent } from './components/report-terapeuta/report-terapeuta.component';
 
 
 
@@ -21,6 +23,8 @@ import { NuevaDisciplinaComponent } from './components/nueva-disciplina/nueva-di
     ActualizarUsuarioComponent,
     DisciplinasComponent,
     NuevaDisciplinaComponent,
+    ReportMedicoComponent,
+    ReportTerapeutaComponent,
 
   ],
   imports: [

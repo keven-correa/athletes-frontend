@@ -123,6 +123,11 @@ atletasR(){
 
 referimientos(){
   this.router.navigate(['/terapia-fisica/referimientos'])
+
+}
+resumen(){
+  this.router.navigate(['/terapia-fisica/resumen'])
+
 }
 
    nuevaTerapia(){

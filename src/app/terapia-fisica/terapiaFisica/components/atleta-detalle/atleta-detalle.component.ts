@@ -99,7 +99,10 @@ referimientos(){
   this.router.navigate(['/terapia-fisica/referimientos'])
 
 }
+resumen(){
+  this.router.navigate(['/terapia-fisica/resumen'])
 
+}
 
 terapia(id:any){
   this.router.navigate(['terapia-fisica/terapia',this.id])

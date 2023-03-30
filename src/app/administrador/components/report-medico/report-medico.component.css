@@ -1,0 +1,39 @@
+@media print {
+
+    mat-toolbar{
+      visibility: hidden;
+    }
+
+    button{
+      visibility: hidden;
+
+    }
+
+    .text-white{
+      color: black !important;
+    }
+    /* body * {
+      visibility: hidden;
+    }
+    #chartDiv, #chartDiv * {
+      visibility: visible;
+      
+    }
+    #chartDiv {
+      position: absolute;
+      left: 0;
+      top: 0;
+    } */
+  }
+
+  .btn2{
+    position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.btn{
+  position: fixed;
+bottom: 0;
+right: 0;
+}

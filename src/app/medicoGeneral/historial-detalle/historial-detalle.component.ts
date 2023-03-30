@@ -78,6 +78,12 @@ export class HistorialDetalleComponent {
     this.router.navigate(['/medico-general/atletas']);
   }  
 
+  
+  resumen(){
+    this.router.navigate(['/medico-general/resumen'])
+
+  }
+
   CerrarSesion(){
 
     this.medicoGeneralService.logOut();

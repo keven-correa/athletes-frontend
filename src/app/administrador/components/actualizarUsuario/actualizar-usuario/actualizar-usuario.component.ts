@@ -120,12 +120,12 @@ ngOnDestroy(): void {
       }
     }
     )
-    this.Usuarios();
+    this.usuariosR();
   }
 
 
   //Redireccionar en el menu
-  Usuarios(){
+  usuariosR(){
     this.router.navigate(['/administrador/usuarios'])
   }  
 

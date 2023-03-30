@@ -1,9 +1,13 @@
 #chartDiv {
-    width: 100vw;
-    height: 90vh;
+    width: 80vw;
+    height: 50vh;
 
-    margin-right: auto;
-    margin-left: auto;
+}
+
+canvas{
+      margin-right: auto;
+      margin-left: auto;
+
   }
 
   /* mat-sidenav-content{

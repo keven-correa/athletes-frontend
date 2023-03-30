@@ -116,6 +116,11 @@ ngOnDestroy(): void {
   turnos(){
     this.router.navigate(['/medico-general/turnos'])
   }
+  
+  resumen(){
+    this.router.navigate(['/medico-general/resumen'])
+
+  }
     
   CerrarSesion(){
 

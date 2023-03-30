@@ -117,16 +117,21 @@ export class NuevaTerapiaComponent {
 
 
   //Navegar en el menu
-  turnos() {
+  turnos(){
     this.router.navigate(['/terapia-fisica/turnos'])
   }
 
-  atletasR() {
+  atletasR(){
     this.router.navigate(['/terapia-fisica/atletas'])
   }
 
-  referimientos() {
+  referimientos(){
     this.router.navigate(['/terapia-fisica/referimientos'])
+
+  }
+  resumen(){
+    this.router.navigate(['/terapia-fisica/resumen'])
+
   }
 
   guardar() {

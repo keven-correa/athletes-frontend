@@ -1,0 +1,30 @@
+<h1 class="text-white" style="text-decoration: underline;">Atletas atendidos</h1>
+<h2 class="text-white">Nombres: {{NombreMedico}}</h2>
+<h2 class="text-white">Rol: {{RolMedico==='MedicoGeneral'? 'Medico general' :'Terapeuta'}}</h2>
+
+
+
+<table class="table table-hover">
+    <thead>
+      <tr>
+
+        <th class="text-white">Id</th>
+        <th class="text-white">Atleta</th>
+        <th class="text-white">Disciplina</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of consultas; let i = index">
+        <td class="text-white">{{i}}</td>
+        <td class="text-white">{{item.athlete.name}} {{item.athlete.lastName}}</td>
+        <td class="text-white">{{item.athlete.discipline.name}}</td>
+      </tr>
+      <tr class="text-white">Total: <b>{{consultas.length}}</b></tr>
+    </tbody>
+  </table>
+
+  <div id="botones">
+    <button mat-flat-button color="primary" class="btn2" (click)="Volver()">Volver al area de trabajo</button>
+    <button mat-flat-button color="primary" class="btn" (click)="printChart()">Imprimir resumen</button>
+
+  </div>

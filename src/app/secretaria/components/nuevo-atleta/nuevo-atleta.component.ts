@@ -77,7 +77,7 @@ ngOnDestroy(): void {
   // }
 
 //redireccionar el menu
-  atletas(){
+  atletasR(){
     this.router.navigate(['/secretaria/atletas'])
   }
   turnos(){
@@ -87,7 +87,7 @@ ngOnDestroy(): void {
   guardar(){
   this.secretariaService.guardarAtleta(this.formulario.value).subscribe(resp=>{
     console.log(resp)
-    this.atletas();   
+    this.atletasR();   
   }
   , (error) => {
     // Manejo de errores HTTP
@@ -100,7 +100,7 @@ ngOnDestroy(): void {
     } else if (error.status === 403) {
 
       this.mensajeError('No tienes permiso para acceder a este componente.', 'warning');
-      this.atletas();
+      this.atletasR();
     } else if (error.status === 404) {
       this.mensajeError('Recurso no encontrado.', 'warning');
 

@@ -6,6 +6,8 @@ import { DetallesUsuariosComponent } from './components/detallesUsuario/detalles
 import { ActualizarUsuarioComponent } from './components/actualizarUsuario/actualizar-usuario/actualizar-usuario.component';
 import { DisciplinasComponent } from './components/disciplinas/disciplinas.component';
 import { NuevaDisciplinaComponent } from './components/nueva-disciplina/nueva-disciplina.component';
+import { ReportMedicoComponent } from './components/report-medico/report-medico.component';
+import { ReportTerapeutaComponent } from './components/report-terapeuta/report-terapeuta.component';
 
 
 const routes: Routes = [
@@ -17,7 +19,9 @@ const routes: Routes = [
       {path:'detallesUsuario/:id', component:DetallesUsuariosComponent},
       {path:'actualizarUsuario/:id', component:ActualizarUsuarioComponent},
       {path:'disciplinas', component:DisciplinasComponent},
-      {path:'nuevaDisciplina', component:NuevaDisciplinaComponent},
+      {path:'nuevaDisciplina', component:NuevaDisciplinaComponent},      
+      {path:'reporteMedico/:id', component:ReportMedicoComponent},
+      {path:'reporteTerapeuta/:id', component:ReportTerapeutaComponent},
     ]
   },
   {

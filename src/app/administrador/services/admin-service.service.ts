@@ -55,4 +55,16 @@ export class AdminServiceService {
     return token !== null;
   }
 
+
+    ///Reporte
+    ConsultasPorMedico(id:any): Observable<any> {
+      const direccion = this.url + "auth/get-physician/"+id
+      return this.http.get<any>(direccion)
+    }
+
+    ConsultasPorTerapeuta(id:any): Observable<any> {
+      const direccion = this.url + "auth/get-physiotherapist-therapies-report/"+id
+      return this.http.get<any>(direccion)
+    }
+
 }

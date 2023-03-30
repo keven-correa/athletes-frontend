@@ -28,22 +28,38 @@
     </mat-sidenav>  
     <mat-sidenav-content>
        -->
-       <h3 class="text-white text-center">Cantidad de atletas atendidos por disciplina </h3>
-
-<div id="chartDiv" class="container-fluid" >
-  
-  <canvas style="margin-left: auto; margin-right: auto;" baseChart class="chart"
-  [data]="pieChartData"
-  [type]="pieChartType"
-  [options]="pieChartOptions"
-  [plugins]="pieChartPlugins">
-
-</canvas>
-<h5 class="text-white text-center" > 
-  <span *ngFor="let item of objeto">{{item| jsonClean}}</span>
-</h5>
-
-  </div>
+       <h3 class="text-white text-center">Este reporte muestra la cantidad de atletas atendidos por disciplina </h3>
+       <div id="chartDiv" class="container-fluid" >
+         <canvas baseChart class="chart"
+         [data]="pieChartData"
+         [type]="pieChartType"
+         [options]="pieChartOptions"
+         [plugins]="pieChartPlugins">
+       
+       </canvas>
+       <!-- <h5 class="text-white text-center">Disciplinas: {{NombresDisciplinas|json}}</h5>
+       <h5 class="text-white text-center">Cantidad: {{CantidadDisciplinas|json}}</h5>
+         </div> -->
+       
+         <table class="table table-hover">
+           <thead class="thead-dark">
+             <tr>
+       
+               <th class="text-white">Disciplina</th>
+               <th class="text-white">Cantidad</th>
+             </tr>
+           </thead>
+           <tbody>
+             <tr *ngFor="let item of objeto">
+       
+               <td class="text-white">{{item.Disciplina}}</td>
+               <td class="text-white">{{item.cantidad}}</td>
+       
+       
+             </tr>
+           </tbody>
+         </table>
+       
   <div id="botones">
     <button mat-flat-button color="primary" class="btn2" (click)="Volver()">Volver al area de trabajo</button>
     <button mat-flat-button color="primary" class="btn" (click)="printChart()">Imprimir resumen</button>
