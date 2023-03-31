@@ -216,4 +216,10 @@ mensajeError(mensaje: any, icono: any) {
     // Lógica que se ejecuta al cerrar el modal
   });
 }
+
+CerrarSesion(){
+
+  this.adminService.logOut();
+}
+
 }

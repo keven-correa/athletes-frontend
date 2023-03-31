@@ -90,6 +90,11 @@ atletasR(){
 this.router.navigate(['/administrador/atletas'])
 }
 
+CerrarSesion(){
+
+  this.adminService.logOut();
+}
+
 // crearTurno(){
 //   this.router.navigate(['/secretaria/nuevo-turno',this.id]);
 // }

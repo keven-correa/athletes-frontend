@@ -123,5 +123,11 @@ export class AtletasComponent   implements AfterViewInit {
       });
     }
 
+
+    CerrarSesion(){
+
+      this.adminService.logOut();
+    }
+
     
 }

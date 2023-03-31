@@ -82,21 +82,22 @@ ngOnDestroy(): void {
 
 
   //Redireccionar en el menu
+  disciplina(){
+    this.router.navigate(['/administrador/disciplinas'])
+  }
+  
   usuariosR(){
     this.router.navigate(['/administrador/usuarios'])
-  }  
-
-       disciplina(){
-        this.router.navigate(['/administrador/disciplinas'])
-      }
+  }
   
-
+  atletasR(){
+  this.router.navigate(['/administrador/atletas'])
+  }
  
   
   CerrarSesion(){
 
     this.adminService.logOut();
-    this.router.navigate(['/login'])
   }
 
  

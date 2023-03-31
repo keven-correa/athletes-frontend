@@ -170,6 +170,10 @@ this.router.navigate(['/administrador/atletas'])
     }, 3000);
   }
 
+  CerrarSesion(){
+
+    this.adminService.logOut();
+  }
 
 
 }

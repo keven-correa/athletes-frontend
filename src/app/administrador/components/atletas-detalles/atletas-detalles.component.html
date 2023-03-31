@@ -2,7 +2,11 @@
     <mat-toolbar color="primary" class="example-toolbar">
   
       <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
-      <app-menu style="width: 100%"></app-menu>
+      <mat-toolbar color="primary" style="justify-content: space-between;">
+        <span>Administrador</span>
+        <button mat-flat-button color="primary" style="float: left;" (click)="CerrarSesion()"> Cerrar
+            sesion</button>
+    </mat-toolbar>
   
     </mat-toolbar>
   
