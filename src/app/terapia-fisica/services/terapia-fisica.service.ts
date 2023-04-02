@@ -87,7 +87,7 @@ export class TerapiaFisicaService {
 
   TerapiasPorDisciplina(id: any): Observable<any> {
     const direccion = this.url + "auth/get-athletes-count-discipline-therapies/" + id
-    return this.http.get<any>('http://localhost:3000/api/auth/get-athletes-count-discipline-therapies/'+22)
+    return this.http.get<any>(direccion)
   }
 
 

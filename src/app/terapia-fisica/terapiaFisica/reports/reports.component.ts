@@ -39,7 +39,7 @@ this.mobileQuery.removeListener(this._mobileQueryListener);
   // constructor(private medicoGeneralService: MedicoGeneralService) { }
 
   ngOnInit(): void {
-    const idMedico = localStorage.getItem("idMedico")
+    const idMedico = localStorage.getItem("idTerapeuta")
     console.log(idMedico)
     const etiquetas: any[] = [];
     const data: any[] = []

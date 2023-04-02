@@ -88,4 +88,9 @@ export class AdminServiceService {
       return this.http.get<any>(direccion)
     }
 
+    TtoalDisciplinas(): Observable<any> {
+      const direccion = this.url + "discipline"
+      return this.http.get<any>(direccion)
+    }
+
 }

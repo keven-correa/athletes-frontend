@@ -18,29 +18,39 @@
                    [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
         <mat-nav-list>
 
-          <a mat-list-item (click)="usuariosR()" > 
+          <a mat-list-item (click)="atletasR()" > 
             <span style="display: inline-block; vertical-align: middle;">
               <span class="material-symbols-outlined">
-                group
+                sports_baseball 
                 </span>
             </span>
-            <span style="display: inline-block; vertical-align: middle;">Usuarios</span>
+            <span style="display: inline-block; vertical-align: middle;">Atletas</span>
           </a>
-
-        <a mat-list-item (click)="disciplina()" class="active">
-          <span style="display: inline-block; vertical-align: middle;">
-            <span class="material-symbols-outlined">
-              sports_baseball 
+          
+          <a mat-list-item (click)="usuariosR()" > 
+              <span style="display: inline-block; vertical-align: middle;">
+                <span class="material-symbols-outlined">
+                  group
+                  </span>
+              </span>
+              <span style="display: inline-block; vertical-align: middle;">Usuarios</span>
+            </a>
+          
+          <a mat-list-item (click)="disciplina()" class="active" >
+            <span style="display: inline-block; vertical-align: middle;">
+              <span class="material-symbols-outlined">
+                sports_baseball 
+              </span>
             </span>
-          </span>
-          <span style="display: inline-block; vertical-align: middle;">Disciplinas</span>
-        </a>
+            <span style="display: inline-block; vertical-align: middle;">Disciplinas</span>
+          </a>
 
         </mat-nav-list>
       </mat-sidenav>  
       <mat-sidenav-content>
         <h2>Listado de disciplinas</h2>
-          <button color="primary" mat-raised-button (click)="nuevaDisciplina()" style="max-width: 2000px; margin-top: 10px; margin-bottom: 10px;" >Nueva disciplina</button>
+          <button color="primary" mat-raised-button (click)="nuevaDisciplina()" style="max-width: 2000px; margin-top: 10px; margin-bottom: 10px; margin-right: 10px;" >Nueva disciplina</button>
+          <button color="primary" mat-raised-button (click)="Resumen()" style="max-width: 2000px; margin-top: 10px; margin-bottom: 10px;" >Resumen</button>
         <mat-card style="max-width: 90%; margin-left: auto; margin-right: auto; height: 100%;"> 
 
       

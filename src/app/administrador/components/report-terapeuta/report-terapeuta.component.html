@@ -12,6 +12,7 @@
         <!-- <th class="text-white">Id</th> -->
         <th class="text-white">Atleta</th>
         <th class="text-white">Disciplina</th>
+        <th class="text-white">Fecha</th>
       </tr>
     </thead>
     <tbody>
@@ -19,6 +20,7 @@
         <!-- <td class="text-white">{{i}}</td> -->
         <td class="text-white">{{item.athlete.name|titlecase}} {{item.athlete.lastName}}</td>
         <td class="text-white">{{item.athlete.discipline.name}}</td>
+        <td class="text-white">{{item.created_at|date:'medium'}}</td>
       </tr>
       <tr class="text-white">Total: <b> {{consultas.length}}</b></tr>
     </tbody>

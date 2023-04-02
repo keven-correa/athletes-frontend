@@ -16,6 +16,8 @@ import { AtletasComponent } from './components/atletas/atletas.component';
 import { NuevoAtletaComponent } from './components/nuevo-atleta/nuevo-atleta.component';
 import { EditarAtletaComponent } from './components/editar-atleta/editar-atleta.component';
 import { AtletasDetallesComponent } from './components/atletas-detalles/atletas-detalles.component';
+import { ReportDisciplinasComponent } from './components/report-disciplinas/report-disciplinas.component';
+import { NgChartsModule } from 'ng2-charts';
 
 
 
@@ -33,6 +35,7 @@ import { AtletasDetallesComponent } from './components/atletas-detalles/atletas-
     NuevoAtletaComponent,
     EditarAtletaComponent,
     AtletasDetallesComponent,
+    ReportDisciplinasComponent,
 
   ],
   imports: [
@@ -40,7 +43,9 @@ import { AtletasDetallesComponent } from './components/atletas-detalles/atletas-
     AdminRoutingModule,    
     SheredModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    
+    NgChartsModule
   ]
 })
 export class AdminModule { }

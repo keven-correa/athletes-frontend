@@ -1,0 +1,75 @@
+#chartDiv {
+    width: 90vw;
+    height: 50vh;
+
+    margin-right: auto;
+    margin-left: auto;
+
+
+  }
+  canvas{
+    
+  
+    width: 90vw;
+    height: 50vh;
+
+    margin-right: auto;
+    margin-left: auto;
+}
+  /* mat-sidenav-content{
+    width: 100vw;
+    height: 90vh;
+  } */
+.btn2{
+    position: fixed;
+  bottom: 0;
+  left: 0;
+}
+
+.btn{
+  position: fixed;
+bottom: 0;
+right: 0;
+}
+
+  @media print {
+
+    mat-toolbar{
+      visibility: hidden;
+    }
+    button{
+      visibility: hidden;
+    }
+
+
+    /* #chartDiv, #chartDiv * { */
+        /* margin-right: auto; */
+        /* margin-left: auto; */
+        /* width: 80vw;
+        height: 50vh; */
+        
+      /* } */
+    /* body * {
+      visibility: hidden;
+    }
+    #chartDiv, #chartDiv * {
+      visibility: visible;
+      
+    }
+    #chartDiv {
+      position: absolute;
+      left: 0;
+      top: 0;
+    } */
+  }
+
+
+  
+
+table {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+

@@ -1,0 +1,36 @@
+
+<div id="chartDiv"  >
+
+
+<canvas baseChart class="chart"
+        [data]="lineChartData"
+        [options]="lineChartOptions"
+        [type]="lineChartType"></canvas>
+
+        
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+
+        <th class="text-white">Disciplina</th>
+        <th class="text-white">Cantidad</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of objeto">
+
+        <td class="text-white">{{item.Disciplina}}</td>
+        <td class="text-white">{{item.cantidad}}</td>
+
+
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div id="botones">
+    <button mat-flat-button color="primary" class="btn2" (click)="Volver()">Volver al area de trabajo</button>
+    <button mat-flat-button color="primary" class="btn" (click)="printChart()">Imprimir resumen</button>
+
+  </div>

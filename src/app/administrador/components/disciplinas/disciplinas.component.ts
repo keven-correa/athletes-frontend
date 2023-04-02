@@ -98,14 +98,22 @@ export class DisciplinasComponent {
       this.router.navigate(['/administrador/nuevaDisciplina'])
     }
 
-     //Navegar en el menu
-     disciplina(){
-      this.router.navigate(['/administrador/disciplinas'])
+    Resumen(){
+      this.router.navigate(['/administrador/reporteDisciplinas'])
     }
 
-    usuariosR(){
-      this.router.navigate(['/administrador/usuarios'])
-    }
+ //Navegar en el menu
+ disciplina(){
+  this.router.navigate(['/administrador/disciplinas'])
+}
+
+usuariosR(){
+  this.router.navigate(['/administrador/usuarios'])
+}
+
+atletasR(){
+this.router.navigate(['/administrador/atletas'])
+}
 
 
     CerrarSesion(){

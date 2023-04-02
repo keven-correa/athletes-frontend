@@ -12,6 +12,7 @@ import { AtletasComponent } from './components/atletas/atletas.component';
 import { NuevoAtletaComponent } from './components/nuevo-atleta/nuevo-atleta.component';
 import { EditarAtletaComponent } from './components/editar-atleta/editar-atleta.component';
 import { AtletasDetallesComponent } from './components/atletas-detalles/atletas-detalles.component';
+import { ReportDisciplinasComponent } from './components/report-disciplinas/report-disciplinas.component';
 
 
 const routes: Routes = [
@@ -26,6 +27,7 @@ const routes: Routes = [
       {path:'nuevaDisciplina', component:NuevaDisciplinaComponent},      
       {path:'reporteMedico/:id', component:ReportMedicoComponent},
       {path:'reporteTerapeuta/:id', component:ReportTerapeutaComponent},
+      {path:'reporteDisciplinas', component:ReportDisciplinasComponent},
       {path:'atletas', component:AtletasComponent},
       {path:'nuevo-atleta', component:NuevoAtletaComponent},
       {path:'editar-atleta/:id',component:EditarAtletaComponent},
