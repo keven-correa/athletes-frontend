@@ -1,3 +1,7 @@
+.imagen{
+  display: none;
+
+}
 @media print {
 
     mat-toolbar{
@@ -7,6 +11,10 @@
     button{
       visibility: hidden;
 
+    }
+    .imagen{
+      display: block;
+  
     }
 
     .text-white{

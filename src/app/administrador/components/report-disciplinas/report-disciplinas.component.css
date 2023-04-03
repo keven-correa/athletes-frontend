@@ -16,10 +16,10 @@
     margin-right: auto;
     margin-left: auto;
 }
-  /* mat-sidenav-content{
-    width: 100vw;
-    height: 90vh;
-  } */
+  .imagen{
+    display: none;
+
+  }
 .btn2{
     position: fixed;
   bottom: 0;
@@ -41,6 +41,15 @@ right: 0;
       visibility: hidden;
     }
 
+
+    .imagen{
+        display: block;
+    
+      }
+
+      .text-white{
+        color: black;
+      }
 
     /* #chartDiv, #chartDiv * { */
         /* margin-right: auto; */

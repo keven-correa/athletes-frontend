@@ -49,7 +49,7 @@ export class AtletasComponent  implements AfterViewInit {
 
     this.medicoGeneralService.getAtletas().subscribe(resp=>{
       this.ELEMENT_DATA=resp
-      this.dataSource.data=this.ELEMENT_DATA.reverse();
+      this.dataSource.data=this.ELEMENT_DATA;
 
     }, (error) => {
       // Manejo de errores HTTP

@@ -23,6 +23,10 @@
 bottom: 0;
 right: 0;
 }
+.imagen{
+  display: none;
+
+}
 
   @media print {
 
@@ -40,6 +44,11 @@ right: 0;
         /* width: 80vw;
         height: 50vh; */
         
+      }
+
+      .imagen{
+        display: block;
+    
       }
     /* body * {
       visibility: hidden;

@@ -26,6 +26,11 @@ bottom: 0;
 right: 0;
 }
 
+.imagen{
+  display: none;
+
+}
+
   @media print {
 
     mat-toolbar{
@@ -33,6 +38,11 @@ right: 0;
     }
     button{
       visibility: hidden;
+    }
+
+    .imagen{
+      display: block;
+  
     }
 
 
