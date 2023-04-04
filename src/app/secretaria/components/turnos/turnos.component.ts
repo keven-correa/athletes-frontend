@@ -26,7 +26,7 @@ export class TurnosComponent implements AfterViewInit {
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['atleta', 'lugar', 'fecha', 'estado','editar'];
+  displayedColumns: string[] = ['id','atleta', 'lugar', 'fecha', 'estado','editar'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
   mobileQuery: MediaQueryList;
@@ -55,9 +55,10 @@ ngOnDestroy(): void {
   ngOnInit(): void {
 
     this._secretariaService.getTurnos().subscribe(resp=>{
-      resp.sort((a:any, b:any) => new Date(a.createdat).getTime() - new Date(b.createdat).getTime());
+      // resp.sort((a:any, b:any) => new Date(a.createdat).getTime() - new Date(b.createdat).getTime());
+      console.log(resp)
       this.ELEMENT_DATA = resp;
-      this.dataSource.data = this.ELEMENT_DATA.reverse(); 
+      this.dataSource.data = this.ELEMENT_DATA; 
     }, (error) => {
       // Manejo de errores HTTP
       if (error.status === 401) {

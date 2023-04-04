@@ -83,6 +83,11 @@ export class MedicoGeneralService {
     return this.http.get<any>(direccion,this.options)
   }
 
+  AgregarTurno(form:any) : Observable<any>{
+    const direccion = this.url + "shifts";
+    return this.http.post<any>(direccion,form, this.options)
+  }
+
   logOut() {
     localStorage.clear();
     window.location.replace('/login');

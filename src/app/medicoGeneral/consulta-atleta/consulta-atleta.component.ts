@@ -16,6 +16,7 @@ export class ConsultaAtletaComponent implements OnInit {
   id:number=0;
   atletas!:any;
   formulario!:FormGroup;
+  formularioTurno!:FormGroup;
 
   
   mobileQuery: MediaQueryList; 
@@ -44,6 +45,13 @@ shouldRun = true;
   ngOnInit(): void {
     this._ruta.params.subscribe((params:Params)=>{
       this.id=params['id'];
+    })
+
+    this.formularioTurno = this.fb.group({
+      athlete: [this.id, Validators.required],
+      status: [2, Validators.required],
+      speciality: ['Fisioterapeuta', Validators.required],
+      remarks: ['Referimiento de medico', Validators.required],
     })
 
     this.medicoGeneralService.detalleAtleta(this.id).subscribe(resp=>{
@@ -90,6 +98,10 @@ enviar(){
   console.log(this.formulario.value)
   this.medicoGeneralService.NuevaConsulta(this.formulario.value).subscribe(resp=>{
 
+    this.medicoGeneralService.AgregarTurno(this.formularioTurno.value).subscribe(resp1 => {
+        console.log(resp1)
+
+    })
     this.atletasR();
   }
   )

@@ -22,7 +22,7 @@ export class TurnosComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['atleta', 'lugar', 'fecha', 'estado','editar'];
+  displayedColumns: string[] = ['id','atleta', 'fecha', 'estado', 'comentario', 'editar'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
   mobileQuery: MediaQueryList;
@@ -46,10 +46,18 @@ ngOnDestroy(): void {
 }  
   ngOnInit(): void {
 
-    this.medicoGeneralService.getTurnos().subscribe(resp=>{
+    setInterval(() => {
+      location.reload();
+    }, 15000);
+
+    this.medicoGeneralService.getTurnos().subscribe(resp => {
       this.ELEMENT_DATA = resp;
-      this.dataSource.data = this.ELEMENT_DATA.reverse().filter(x=>x.speciality==="MedicoGeneral").filter(a=>a.status==="2");
-      console.log(resp)
+      const filteredData = this.ELEMENT_DATA
+        .reverse()
+        .filter(x => x.speciality === "MedicoGeneral")
+        .filter(a => a.status === "2");
+      this.dataSource.data = filteredData.slice(0, 1);
+      console.log(resp);
     }, (error) => {
       // Manejo de errores HTTP
       if (error.status === 401) {
@@ -120,6 +128,10 @@ ngOnDestroy(): void {
   resumen(){
     this.router.navigate(['/medico-general/resumen'])
 
+  }
+
+  recargar(){
+    location.reload();
   }
     
   CerrarSesion(){

@@ -22,7 +22,7 @@ export class TurnosComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['atleta', 'lugar', 'fecha', 'estado','editar','referimiento'];
+  displayedColumns: string[] = ['atleta',  'fecha', 'estado','comentario','editar','referimiento'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
   mobileQuery: MediaQueryList;
@@ -46,10 +46,20 @@ ngOnDestroy(): void {
 }  
   ngOnInit(): void {
 
+    setInterval(() => {
+      location.reload();
+    }, 15000);
+
     this.terapiafisicaService.getTurnos().subscribe(resp=>{
-      this.ELEMENT_DATA = resp;
-      this.dataSource.data = this.ELEMENT_DATA.reverse().filter(x=>x.speciality==="Fisioterapeuta").filter(a=>a.status==="2");
-    }, (error) => {
+  this.ELEMENT_DATA = resp;
+      const filteredData = this.ELEMENT_DATA
+        .reverse()
+        .filter(x => x.speciality === "Fisioterapeuta")
+        .filter(a => a.status === "2");
+      this.dataSource.data = filteredData.slice(0, 1);
+      console.log(resp);
+    }
+    , (error) => {
       // Manejo de errores HTTP
       if (error.status === 401) {
 
@@ -88,7 +98,7 @@ ngOnDestroy(): void {
         const ActualizarTurno={
           status:1,
           speciality:"Fisioterapeuta",
-          remarks:""
+          remarks:resp.remarks
         }    
         this.terapiafisicaService.EditarTurno(id,ActualizarTurno).subscribe(resp=>{
           console.log(resp)
@@ -107,7 +117,7 @@ ngOnDestroy(): void {
           const ActualizarTurno={
             status:1,
             speciality:"Fisioterapeuta",
-            remarks:""
+            remarks:resp.remarks
           }    
           this.terapiafisicaService.EditarTurno(id,ActualizarTurno).subscribe(resp=>{
             console.log(resp)
@@ -150,6 +160,10 @@ ngOnDestroy(): void {
 
     this.terapiafisicaService.logOut();
     this.router.navigate(['/login'])
+  }
+
+  recargar(){
+    location.reload();
   }
 
   mensajeError(mensaje: any, icono: any) {
