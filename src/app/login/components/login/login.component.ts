@@ -46,7 +46,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('idAdmin', respuesta.id);
 
           // this.router.navigateByUrl('/secretaria/atletas')
-          window.location.replace('/administrador/usuarios');
+          window.location.replace('/administrador/dashboard');
         } else if (respuesta.role == 'Secretary') {
           localStorage.setItem('token', respuesta.token);
           localStorage.setItem('idSecretaria', respuesta.id);

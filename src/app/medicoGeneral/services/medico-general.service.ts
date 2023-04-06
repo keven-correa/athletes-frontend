@@ -88,6 +88,12 @@ export class MedicoGeneralService {
     return this.http.post<any>(direccion,form, this.options)
   }
 
+  getDiagnosticos(): Observable<any> {
+    const direccion = this.url + "diagnostics"
+    return this.http.get<any>(direccion, this.options)
+  }
+
+
   logOut() {
     localStorage.clear();
     window.location.replace('/login');

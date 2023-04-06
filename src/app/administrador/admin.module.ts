@@ -18,6 +18,12 @@ import { EditarAtletaComponent } from './components/editar-atleta/editar-atleta.
 import { AtletasDetallesComponent } from './components/atletas-detalles/atletas-detalles.component';
 import { ReportDisciplinasComponent } from './components/report-disciplinas/report-disciplinas.component';
 import { NgChartsModule } from 'ng2-charts';
+import { DisciplinasReportComponent } from './components/reportesDashboard/disciplinas-report/disciplinas-report.component';
+import { DashboardAdminComponent } from './components/dashboard-admin/dashboard-admin.component';
+import { LesionesReportComponent } from './components/reportesDashboard/lesiones-report/lesiones-report.component';
+import { AtletasAtendidosReportComponent } from './components/reportesDashboard/atletas-atendidos-report/atletas-atendidos-report.component';
+import { DiagnosticosComponent } from './components/diagnosticos/diagnosticos.component';
+import { NuevoDiagnosticoComponent } from './components/nuevo-diagnostico/nuevo-diagnostico.component';
 
 
 
@@ -36,6 +42,12 @@ import { NgChartsModule } from 'ng2-charts';
     EditarAtletaComponent,
     AtletasDetallesComponent,
     ReportDisciplinasComponent,
+    DisciplinasReportComponent,
+    DashboardAdminComponent,
+    LesionesReportComponent,
+    AtletasAtendidosReportComponent,
+    DiagnosticosComponent,
+    NuevoDiagnosticoComponent,
 
   ],
   imports: [

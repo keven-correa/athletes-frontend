@@ -36,7 +36,7 @@
               <span style="display: inline-block; vertical-align: middle;">Usuarios</span>
             </a>
           
-          <a mat-list-item (click)="disciplina()" class="active" >
+          <a mat-list-item (click)="disciplina()"  >
             <span style="display: inline-block; vertical-align: middle;">
               <span class="material-symbols-outlined">
                 sports_baseball 
@@ -45,7 +45,7 @@
             <span style="display: inline-block; vertical-align: middle;">Disciplinas</span>
           </a>
 
-          <a mat-list-item (click)="diagnosticosR()" > 
+          <a mat-list-item (click)="diagnosticosR()" class="active" > 
             <span style="display: inline-block; vertical-align: middle;">
               <span class="material-symbols-outlined">
                 foot_bones
@@ -57,9 +57,9 @@
         </mat-nav-list>
       </mat-sidenav>  
       <mat-sidenav-content>
-        <h2>Listado de disciplinas</h2>
-          <button color="primary" mat-raised-button (click)="nuevaDisciplina()" style="max-width: 2000px; margin-top: 10px; margin-bottom: 10px; margin-right: 10px;" >Nueva disciplina</button>
-          <button color="primary" mat-raised-button (click)="Resumen()" style="max-width: 2000px; margin-top: 10px; margin-bottom: 10px;" >Resumen</button>
+        <h2>Listado de diagnosticos</h2>
+          <button color="primary" mat-raised-button (click)="nuevoDiagnostico()" style="max-width: 2000px; margin-top: 10px; margin-bottom: 10px; margin-right: 10px;" >Nuevo diagnostico</button>
+          <!-- <button color="primary" mat-raised-button (click)="Resumen()" style="max-width: 2000px; margin-top: 10px; margin-bottom: 10px;" >Resumen</button> -->
         <mat-card style="max-width: 90%; margin-left: auto; margin-right: auto; height: 100%;"> 
 
       
@@ -81,13 +81,8 @@
                 <!-- Name Column -->
                 <ng-container matColumnDef="name">
                   <th mat-header-cell *matHeaderCellDef> Nombre </th> 
-                  <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                  <td mat-cell *matCellDef="let element"> {{element.name | titlecase}} </td>
                 </ng-container>
-
-                <ng-container matColumnDef="descripcion">
-                    <th mat-header-cell *matHeaderCellDef> Descripcion </th> 
-                    <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-                  </ng-container>
             
                 <ng-container matColumnDef="fecha">
                     <th mat-header-cell *matHeaderCellDef> Fecha de creacion </th> 
@@ -111,9 +106,6 @@
   </div>
 
  
-
-<!-- </mat-drawer-content>
-</mat-drawer-container> -->
 
 
 

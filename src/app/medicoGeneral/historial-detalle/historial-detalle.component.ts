@@ -44,6 +44,7 @@ export class HistorialDetalleComponent {
 
     this.medicoGeneralService.ConsultaDetalle(this.id).subscribe((resp) => {
       this.Detalleconsulta = resp;
+      console.log(resp)
     }, (error) => {
       // Manejo de errores HTTP
       if (error.status === 401) {

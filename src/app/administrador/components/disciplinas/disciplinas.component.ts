@@ -115,6 +115,10 @@ atletasR(){
 this.router.navigate(['/administrador/atletas'])
 }
 
+diagnosticosR(){
+  this.router.navigate(['/administrador/diagnosticos'])
+  }
+
 
     CerrarSesion(){
 

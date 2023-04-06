@@ -1,0 +1,22 @@
+
+
+
+<h1>Crear diagnostico</h1>
+<form class="example-form" [formGroup]="formulario" (ngSubmit)="guardar()" style="max-width: 1250px ;">
+
+<div class="form-group">
+    <div class="row">
+        <div class="col-md-12">
+            <h5 class="text-white">Diagnostico</h5>
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Nombre</mat-label>
+                <input formControlName="name"  class="text-white"
+                    matInput type="text">
+            </mat-form-field>
+        </div>
+    </div>                               
+
+</div>
+
+<button color="primary"  type="submit" mat-raised-button class="btn" style="max-width: 30% ;">Guardar</button>
+</form>

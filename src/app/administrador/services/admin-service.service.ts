@@ -76,6 +76,16 @@ export class AdminServiceService {
     return this.http.patch<any>(direccion,form,this.options)
   }
 
+  getDiagnosticos(): Observable<any> {
+    const direccion = this.url + "diagnostics"
+    return this.http.get<any>(direccion, this.options)
+  }
+
+  addDiagnostico(form:any): Observable<any> {
+    const direccion = this.url + "diagnostics"
+    return this.http.post<any>(direccion,form, this.options)
+  }
+
 
     ///Reporte
     ConsultasPorMedico(id:any): Observable<any> {
@@ -91,6 +101,17 @@ export class AdminServiceService {
     TtoalDisciplinas(): Observable<any> {
       const direccion = this.url + "discipline"
       return this.http.get<any>(direccion)
+    }
+
+
+    Consultas(): Observable<any> {
+      const direccion = this.url + "appointment"
+      return this.http.get<any>(direccion,this.options)
+    }
+
+    Terapias(): Observable<any> {
+      const direccion = this.url + "therapy"
+      return this.http.get<any>(direccion,this.options)
     }
 
 }

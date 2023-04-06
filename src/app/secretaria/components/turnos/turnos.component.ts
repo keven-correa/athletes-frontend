@@ -49,8 +49,6 @@ export class TurnosComponent implements AfterViewInit {
 ngOnDestroy(): void {
   this.mobileQuery.removeListener(this._mobileQueryListener);
 }
-
-
   
   ngOnInit(): void {
 

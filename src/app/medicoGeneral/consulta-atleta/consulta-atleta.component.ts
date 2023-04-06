@@ -17,6 +17,7 @@ export class ConsultaAtletaComponent implements OnInit {
   atletas!:any;
   formulario!:FormGroup;
   formularioTurno!:FormGroup;
+  Diagnosticos:any;
 
   
   mobileQuery: MediaQueryList; 
@@ -38,8 +39,6 @@ export class ConsultaAtletaComponent implements OnInit {
 ngOnDestroy(): void {
   this.mobileQuery.removeListener(this._mobileQueryListener);
 }
-
-shouldRun = true;
 
 
   ngOnInit(): void {
@@ -89,13 +88,23 @@ shouldRun = true;
       notes: ['',Validators.required],      
       priority: ['Media',Validators.required],      
       athlete: [identificador,Validators.required],      
-      // assigned_to: [2,Validators.required],      
+      diagnostic_classification: [0,Validators.required],      
+    })
+
+    this.medicoGeneralService.getDiagnosticos().subscribe(resp=>{
+      console.log(resp)
+      this.Diagnosticos= resp
     })
      
    }  
 
 enviar(){
   console.log(this.formulario.value)
+
+  this.formulario.patchValue({
+    diagnostic_classification: Number(this.formulario.value.diagnostic_classification)
+  })
+
   this.medicoGeneralService.NuevaConsulta(this.formulario.value).subscribe(resp=>{
 
     this.medicoGeneralService.AgregarTurno(this.formularioTurno.value).subscribe(resp1 => {
