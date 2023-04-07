@@ -17,6 +17,15 @@
             fixedTopGap="56">
             <mat-nav-list>
 
+                <a mat-list-item (click)="inicioR()" class="active"> 
+                    <span style="display: inline-block; vertical-align: middle;">
+                      <span class="material-symbols-outlined">
+                        monitoring
+                        </span>
+                    </span>
+                    <span style="display: inline-block; vertical-align: middle;">Inicio</span>
+                  </a>
+
                 <a mat-list-item (click)="atletasR()">
                     <span style="display: inline-block; vertical-align: middle;">
                         <span class="material-symbols-outlined">
@@ -44,20 +53,29 @@
                     <span style="display: inline-block; vertical-align: middle;">Disciplinas</span>
                 </a>
 
+                <a mat-list-item (click)="diagnosticosR()" > 
+                    <span style="display: inline-block; vertical-align: middle;">
+                      <span class="material-symbols-outlined">
+                        foot_bones
+                        </span>
+                    </span>
+                    <span style="display: inline-block; vertical-align: middle;">Diagnosticos</span>
+                  </a>
+
             </mat-nav-list>
         </mat-sidenav>
         <mat-sidenav-content>
 
             <div class="container-fluid">
-                <h1>Resumen</h1>
+                <h1><b>Inicio</b></h1>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card bg-dark">
                             <div class="card-header">
-                                <h1>1</h1>
+                                <h1>Total de atletas</h1>
                             </div>
                             <div class="card-body">
-                                <h3>Informacion rapida</h3>
+                                <h3>{{totalAtletas}}</h3>
                             </div>
                         </div>
                     </div>
@@ -65,10 +83,10 @@
                     <div class="col-md-4">
                         <div class="card bg-dark">
                             <div class="card-header">
-                                <h1>2</h1>
+                                <h1>Total de medicos</h1>
                             </div>
                             <div class="card-body">
-                                <h3>Informacion rapida</h3>
+                                <h3>{{totalMedicos}}</h3>
                             </div>
                         </div>
                     </div>
@@ -76,10 +94,10 @@
                     <div class="col-md-4">
                         <div class="card bg-dark">
                             <div class="card-header">
-                                <h1>3</h1>
+                                <h1>Total Fisioterapeutas</h1>
                             </div>
                             <div class="card-body">
-                                <h3>Informacion rapida</h3>
+                                <h3>{{totalTerapeuta}}</h3>
                             </div>
                         </div>
                     </div>
@@ -98,7 +116,7 @@
                                         <h1>Atletas atendidos por area</h1>
                                     </div>
                                     <div class="card-body">
-                                        <a href="">
+                                        <a href="administrador/atendidosPorArea">
                                             <app-atletas-atendidos-report></app-atletas-atendidos-report> 
                                         </a>
                                     </div>
@@ -130,7 +148,7 @@
                                 <h1>Lesiones por disciplina</h1>
                             </div>
                             <div class="card-body">
-                                <a href="">
+                                <a href="administrador/reporteLesiones">
                                     <app-lesiones-report></app-lesiones-report>
                                 </a>
                             </div>

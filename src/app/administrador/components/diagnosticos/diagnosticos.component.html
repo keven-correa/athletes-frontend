@@ -18,32 +18,42 @@
                    [fixedInViewport]="mobileQuery.matches" fixedTopGap="56">
         <mat-nav-list>
 
-          <a mat-list-item (click)="atletasR()" > 
+          
+          <a mat-list-item (click)="inicioR()" > 
             <span style="display: inline-block; vertical-align: middle;">
               <span class="material-symbols-outlined">
-                sports_baseball 
+                monitoring
+                </span>
+            </span>
+            <span style="display: inline-block; vertical-align: middle;">Inicio</span>
+          </a>
+
+        <a mat-list-item (click)="atletasR()">
+            <span style="display: inline-block; vertical-align: middle;">
+                <span class="material-symbols-outlined">
+                    sports_baseball
                 </span>
             </span>
             <span style="display: inline-block; vertical-align: middle;">Atletas</span>
-          </a>
-          
-          <a mat-list-item (click)="usuariosR()" > 
-              <span style="display: inline-block; vertical-align: middle;">
-                <span class="material-symbols-outlined">
-                  group
-                  </span>
-              </span>
-              <span style="display: inline-block; vertical-align: middle;">Usuarios</span>
-            </a>
-          
-          <a mat-list-item (click)="disciplina()"  >
+        </a>
+
+        <a mat-list-item (click)="usuariosR()">
             <span style="display: inline-block; vertical-align: middle;">
-              <span class="material-symbols-outlined">
-                sports_baseball 
-              </span>
+                <span class="material-symbols-outlined">
+                    group
+                </span>
+            </span>
+            <span style="display: inline-block; vertical-align: middle;">Usuarios</span>
+        </a>
+
+        <a mat-list-item (click)="disciplina()">
+            <span style="display: inline-block; vertical-align: middle;">
+                <span class="material-symbols-outlined">
+                    sports_baseball
+                </span>
             </span>
             <span style="display: inline-block; vertical-align: middle;">Disciplinas</span>
-          </a>
+        </a>
 
           <a mat-list-item (click)="diagnosticosR()" class="active" > 
             <span style="display: inline-block; vertical-align: middle;">

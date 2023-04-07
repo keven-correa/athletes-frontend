@@ -24,7 +24,7 @@ export class DisciplinasComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['id', 'name', 'fecha', 'descripcion' ];
+  displayedColumns: string[] = ['id', 'name', 'fecha',  ];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
 
@@ -103,21 +103,25 @@ export class DisciplinasComponent {
     }
 
  //Navegar en el menu
- disciplina(){
+ disciplina() {
   this.router.navigate(['/administrador/disciplinas'])
 }
 
-usuariosR(){
+usuariosR() {
   this.router.navigate(['/administrador/usuarios'])
 }
 
-atletasR(){
-this.router.navigate(['/administrador/atletas'])
+atletasR() {
+  this.router.navigate(['/administrador/atletas'])
 }
 
-diagnosticosR(){
+diagnosticosR() {
   this.router.navigate(['/administrador/diagnosticos'])
-  }
+}
+inicioR() {
+  this.router.navigate(['/administrador/dashboard'])
+
+}
 
 
     CerrarSesion(){

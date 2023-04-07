@@ -44,7 +44,7 @@ ngOnDestroy(): void {
      
       this.formulario=this.fb.group({
         name: ['',Validators.required],
-        description: ['',Validators.required],             
+        description: ['Nada',Validators.required],             
       })  
       
       
@@ -56,16 +56,26 @@ ngOnDestroy(): void {
       this.disciplina();
     })
   }
-  //Redireccionar en el menu
-
-     disciplina(){
-      this.router.navigate(['/administrador/disciplinas'])
-    }
-
-    usuariosR(){
-      this.router.navigate(['/administrador/usuarios'])
-    }
+  //Navegar en el menu
+  disciplina() {
+    this.router.navigate(['/administrador/disciplinas'])
+  }
   
+  usuariosR() {
+    this.router.navigate(['/administrador/usuarios'])
+  }
+  
+  atletasR() {
+    this.router.navigate(['/administrador/atletas'])
+  }
+  
+  diagnosticosR() {
+    this.router.navigate(['/administrador/diagnosticos'])
+  }
+  inicioR() {
+    this.router.navigate(['/administrador/dashboard'])
+  
+  }
 
  
   

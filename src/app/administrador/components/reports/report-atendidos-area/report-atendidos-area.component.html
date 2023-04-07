@@ -1,0 +1,44 @@
+<div class="imagen">
+  <img src="../../../../assets/img/miderec.jpg" width="15%">
+</div>
+<h1 class="text-white">Cantidad de atletas atendidos</h1>
+
+
+
+<div class="form-group d-flex">
+
+
+  <div class="form-check">
+    <input type="radio" name="tiempo" value="1" (change)="onRadioChange($event)" checked>
+    <label class="form-check-label text-white" for="tiempo">
+      Ultima semana
+    </label>
+  </div>
+  <div class="form-check">
+    <input type="radio" name="tiempo" value="2" (change)="onRadioChange($event)">
+    <label class="form-check-label text-white" for="">
+      Ultimo mes
+    </label>
+  </div>
+
+  <div class="form-check">
+    <input type="radio" name="tiempo" value="3" (change)="onRadioChange($event)">
+    <label class="form-check-label text-white" for="">
+      Ultimo cuatrimestre
+    </label>
+  </div>
+
+</div>
+<div id="chartDiv">
+
+
+  <canvas baseChart class="chart" style="max-height: 170px;" [data]="barChartData" [options]="barChartOptions"
+    [plugins]="barChartPlugins" [type]="barChartType">
+  </canvas>
+
+</div>
+<div id="botones">
+  <button mat-flat-button color="primary" class="btn2" (click)="Volver()">Volver al area de trabajo</button>
+  <button mat-flat-button color="primary" class="btn" (click)="printChart()">Imprimir resumen</button>
+
+</div>

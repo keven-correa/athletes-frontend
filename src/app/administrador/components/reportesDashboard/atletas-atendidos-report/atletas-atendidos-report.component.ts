@@ -17,77 +17,43 @@ export class AtletasAtendidosReportComponent implements OnInit {
 
   }
   ngOnInit(): void {
-    let citasPorDiaMedicog: any = {};
-    let citasPorDiaTerapeutaf: any = {};
+    this.adminService.Turnos().subscribe(resp => {
+      console.log(resp)
+      // Filtrar los registros por especialidad y fecha
+      const medicoGeneralRegistros = resp.filter((r: any) => r.speciality === "MedicoGeneral" && new Date(r.createdat) >= new Date(Date.now() - 7 * 24 * 60 * 60 * 1000));
+      const fisioterapeutaRegistros = resp.filter((r: any) => r.speciality === "Fisioterapeuta" && new Date(r.createdat) >= new Date(Date.now() - 7 * 24 * 60 * 60 * 1000));
 
-    this.adminService.Consultas().subscribe(resp => {
-      const today = new Date();
-      const lastWeekday = new Date();
-      lastWeekday.setDate(today.getDate() - 1);
-      while (lastWeekday.getDay() > 1 || lastWeekday.getDay() === 0) {
-        lastWeekday.setDate(lastWeekday.getDate() - 1);
-      }    
-      const lastFiveWeekdaysMedicoGeneralData = resp.filter((cita: any) => {
-        const citaDate = new Date(cita.created_at);
-        return (
-          citaDate >= lastWeekday &&
-          citaDate <= today &&
-          citaDate.getDay() >= 1 &&
-          citaDate.getDay() <= 5
-        );
-      });    
-      const citasPorDiaMedico: any = {};
-      for (let i = 1; i <= 5; i++) {
-        citasPorDiaMedico[i] = 0;
-      }
-      lastFiveWeekdaysMedicoGeneralData.forEach((cita: any) => {
-        const citaDate = new Date(cita.created_at);
-        citasPorDiaMedico[citaDate.getDay()] += 1;
+      // Arreglo para almacenar la cantidad de registros por día de la semana
+      const citasPorDiaMedicog = [0, 0, 0, 0, 0, 0, 0];
+      const citasPorDiaTerapeutaf = [0, 0, 0, 0, 0, 0, 0];
+
+      // Recorrer los registros filtrados y contar la cantidad por día de la semana
+      medicoGeneralRegistros.forEach((r: any) => {
+        const dia = new Date(r.createdat).getDay();
+        citasPorDiaMedicog[dia]++;
       });
-      citasPorDiaMedicog= Object.values(citasPorDiaMedico); // convertir a array
-      console.log(citasPorDiaMedicog);
-    })
 
-    this.adminService.Terapias().subscribe(respuesta=>{
-      const today = new Date();
-
-      const lastWeekday = new Date();
-      lastWeekday.setDate(today.getDate() - 1);
-      while (lastWeekday.getDay() > 1 || lastWeekday.getDay() === 0) {
-        lastWeekday.setDate(lastWeekday.getDate() - 1);
-      }
-
-      const lastFiveWeekdaysMedicoGeneralData = respuesta.filter((cita: any) => {
-        const citaDate = new Date(cita.created_at);
-        return (
-          citaDate >= lastWeekday &&
-          citaDate <= today &&
-          citaDate.getDay() >= 1 &&
-          citaDate.getDay() <= 5
-        );
+      fisioterapeutaRegistros.forEach((r: any) => {
+        const dia = new Date(r.createdat).getDay();
+        citasPorDiaTerapeutaf[dia]++;
       });
-      const citasPorDiaTerapeuta: any = {};
-      for (let i = 1; i <= 5; i++) {
-        citasPorDiaTerapeuta[i] = 0;
-      }
-      lastFiveWeekdaysMedicoGeneralData.forEach((cita: any) => {
-        const citaDate = new Date(cita.created_at);
-        citasPorDiaTerapeuta[citaDate.getDay()] += 1;
-      });
-      citasPorDiaTerapeutaf=Object.values(citasPorDiaTerapeuta);
-      console.log(citasPorDiaTerapeutaf)
 
-      this.barChartData={
-        labels:['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes'],
-        datasets:[
+      console.log(`Cantidad de registros de médicos generales por día de la semana: ${citasPorDiaMedicog}`);
+      console.log(`Cantidad de registros de fisioterapeutas por día de la semana: ${citasPorDiaTerapeutaf}`);
+
+
+      this.barChartData = {
+        labels: ['Domingo','Lunes', 'Martes', 'Miércoles', 'Jueves', 'Viernes', 'Sábado'],
+        datasets: [
           {
-            data:citasPorDiaMedicog, label:'Medicos'
+            data: citasPorDiaMedicog, label: 'Médicos'
           },
           {
-            data:citasPorDiaTerapeutaf,label:'Terapeutas'
+            data: citasPorDiaTerapeutaf, label: 'Terapeutas'
           }
         ]
-      }
+      };
+
     })
   }
 
@@ -135,23 +101,5 @@ export class AtletasAtendidosReportComponent implements OnInit {
     DataLabelsPlugin
   ];
 
-  
-
-
- 
-
-  public randomize(): void {
-    // Only Change 3 values
-    this.barChartData.datasets[0].data = [
-      Math.round(Math.random() * 100),
-      59,
-      80,
-      Math.round(Math.random() * 100),
-      56,
-      Math.round(Math.random() * 100),
-      40];
-
-    this.chart?.update();
-  }
 
 }

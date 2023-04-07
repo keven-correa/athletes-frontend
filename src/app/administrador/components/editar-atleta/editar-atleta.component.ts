@@ -185,17 +185,25 @@ this.router.navigate(['/administrador/atletas'])
   
 
  }
-
- disciplina(){
+ //Navegar en el menu
+ disciplina() {
   this.router.navigate(['/administrador/disciplinas'])
 }
 
-usuariosR(){
+usuariosR() {
   this.router.navigate(['/administrador/usuarios'])
 }
 
-atletasR(){
-this.router.navigate(['/administrador/atletas'])
+atletasR() {
+  this.router.navigate(['/administrador/atletas'])
+}
+
+diagnosticosR() {
+  this.router.navigate(['/administrador/diagnosticos'])
+}
+inicioR() {
+  this.router.navigate(['/administrador/dashboard'])
+
 }
 
 

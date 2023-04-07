@@ -18,29 +18,26 @@ export class LesionesReportComponent implements OnInit {
 
   ngOnInit(): void {
     this.adminService.Consultas().subscribe(resp => {
-      console.log(resp)
+      
+      // const summary = resp.reduce((acc: any, curr: any) => {
+      //   // Contabilizar cantidad de atletas diagnosticados por clasificación de diagnóstico
+      //   const diagnostic = curr.diagnostic_classification.name;
+      //   if (acc.diagnostic[diagnostic]) {
+      //     acc.diagnostic[diagnostic]++;
+      //   } else {
+      //     acc.diagnostic[diagnostic] = 1;
+      //   }  
+      //   // Contabilizar cantidad de atletas diagnosticados por disciplina
+      //   const discipline = curr.athlete.discipline.name;
+      //   if (acc.discipline[discipline]) {
+      //     acc.discipline[discipline]++;
+      //   } else {
+      //     acc.discipline[discipline] = 1;
+      //   }  
+      //   return acc;
+      // }, { diagnostic: {}, discipline: {} });
   
-      const summary = resp.reduce((acc: any, curr: any) => {
-        // Contabilizar cantidad de atletas diagnosticados por clasificación de diagnóstico
-        const diagnostic = curr.diagnostic_classification.name;
-        if (acc.diagnostic[diagnostic]) {
-          acc.diagnostic[diagnostic]++;
-        } else {
-          acc.diagnostic[diagnostic] = 1;
-        }
-  
-        // Contabilizar cantidad de atletas diagnosticados por disciplina
-        const discipline = curr.athlete.discipline.name;
-        if (acc.discipline[discipline]) {
-          acc.discipline[discipline]++;
-        } else {
-          acc.discipline[discipline] = 1;
-        }
-  
-        return acc;
-      }, { diagnostic: {}, discipline: {} });
-  
-      console.log(summary);
+      // console.log(summary);
   
       // Crear objeto para utilizar en un gráfico
       const totalByDiscipline: any = [];
@@ -52,10 +49,8 @@ export class LesionesReportComponent implements OnInit {
         } else {
           totalByDiscipline[index].cantidad++;
         }
-      });
-  
-      console.log(totalByDiscipline);
-  
+      });  
+      console.log(totalByDiscipline);  
       // Actualizar el gráfico
       this.polarAreaChartLabels = totalByDiscipline.map((d: any) => d.disciplina);
       this.polarAreaChartData = {
@@ -84,13 +79,6 @@ export class LesionesReportComponent implements OnInit {
 
   public polarAreaChartType: ChartType = 'polarArea';
 
-  // events
-  public chartClicked({ event, active }: { event: ChartEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
-
-  public chartHovered({ event, active }: { event: ChartEvent, active: {}[] }): void {
-    console.log(event, active);
-  }
+  
 
 }

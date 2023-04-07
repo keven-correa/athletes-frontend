@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { AdminServiceService } from '../../services/admin-service.service';
+import { AdminServiceService } from '../../../services/admin-service.service';
 
 @Component({
   selector: 'app-report-medico',

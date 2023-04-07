@@ -53,7 +53,8 @@ ngOnInit(): void {
 
   this.terapiaFisicaService.EvaluacionesPorAtleta(this.id).subscribe(resp=>{
     this.ELEMENT_DATA=resp
-    this.dataSource.data=this.ELEMENT_DATA
+    console.log(resp)
+    this.dataSource.data=this.ELEMENT_DATA.reverse()
   }, (error) => {
     // Manejo de errores HTTP
     if (error.status === 401) {

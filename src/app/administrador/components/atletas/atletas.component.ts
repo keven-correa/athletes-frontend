@@ -91,20 +91,26 @@ export class AtletasComponent   implements AfterViewInit {
         this.dataSource.paginator.firstPage();
       }
     }
-    //Navegar en el menu
-      //Navegar en el menu
-      disciplina(){
-        this.router.navigate(['/administrador/disciplinas'])
-      }
-  
-      usuariosR(){
-        this.router.navigate(['/administrador/usuarios'])
-      }
+//Navegar en el menu
+disciplina() {
+  this.router.navigate(['/administrador/disciplinas'])
+}
 
-    atletasR(){
-      this.router.navigate(['/administrador/atletas'])
-    }
-    
+usuariosR() {
+  this.router.navigate(['/administrador/usuarios'])
+}
+
+atletasR() {
+  this.router.navigate(['/administrador/atletas'])
+}
+
+diagnosticosR() {
+  this.router.navigate(['/administrador/diagnosticos'])
+}
+inicioR() {
+  this.router.navigate(['/administrador/dashboard'])
+
+}
     mensajeError(mensaje: any, icono: any) {
       Swal.fire({
         title: mensaje,

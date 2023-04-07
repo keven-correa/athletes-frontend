@@ -3,7 +3,7 @@ import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
 import { default as Annotation } from 'chartjs-plugin-annotation';
-import { AdminServiceService } from '../../services/admin-service.service';
+import { AdminServiceService } from '../../../services/admin-service.service';
 
 @Component({
   selector: 'app-report-disciplinas',

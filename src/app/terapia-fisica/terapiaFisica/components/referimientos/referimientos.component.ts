@@ -55,7 +55,7 @@ ngOnInit(): void {
 //  })
   this.terapiaFisicaService.Referimientos().subscribe(resp=>{
     this.ELEMENT_DATA=resp
-    this.dataSource.data=this.ELEMENT_DATA.reverse();
+    this.dataSource.data=this.ELEMENT_DATA;
     console.log(resp)
 
     // const cantidad = this.ELEMENT_DATA.filter(a=>a.created_by.id==17      )
@@ -103,6 +103,11 @@ envio(id:number){
 
   })
   this.router.navigate(['/terapia-fisica/evaluacion', id])
+
+  }
+
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
 
   }
 
