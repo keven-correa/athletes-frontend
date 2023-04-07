@@ -102,26 +102,7 @@ export class DisciplinasReportComponent {
           return `${label} (${data})`;
         },
       },
-      // annotation: {
-      //   annotations: [
-      //     {
-      //       type: 'line',
-      //       scaleID: 'x',
-      //       value: 'March',
-      //       borderColor: 'orange',
-      //       borderWidth: 2,
-      //       // label: {
-      //       //   display: true,
-      //       //   position: 'center',
-      //       //   color: 'orange',
-      //       //   content: 'LineAnno',
-      //       //   font: {
-      //       //     weight: 'bold'
-      //       //   }
-      //       // }
-      //     },
-      //   ],
-      // }
+
     }
   };
 

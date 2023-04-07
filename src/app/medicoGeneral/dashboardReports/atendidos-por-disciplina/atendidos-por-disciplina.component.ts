@@ -2,17 +2,18 @@ import { Component, ViewChild, OnInit, ChangeDetectorRef } from '@angular/core';
 import DatalabelsPlugin from 'chartjs-plugin-datalabels';
 import { ChartConfiguration, ChartData, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
-import { MedicoGeneralService } from '../services/medico-general.service';
 import { MediaMatcher } from '@angular/cdk/layout';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { MedicoGeneralService } from '../../services/medico-general.service';
 
 @Component({
-  selector: 'app-report',
-  templateUrl: './report.component.html',
-  styleUrls: ['./report.component.css']
+  selector: 'app-atendidos-por-disciplina',
+  templateUrl: './atendidos-por-disciplina.component.html',
+  styleUrls: ['./atendidos-por-disciplina.component.css']
 })
-export class ReportComponent implements OnInit {
+export class AtendidosPorDisciplinaComponent {
+
   public CantidadDisciplinas: string[] = [];
   public NombresDisciplinas: string[] = [];
   public objeto:any=[]
@@ -105,35 +106,4 @@ this.mobileQuery.removeListener(this._mobileQueryListener);
   public pieChartType: ChartType = 'pie';
   public pieChartPlugins = [DatalabelsPlugin];
 
-  printChart() {
-    window.print();
-  }
-
-
-
-      //Navegar en el menu
-      turnos(){
-        this.router.navigate(['/medico-general/turnos'])
-      }
-  
-      atletasR(){
-        this.router.navigate(['/medico-general/atletas'])
-      }
-  
-      resumen(){
-        this.router.navigate(['/medico-general/resumen'])
-  
-      }
-
-      Volver(){
-        window.history.back();
-      }
-
-
-      CerrarSesion(){
-
-        this.medicoGeneralService.logOut();
-        // this.router.navigate(['/login'])
-      }
-  
 }

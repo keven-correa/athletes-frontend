@@ -87,13 +87,19 @@ this.fechaAtleta = this.atletas.dateOfBirth.toString().substring(0,10);
 
 
 
-turnos(){
-  this.router.navigate(['/medico-general/turnos'])
-}
 
-atletasR(){
-  this.router.navigate(['/medico-general/atletas'])
-}
+  //Navegar en el menu
+  turnos() {
+    this.router.navigate(['/medico-general/turnos'])
+  }
+
+  atletasR() {
+    this.router.navigate(['/medico-general/atletas'])
+  }
+  inicioR() {
+    this.router.navigate(['/medico-general/dashboard'])
+
+  }
 
  datosMedicos(id:number){
   this.router.navigate(['/medico-general/datos-medicos', this.id])

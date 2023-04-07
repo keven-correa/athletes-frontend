@@ -115,24 +115,20 @@ enviar(){
   }
   )
 
-
 }
 
+  //Navegar en el menu
+  turnos() {
+    this.router.navigate(['/medico-general/turnos'])
+  }
 
-    //Navegar en el menu
-    turnos(){
-      this.router.navigate(['/medico-general/turnos'])
-    }
+  atletasR() {
+    this.router.navigate(['/medico-general/atletas'])
+  }
+  inicioR() {
+    this.router.navigate(['/medico-general/dashboard'])
 
-    atletasR(){
-      this.router.navigate(['/medico-general/atletas'])
-    }
-
-    
-    resumen(){
-      this.router.navigate(['/medico-general/resumen'])
-
-    }
+  }
     
     mensajeError(mensaje: any, icono: any) {
       Swal.fire({

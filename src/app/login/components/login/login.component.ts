@@ -56,7 +56,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', respuesta.token);
           localStorage.setItem('idMedico', respuesta.id);
 
-          window.location.replace('/medico-general/atletas');
+          window.location.replace('/medico-general/dashboard');
         } else if (respuesta.role == 'Fisioterapeuta') {
           localStorage.setItem('token', respuesta.token);
           localStorage.setItem('idTerapeuta', respuesta.id);

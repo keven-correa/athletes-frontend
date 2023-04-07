@@ -149,7 +149,7 @@ export class ReportAtendidosAreaComponent {
   ];
 
   onRadioChange(event: any) {
-    const selectedValue = event.target.value;
+    const selectedValue = event.value;
     switch (selectedValue) {
       case '1':
         // Lógica para mostrar la cantidad atendida en la última semana
@@ -302,10 +302,7 @@ export class ReportAtendidosAreaComponent {
   
     });
   
-  }
-  
-
-  
+  } 
 
   cuatrimestre(){
     this.adminService.Turnos().subscribe(resp=>{

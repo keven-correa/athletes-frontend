@@ -11,32 +11,34 @@
       fixedTopGap="56">
       <mat-nav-list>
 
-        <a mat-list-item (click)="atletasR()"> 
+        <a mat-list-item (click)="inicioR()" >
           <span style="display: inline-block; vertical-align: middle;">
-            <span class="material-symbols-outlined">
-              sports_baseball 
+              <span class="material-symbols-outlined">
+                  monitoring
+              </span>
+          </span>
+          <span style="display: inline-block; vertical-align: middle;">Inicio</span>
+      </a>
+
+
+      <a mat-list-item (click)="atletasR()" >
+          <span style="display: inline-block; vertical-align: middle;">
+              <span class="material-symbols-outlined">
+                  sports_baseball
               </span>
           </span>
           <span style="display: inline-block; vertical-align: middle;">Atletas</span>
-        </a>
-  
-      <a mat-list-item (click)="turnos()" >
-        <span style="display: inline-block; vertical-align: middle;">
-          <span class="material-symbols-outlined">
-            wc
-          </span>
-        </span>
-        <span style="display: inline-block; vertical-align: middle;">Turnos</span>
       </a>
-  
-      <a mat-list-item (click)="resumen()" >
-        <span style="display: inline-block; vertical-align: middle;">
-          <span class="material-symbols-outlined"> 
-             export_notes
+
+      <a mat-list-item (click)="turnos()">
+          <span style="display: inline-block; vertical-align: middle;">
+              <span class="material-symbols-outlined">
+                  wc
+              </span>
           </span>
-        </span>
-        <span style="display: inline-block; vertical-align: middle;">Resumen</span>
+          <span style="display: inline-block; vertical-align: middle;">Turnos</span>
       </a>
+
 
       </mat-nav-list>
     </mat-sidenav>

@@ -1,0 +1,149 @@
+<div class="example-container" [class.example-is-mobile]="mobileQuery.matches">
+    <mat-toolbar color="primary" class="example-toolbar">
+
+        <button mat-icon-button (click)="snav.toggle()"><mat-icon>menu</mat-icon></button>
+
+        <mat-toolbar color="primary" style="justify-content: space-between;">
+            <span>Medico General</span>
+            <button mat-flat-button color="primary" style="float: left;" (click)="CerrarSesion()"> Cerrar
+                sesion</button>
+        </mat-toolbar>
+
+
+    </mat-toolbar>
+
+    <mat-sidenav-container class="example-sidenav-container" [style.marginTop.px]="mobileQuery.matches ? 56 : 0">
+        <mat-sidenav #snav [mode]="mobileQuery.matches ? 'over' : 'side'" [fixedInViewport]="mobileQuery.matches"
+            fixedTopGap="56">
+            <mat-nav-list>
+
+                <a mat-list-item (click)="inicioR()" class="active">
+                    <span style="display: inline-block; vertical-align: middle;">
+                        <span class="material-symbols-outlined">
+                            monitoring
+                        </span>
+                    </span>
+                    <span style="display: inline-block; vertical-align: middle;">Inicio</span>
+                </a>
+
+
+                <a mat-list-item (click)="atletasR()" >
+                    <span style="display: inline-block; vertical-align: middle;">
+                        <span class="material-symbols-outlined">
+                            sports_baseball
+                        </span>
+                    </span>
+                    <span style="display: inline-block; vertical-align: middle;">Atletas</span>
+                </a>
+
+                <a mat-list-item (click)="turnos()">
+                    <span style="display: inline-block; vertical-align: middle;">
+                        <span class="material-symbols-outlined">
+                            wc
+                        </span>
+                    </span>
+                    <span style="display: inline-block; vertical-align: middle;">Turnos</span>
+                </a>
+
+            </mat-nav-list>
+        </mat-sidenav>
+        <mat-sidenav-content>
+
+            <div class="container-fluid">
+                <h1><b>Inicio</b></h1>
+                <!-- <div class="row">
+                    <div class="col-md-4">
+                        <div class="card bg-dark">
+                            <div class="card-header">
+                                <h1>Total de atletas</h1>
+                            </div>
+                            <div class="card-body">
+                                <h3></h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card bg-dark">
+                            <div class="card-header">
+                                <h1>Total de medicos</h1>
+                            </div>
+                            <div class="card-body">
+                                <h3></h3>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4">
+                        <div class="card bg-dark">
+                            <div class="card-header">
+                                <h1>Total Fisioterapeutas</h1>
+                            </div>
+                            <div class="card-body">
+                                <h3></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+
+                <div class="row mt-3">
+                    <div class="col-md-6">
+                        <div class="row">
+                            <div class="col-md-12">
+
+                                <div class="card bg-dark" style="height: 500px;">
+                                    <div class="card-header">
+                                        <h1>Atletas atendidos</h1>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="medico-general/resumen">
+                                            <app-atendidos-por-disciplina></app-atendidos-por-disciplina>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                        <!-- <div class="row mt-1">
+                            <div class="col-md-12">
+
+                                <div class="card bg-dark" style="height: 250px;">
+
+                                    <div class="card-header">
+                                        <h1>Atletas por diciplina</h1>
+                                    </div>
+                                    <div class="card-body">
+                                        <a href="administrador/reporteDisciplinas">
+                                            <app-disciplinas-report></app-disciplinas-report>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="card bg-dark" style="height: 500px;">
+                            <div class="card-header">
+                                <h1>Lesiones por diagnosticadas</h1>
+                            </div>
+                            <div class="card-body ">
+                                <a href="medico-general/lesionesDiadnosticadas">
+
+                                    <app-lesiones-diadgosticadas></app-lesiones-diadgosticadas>
+
+
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+</div>

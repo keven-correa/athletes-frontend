@@ -9,20 +9,27 @@ import { ConsultaAtletaComponent } from './consulta-atleta/consulta-atleta.compo
 import { HistorialDetalleComponent } from './historial-detalle/historial-detalle.component';
 import { TurnosComponent } from './turnos/turnos.component';
 import { ReportComponent } from './report/report.component';
+import { DashboardMedicoComponent } from './dashboard-medico/dashboard-medico.component';
+import { LesionesDiadgosticadasComponent } from './dashboardReports/lesiones-diadgosticadas/lesiones-diadgosticadas.component';
+import { ReportLesionesDiagnosticadasComponent } from './report-lesiones-diagnosticadas/report-lesiones-diagnosticadas.component';
 
 const routes: Routes = [
   {
     path:'',
     children:[
       {path:'atletas', component:AtletasComponent},
-      {path:'resumen', component:ReportComponent},
       {path:'historial/:id',component:HistorialComponent},
       {path:'historial-detalle/:id',component:HistorialDetalleComponent},
       {path:'consulta/:id', component:ConsultasComponent},
       {path:'datos-medicos/:id',component:ConsultaDetalleComponent},
       {path:'atleta-detalle/:id', component:AtletaDetalleComponent},
       {path:'consulta-atleta/:id', component:ConsultaAtletaComponent},
-      {path:'turnos',component:TurnosComponent}
+      {path:'turnos',component:TurnosComponent},
+      
+      {path:'dashboard',component:DashboardMedicoComponent},
+      
+      {path:'resumen', component:ReportComponent},
+      {path:'lesionesDiadnosticadas', component:ReportLesionesDiagnosticadasComponent},
     ]
   },
   {

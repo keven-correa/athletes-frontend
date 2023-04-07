@@ -70,18 +70,17 @@ export class HistorialDetalleComponent {
     );
   }
 
+ 
   //Navegar en el menu
   turnos() {
-    this.router.navigate(['/medico-general/turnos']);
+    this.router.navigate(['/medico-general/turnos'])
   }
 
   atletasR() {
-    this.router.navigate(['/medico-general/atletas']);
-  }  
-
-  
-  resumen(){
-    this.router.navigate(['/medico-general/resumen'])
+    this.router.navigate(['/medico-general/atletas'])
+  }
+  inicioR() {
+    this.router.navigate(['/medico-general/dashboard'])
 
   }
 

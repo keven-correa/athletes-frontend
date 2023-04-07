@@ -117,16 +117,16 @@ ngOnDestroy(): void {
       }
     }
 
-    //redireccionar el menu
-  atletasR(){
-    this.router.navigate(['/medico-general/atletas'])
-  }
-  turnos(){
+  //Navegar en el menu
+  turnos() {
     this.router.navigate(['/medico-general/turnos'])
   }
-  
-  resumen(){
-    this.router.navigate(['/medico-general/resumen'])
+
+  atletasR() {
+    this.router.navigate(['/medico-general/atletas'])
+  }
+  inicioR() {
+    this.router.navigate(['/medico-general/dashboard'])
 
   }
 

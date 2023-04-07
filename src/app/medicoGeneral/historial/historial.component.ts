@@ -108,17 +108,17 @@ export class HistorialComponent implements OnInit {
 
   }
 
+ 
   //Navegar en el menu
   turnos() {
-    this.router.navigate(['/medico-general/turnos']);
+    this.router.navigate(['/medico-general/turnos'])
   }
 
   atletasR() {
-    this.router.navigate(['/medico-general/atletas']);
+    this.router.navigate(['/medico-general/atletas'])
   }
-  
-  resumen(){
-    this.router.navigate(['/medico-general/resumen'])
+  inicioR() {
+    this.router.navigate(['/medico-general/dashboard'])
 
   }
 

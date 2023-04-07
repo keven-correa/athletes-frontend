@@ -24,6 +24,7 @@ import {MatBottomSheetModule} from '@angular/material/bottom-sheet';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { SecretariaService } from '../../secretaria/services/secretaria.service';
 import { NgChartsModule } from 'ng2-charts/lib/ng-charts.module';
+import {MatRadioModule} from '@angular/material/radio';
 
 @NgModule({
   declarations: [
@@ -51,6 +52,7 @@ import { NgChartsModule } from 'ng2-charts/lib/ng-charts.module';
     MatSidenavModule,
     MatBottomSheetModule,
     // NgChartsModule,
+    MatRadioModule
     
     
 
@@ -75,7 +77,7 @@ import { NgChartsModule } from 'ng2-charts/lib/ng-charts.module';
     MatStepperModule,
     MatSidenavModule,
     MatBottomSheetModule,
-    
+    MatRadioModule
 
   ]
   ,
