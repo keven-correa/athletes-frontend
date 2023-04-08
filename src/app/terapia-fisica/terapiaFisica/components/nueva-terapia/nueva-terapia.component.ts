@@ -86,13 +86,13 @@ export class NuevaTerapiaComponent {
       this.cantidadTerapiasRegistradas = this.terapiasAtleta.filter(x => x.evaluation.id == this.id)
       console.log(this.cantidadTerapiasRegistradas)
     })
-
+    const InicioConsulta:any = localStorage.getItem("InicioConsulta")
     this.formulario = this.fb.group({
-      schedulingDate: [new Date, Validators.required],
       therapist: [this.idTerapeuta, Validators.required],
       remarks: ['', Validators.required],
       athlete: [Number(localStorage.getItem("idAtleta")), Validators.required],
       evaluation: [Number(this.id), Validators.required],
+      start_time: [new Date(Date.parse(InicioConsulta)), Validators.required],
 
     })
 

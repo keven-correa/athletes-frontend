@@ -27,7 +27,6 @@ export class MenuComponent implements OnInit {
   CerrarSesion(){
 
     this.terapiaFisicaService.logOut();
-    this.router.navigate(['/login'])
   }
 
 }

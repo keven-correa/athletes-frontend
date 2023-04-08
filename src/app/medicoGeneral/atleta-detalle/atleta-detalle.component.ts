@@ -106,6 +106,13 @@ this.fechaAtleta = this.atletas.dateOfBirth.toString().substring(0,10);
  }
 
  consulta(){
+  
+  if(localStorage.getItem("InicioConsulta")){
+    localStorage.removeItem("InicioConsulta");
+    localStorage.setItem("InicioConsulta",String(new Date()))
+  }else{
+    localStorage.setItem("InicioConsulta",String(new Date()))
+  }
   this.router.navigate(['/medico-general/consulta-atleta', this.id])
  }
 

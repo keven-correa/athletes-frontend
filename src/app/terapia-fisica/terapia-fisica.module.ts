@@ -19,6 +19,9 @@ import { EvaluacionesPorAtletaComponent } from './terapiaFisica/components/evalu
 import { TurnosComponent } from './terapiaFisica/components/turnos/turnos.component';
 import { ReportsComponent } from './terapiaFisica/reports/reports.component';
 import { NgChartsModule } from 'ng2-charts';
+import { DashboardTerapeutaComponent } from './terapiaFisica/components/dashboard-terapeuta/dashboard-terapeuta.component';
+import { TerapiasPorDisciplinaComponent } from './terapiaFisica/components/dashboardReports/terapias-por-disciplina/terapias-por-disciplina.component';
+import { DiagnosticosEvaluadosComponent } from './terapiaFisica/components/dashboardReports/diagnosticos-evaluados/diagnosticos-evaluados.component';
 
 
 @NgModule({
@@ -35,7 +38,10 @@ import { NgChartsModule } from 'ng2-charts';
     NuevaTerapiaComponent,
     EvaluacionesPorAtletaComponent,
     TurnosComponent,
-    ReportsComponent
+    ReportsComponent,
+    DashboardTerapeutaComponent,
+    TerapiasPorDisciplinaComponent,
+    DiagnosticosEvaluadosComponent,
   ],
   imports: [
     CommonModule,

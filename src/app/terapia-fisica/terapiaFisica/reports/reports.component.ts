@@ -40,7 +40,6 @@ this.mobileQuery.removeListener(this._mobileQueryListener);
 
   ngOnInit(): void {
     const idMedico = localStorage.getItem("idTerapeuta")
-    console.log(idMedico)
     const etiquetas: any[] = [];
     const data: any[] = []
     this.terapiaFisicaService.TerapiasPorDisciplina(idMedico).subscribe(resp => {

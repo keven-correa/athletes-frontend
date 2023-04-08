@@ -27,8 +27,9 @@
 
         <td class="text-white">{{item.disciplina}}</td>
         <td class="text-white">{{item.diagnostico|titlecase}}</td>
-        <td class="text-white">{{item.atleta}}</td>
-        <td class="text-white">{{item.fecha|date:'medium'}}</td>
+        <td class="text-white">{{item.atleta}}</td>    
+        <td class="text-white">{{restarHoras(item.fecha)|date:'medium'}}</td>
+
 
 
       </tr>

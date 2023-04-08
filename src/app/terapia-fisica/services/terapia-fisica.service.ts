@@ -53,6 +53,11 @@ export class TerapiaFisicaService {
     return this.http.get<any>(direccion,this.options)
   }
 
+  Terapias(): Observable<any> {
+    const direccion = this.url + "therapy"
+    return this.http.get<any>(direccion,this.options)
+  }
+
   NuevaTerapia(form:any): Observable<any> {
     const direccion = this.url + "therapy"
     return this.http.post<any>(direccion,form,this.options)

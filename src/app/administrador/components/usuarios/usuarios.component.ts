@@ -51,7 +51,7 @@ export class UsuariosComponent implements AfterViewInit {
     this.adminService.getUsuarios().subscribe(resp=>{
       this.usuarios=resp
       this.ELEMENT_DATA=resp
-      this.dataSource.data=this.ELEMENT_DATA.reverse();
+      this.dataSource.data=this.ELEMENT_DATA;
     }, (error) => {
       // Manejo de errores HTTP
       if (error.status === 401) {

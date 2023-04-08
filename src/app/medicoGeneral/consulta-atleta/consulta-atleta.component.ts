@@ -13,37 +13,37 @@ import Swal from 'sweetalert2';
 })
 export class ConsultaAtletaComponent implements OnInit {
 
-  id:number=0;
-  atletas!:any;
-  formulario!:FormGroup;
-  formularioTurno!:FormGroup;
-  Diagnosticos:any;
+  id: number = 0;
+  atletas!: any;
+  formulario!: FormGroup;
+  formularioTurno!: FormGroup;
+  Diagnosticos: any;
 
-  
-  mobileQuery: MediaQueryList; 
+
+  mobileQuery: MediaQueryList;
   private _mobileQueryListener: () => void;
 
-  constructor(private _ruta:ActivatedRoute,
+  constructor(private _ruta: ActivatedRoute,
     public dialog: MatDialog,
-    private fb:FormBuilder,
-    private router:Router,
-    private medicoGeneralService:MedicoGeneralService,
-    changeDetectorRef: ChangeDetectorRef, media: MediaMatcher){
+    private fb: FormBuilder,
+    private router: Router,
+    private medicoGeneralService: MedicoGeneralService,
+    changeDetectorRef: ChangeDetectorRef, media: MediaMatcher) {
 
-      this.mobileQuery = media.matchMedia('(max-width: 600px)');
-      this._mobileQueryListener = () => changeDetectorRef.detectChanges();
-      this.mobileQuery.addListener(this._mobileQueryListener);
+    this.mobileQuery = media.matchMedia('(max-width: 600px)');
+    this._mobileQueryListener = () => changeDetectorRef.detectChanges();
+    this.mobileQuery.addListener(this._mobileQueryListener);
 
-}
+  }
 
-ngOnDestroy(): void {
-  this.mobileQuery.removeListener(this._mobileQueryListener);
-}
+  ngOnDestroy(): void {
+    this.mobileQuery.removeListener(this._mobileQueryListener);
+  }
 
 
   ngOnInit(): void {
-    this._ruta.params.subscribe((params:Params)=>{
-      this.id=params['id'];
+    this._ruta.params.subscribe((params: Params) => {
+      this.id = params['id'];
     })
 
     this.formularioTurno = this.fb.group({
@@ -53,69 +53,71 @@ ngOnDestroy(): void {
       remarks: ['Referimiento de medico', Validators.required],
     })
 
-    this.medicoGeneralService.detalleAtleta(this.id).subscribe(resp=>{
-      this.atletas=resp
+    this.medicoGeneralService.detalleAtleta(this.id).subscribe(resp => {
+      this.atletas = resp
     }, (error) => {
       // Manejo de errores HTTP
       if (error.status === 401) {
-  
+
         this.mensajeError('Se ha producido un inconveniente al momento de la autenticacion, inicia sesion e intente de nuevo', 'error');
         this.medicoGeneralService.logOut();
         this.router.navigate(['/login'])
-  
+
       } else if (error.status === 403) {
-  
+
         this.mensajeError('No tienes permiso para acceder a este componente.', 'warning');
         this.atletasR();
       } else if (error.status === 404) {
         this.mensajeError('Recurso no encontrado.', 'warning');
-  
+
       } else if (error.status === 500) {
         this.mensajeError('Error en el servidor, intente nuevamente.', 'warning');
-  
+
       } else {
         this.mensajeError('Error desconocido.', 'warning');
       }
     }
     )
-
+    const InicioConsulta: any = localStorage.getItem("InicioConsulta");
     //Convertir el id a int
     let identificador = Number(this.id)
 
-    this.formulario=this.fb.group({       
-      reason: ['',Validators.required],      
-      diagnostic: ['',Validators.required],      
-      notes: ['',Validators.required],      
-      priority: ['Media',Validators.required],      
-      athlete: [identificador,Validators.required],      
-      diagnostic_classification: [0,Validators.required],      
+    this.formulario = this.fb.group({
+      reason: ['', Validators.required],
+      diagnostic: ['', Validators.required],
+      notes: ['', Validators.required],
+      priority: ['Media', Validators.required],
+      athlete: [identificador, Validators.required],
+      diagnostic_classification: [0, Validators.required],
+      start_time: [new Date(Date.parse(InicioConsulta)), Validators.required],
     })
 
-    this.medicoGeneralService.getDiagnosticos().subscribe(resp=>{
+
+    this.medicoGeneralService.getDiagnosticos().subscribe(resp => {
       console.log(resp)
-      this.Diagnosticos= resp
+      this.Diagnosticos = resp
     })
-     
-   }  
 
-enviar(){
-  console.log(this.formulario.value)
+  }
 
-  this.formulario.patchValue({
-    diagnostic_classification: Number(this.formulario.value.diagnostic_classification)
-  })
+  enviar() {
+    console.log(this.formulario.value)
 
-  this.medicoGeneralService.NuevaConsulta(this.formulario.value).subscribe(resp=>{
+    this.formulario.patchValue({
+      diagnostic_classification: Number(this.formulario.value.diagnostic_classification)
+    })
 
-    this.medicoGeneralService.AgregarTurno(this.formularioTurno.value).subscribe(resp1 => {
+    this.medicoGeneralService.NuevaConsulta(this.formulario.value).subscribe(resp => {
+
+      this.medicoGeneralService.AgregarTurno(this.formularioTurno.value).subscribe(resp1 => {
         console.log(resp1)
 
-    })
-    this.atletasR();
-  }
-  )
+      })
+      this.atletasR();
+    }
+    )
 
-}
+  }
 
   //Navegar en el menu
   turnos() {
@@ -129,23 +131,23 @@ enviar(){
     this.router.navigate(['/medico-general/dashboard'])
 
   }
-    
-    mensajeError(mensaje: any, icono: any) {
-      Swal.fire({
-        title: mensaje,
-        icon: icono,
-        showCancelButton: false,
-        confirmButtonColor: '#3085d6',
-        confirmButtonText: 'Aceptar',
-      }).then((result) => {
-        if (result.isConfirmed) {
-          console.log('Ejecutando función...');
-          // Lógica para ejecutar la función
-        }
-      }).then(() => {
-        console.log('Modal cerrado');
-        // Lógica que se ejecuta al cerrar el modal
-      });
-    }
+
+  mensajeError(mensaje: any, icono: any) {
+    Swal.fire({
+      title: mensaje,
+      icon: icono,
+      showCancelButton: false,
+      confirmButtonColor: '#3085d6',
+      confirmButtonText: 'Aceptar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        console.log('Ejecutando función...');
+        // Lógica para ejecutar la función
+      }
+    }).then(() => {
+      console.log('Modal cerrado');
+      // Lógica que se ejecuta al cerrar el modal
+    });
+  }
 
 }

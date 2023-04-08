@@ -114,6 +114,11 @@ export class AdminServiceService {
       return this.http.get<any>(direccion,this.options)
     }
 
+    Evaluaciones(): Observable<any> {
+      const direccion = this.url + "evaluation"
+      return this.http.get<any>(direccion,this.options)
+    }
+
 
     Turnos(): Observable<any> {
       const direccion = this.url + "shifts"

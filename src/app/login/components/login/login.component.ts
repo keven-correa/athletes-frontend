@@ -61,7 +61,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem('token', respuesta.token);
           localStorage.setItem('idTerapeuta', respuesta.id);
 
-          window.location.replace('/terapia-fisica/atletas');
+          window.location.replace('/terapia-fisica/dashboard');
         }
       
     },(error) => {

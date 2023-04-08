@@ -48,22 +48,6 @@ export class LesionesDiadgosticadasComponent implements OnInit {
 
     })
 
-
-    // this.medicoGeneralService.Consultas().subscribe(resp => {
-     
-    //   const consultas = resp
-    //     .filter((consulta: any) => consulta.created_by.id === id) // Filtrar consultas según el id del médico
-    //     .map((consulta: any) => { // Crear un nuevo arreglo con la información de cada consulta
-    //       return {
-    //         diagnostico: consulta.diagnostic_classification ? consulta.diagnostic_classification.name : '',
-    //         disciplina: consulta.discipline ? consulta.discipline.name : '',
-    //         fecha: consulta.created_at,
-    //         atleta: consulta.athlete.name + consulta.athlete.lastName
-    //       }
-    //     })
-    
-    // });
-    
   }
 
   public lineChartData: ChartConfiguration['data'] = {
@@ -125,5 +109,5 @@ export class LesionesDiadgosticadasComponent implements OnInit {
 
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
-
+  
 }

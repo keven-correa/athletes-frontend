@@ -128,6 +128,12 @@ export class ReportLesionesDiagnosticadasComponent {
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
 
 
+  restarHoras(fecha: string): string {
+    let date = new Date(fecha);
+    date.setHours(date.getHours() - 4);
+    return date.toISOString();
+  }
+  
   Volver(){
     window.history.back();
   }

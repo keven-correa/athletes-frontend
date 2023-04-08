@@ -131,6 +131,12 @@ resumen(){
 }
 
    nuevaTerapia(){
+    if(localStorage.getItem("InicioConsulta")){
+      localStorage.removeItem("InicioConsulta");
+      localStorage.setItem("InicioConsulta",String(new Date()))
+    }else{
+      localStorage.setItem("InicioConsulta",String(new Date()))
+    }
     this.router.navigate(['terapia-fisica/nueva-terapia',this.id])
    }
 

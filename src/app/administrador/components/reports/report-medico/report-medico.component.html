@@ -16,14 +16,17 @@
         <th class="text-white">Atleta</th>
         <th class="text-white">Disciplina</th>
         <th class="text-white">Fecha</th>
+        <th class="text-white">Tiempo de consulta</th>
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let item of consultas; let i = index">
+      <tr *ngFor="let item of consultas">
         <!-- <td class="text-white">{{i}}</td> -->
         <td class="text-white">{{item.athlete.name}} {{item.athlete.lastName}}</td>
         <td class="text-white">{{item.athlete.discipline.name}}</td>
-        <td class="text-white">{{item.created_at|date:'medium' }}</td>
+        <td class="text-white">{{ restarHoras(item.created_at) | date:'medium' }}</td>
+        <td class="text-white">{{calcularDiferenciaTiempo(item.created_at, item.start_time)}}</td>
+
       </tr>
       <tr class="text-white">Total: <b>{{consultas.length}}</b></tr>
     </tbody>
