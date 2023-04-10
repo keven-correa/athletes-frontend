@@ -120,7 +120,6 @@ envio(id:number){
     }
   }
 
-
  //Navegar en el menu
  turnos(){
   this.router.navigate(['/terapia-fisica/turnos'])
@@ -134,8 +133,8 @@ referimientos(){
   this.router.navigate(['/terapia-fisica/referimientos'])
 
 }
-resumen(){
-  this.router.navigate(['/terapia-fisica/resumen'])
+inicioR(){
+  this.router.navigate(['/terapia-fisica/dashboard'])
 
 }
 

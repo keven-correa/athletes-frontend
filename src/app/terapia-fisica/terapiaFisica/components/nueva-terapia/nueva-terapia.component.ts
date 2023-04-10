@@ -115,24 +115,23 @@ export class NuevaTerapiaComponent {
     }
   }
 
+ //Navegar en el menu
+ turnos(){
+  this.router.navigate(['/terapia-fisica/turnos'])
+}
 
-  //Navegar en el menu
-  turnos(){
-    this.router.navigate(['/terapia-fisica/turnos'])
-  }
+atletasR(){
+  this.router.navigate(['/terapia-fisica/atletas'])
+}
 
-  atletasR(){
-    this.router.navigate(['/terapia-fisica/atletas'])
-  }
+referimientos(){
+  this.router.navigate(['/terapia-fisica/referimientos'])
 
-  referimientos(){
-    this.router.navigate(['/terapia-fisica/referimientos'])
+}
+inicioR(){
+  this.router.navigate(['/terapia-fisica/dashboard'])
 
-  }
-  resumen(){
-    this.router.navigate(['/terapia-fisica/resumen'])
-
-  }
+}
 
   guardar() {
     console.log(this.formulario.value)

@@ -21,7 +21,8 @@ import { ReportsComponent } from './terapiaFisica/reports/reports.component';
 import { NgChartsModule } from 'ng2-charts';
 import { DashboardTerapeutaComponent } from './terapiaFisica/components/dashboard-terapeuta/dashboard-terapeuta.component';
 import { TerapiasPorDisciplinaComponent } from './terapiaFisica/components/dashboardReports/terapias-por-disciplina/terapias-por-disciplina.component';
-import { DiagnosticosEvaluadosComponent } from './terapiaFisica/components/dashboardReports/diagnosticos-evaluados/diagnosticos-evaluados.component';
+import { LesionesDiagnosticadasMedicoComponent } from './terapiaFisica/components/dashboardReports/lesiones-diagnosticadas-medico/lesiones-diagnosticadas-medico.component';
+import { LesionesDiagnosticadasReportComponent } from './terapiaFisica/components/lesiones-diagnosticadas-report/lesiones-diagnosticadas-report.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { DiagnosticosEvaluadosComponent } from './terapiaFisica/components/dashb
     ReportsComponent,
     DashboardTerapeutaComponent,
     TerapiasPorDisciplinaComponent,
-    DiagnosticosEvaluadosComponent,
+    LesionesDiagnosticadasMedicoComponent,
+    LesionesDiagnosticadasReportComponent
   ],
   imports: [
     CommonModule,

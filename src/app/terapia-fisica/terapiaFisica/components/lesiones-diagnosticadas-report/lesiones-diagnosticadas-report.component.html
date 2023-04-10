@@ -1,0 +1,41 @@
+
+<div class="imagen">
+    <img src="../../../../assets/img/miderec.jpg" width="15%">
+</div>
+
+   <h3 class="text-white text-center">Lesiones diagnosticadas </h3>
+   <div id="chartDiv" class="container-fluid" >
+
+<canvas baseChart class="chart" style="width: 800px;"
+        [data]="lineChartData"
+        [options]="lineChartOptions"
+        [type]="lineChartType">
+</canvas>
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+
+        <th class="text-white">Disciplina</th>
+        <th class="text-white">Diagnostico</th>
+        <th class="text-white">Atleta</th>
+        <th class="text-white">Fecha</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of consultas">
+
+        <td class="text-white">{{item.disciplina}}</td>
+        <td class="text-white">{{item.diagnostico|titlecase}}</td>
+        <td class="text-white">{{item.atleta}}</td>    
+        <td class="text-white">{{restarHoras(item.fecha)|date:'medium'}}</td>
+
+      </tr>
+    </tbody>
+  </table>
+   </div>
+<div id="botones">
+<button mat-flat-button color="primary" class="btn2" (click)="Volver()">Volver al area de trabajo</button>
+<button mat-flat-button color="primary" class="btn" (click)="printChart()">Imprimir resumen</button>
+
+</div>

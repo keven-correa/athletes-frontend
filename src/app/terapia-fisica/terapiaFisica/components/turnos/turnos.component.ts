@@ -138,7 +138,7 @@ ngOnDestroy(): void {
       }
     }
 
-    //redireccionar el menu
+    //Navegar en el menu
     turnos(){
       this.router.navigate(['/terapia-fisica/turnos'])
     }
@@ -151,8 +151,8 @@ ngOnDestroy(): void {
       this.router.navigate(['/terapia-fisica/referimientos'])
 
     }
-    resumen(){
-      this.router.navigate(['/terapia-fisica/resumen'])
+    inicioR(){
+      this.router.navigate(['/terapia-fisica/dashboard'])
 
     }
     

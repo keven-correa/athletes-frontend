@@ -38,4 +38,22 @@ export class DashboardTerapeutaComponent {
     this.terapiafisicaService.logOut();
 
   }
+
+   //Navegar en el menu
+   turnos(){
+    this.router.navigate(['/terapia-fisica/turnos'])
+  }
+
+  atletasR(){
+    this.router.navigate(['/terapia-fisica/atletas'])
+  }
+
+  referimientos(){
+    this.router.navigate(['/terapia-fisica/referimientos'])
+
+  }
+  inicioR(){
+    this.router.navigate(['/terapia-fisica/dashboard'])
+
+  }
 }

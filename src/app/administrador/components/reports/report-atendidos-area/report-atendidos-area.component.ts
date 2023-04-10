@@ -331,11 +331,11 @@ export class ReportAtendidosAreaComponent {
       
       this.barChartData = {
         labels: [
-          `${new Date(today.getFullYear(), today.getMonth(),  1).toLocaleString('default', { month: 'long' })}`,
-          `${new Date(today.getFullYear(), today.getMonth() - 1, 1).toLocaleString('default', { month: 'long' })}`,
+          `${new Date(fourMonthsAgo.getFullYear(), fourMonthsAgo.getMonth(), 1).toLocaleString('default', { month: 'long' })}`,
           `${new Date(today.getFullYear(), today.getMonth() - 2, 1).toLocaleString('default', { month: 'long' })}`,
-          `${new Date(today.getFullYear(), today.getMonth(), - 3, 1).toLocaleString('default', { month: 'long' })}`,
-        ].reverse(),
+          `${new Date(today.getFullYear(), today.getMonth() - 1, 1).toLocaleString('default', { month: 'long' })}`,
+          `${new Date(today.getFullYear(), today.getMonth(), 1).toLocaleString('default', { month: 'long' })}`,
+        ],
         datasets: [
           {
             data: ultimosCuatroResultadosMedicoG.reverse(),

@@ -1,29 +1,27 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { TerapiaFisicaService } from 'src/app/terapia-fisica/services/terapia-fisica.service';
+
 import { Chart, ChartConfiguration, ChartEvent, ChartType } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
-import { MedicoGeneralService } from '../../services/medico-general.service';
+
+
 
 @Component({
-  selector: 'app-lesiones-diadgosticadas',
-  templateUrl: './lesiones-diadgosticadas.component.html',
-  styleUrls: ['./lesiones-diadgosticadas.component.css']
+  selector: 'app-lesiones-diagnosticadas-medico',
+  templateUrl: './lesiones-diagnosticadas-medico.component.html',
+  styleUrls: ['./lesiones-diagnosticadas-medico.component.css']
 })
-export class LesionesDiadgosticadasComponent implements OnInit {
-  idMedico: any
-  constructor(private medicoGeneralService: MedicoGeneralService) {
+export class LesionesDiagnosticadasMedicoComponent implements OnInit{
+
+  constructor(private terapiafisicaService:TerapiaFisicaService){
 
   }
   ngOnInit(): void {
-
-    const id = Number(localStorage.getItem("idMedico"))
-    this.medicoGeneralService.Consultas().subscribe(resp => {
+    this.terapiafisicaService.Referimientos().subscribe(resp=>{
       console.log(resp)
 
-      // console.log(resp.filter((x: any) => x.created_by.id === id).filter((y: any) => y.diagnostic_classification.name))
-
-      const filteredList = resp.filter((obj: any) => obj.created_by.id === id);
-      const diagnosisCount = filteredList.reduce((acc: any, obj: any) => {
+      const diagnosisCount = resp.reduce((acc: any, obj: any) => {
         const diagnosisName = obj.diagnostic_classification.name;
         if (diagnosisName in acc) {
           acc[diagnosisName]++;
@@ -107,6 +105,5 @@ export class LesionesDiadgosticadasComponent implements OnInit {
   public lineChartType: ChartType = 'line';
 
   @ViewChild(BaseChartDirective) chart?: BaseChartDirective;
-
   
 }

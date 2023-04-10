@@ -17,7 +17,7 @@
             fixedTopGap="56">
             <mat-nav-list>
 
-                <!-- <a mat-list-item (click)="inicioR()" class="active">
+                <a mat-list-item (click)="inicioR()" class="active">
                     <span style="display: inline-block; vertical-align: middle;">
                         <span class="material-symbols-outlined">
                             monitoring
@@ -26,24 +26,35 @@
                     <span style="display: inline-block; vertical-align: middle;">Inicio</span>
                 </a>
 
-
-                <a mat-list-item (click)="atletasR()" >
+                <a mat-list-item (click)="atletasR()" > 
                     <span style="display: inline-block; vertical-align: middle;">
-                        <span class="material-symbols-outlined">
-                            sports_baseball
+                      <span class="material-symbols-outlined">
+                        sports_baseball 
                         </span>
                     </span>
                     <span style="display: inline-block; vertical-align: middle;">Atletas</span>
-                </a>
-
+                  </a>
+                
                 <a mat-list-item (click)="turnos()">
-                    <span style="display: inline-block; vertical-align: middle;">
-                        <span class="material-symbols-outlined">
-                            wc
-                        </span>
+                  <span style="display: inline-block; vertical-align: middle;">
+                    <span class="material-symbols-outlined">
+                      wc
                     </span>
-                    <span style="display: inline-block; vertical-align: middle;">Turnos</span>
-                </a> -->
+                  </span>
+                  <span style="display: inline-block; vertical-align: middle;">Turnos</span>
+                </a>
+                
+                <a mat-list-item (click)="referimientos()" >
+                  <span style="display: inline-block; vertical-align: middle;">
+                    <span class="material-symbols-outlined"> 
+                       quick_reference_all
+                    </span>
+                  </span>
+                  <span style="display: inline-block; vertical-align: middle;">Referimientos</span>
+                </a>
+            
+
+                
 
             </mat-nav-list>
         </mat-sidenav>
@@ -60,11 +71,11 @@
 
                                 <div class="card bg-dark" style="height: 500px;">
                                     <div class="card-header">
-                                        <h1>Atletas atendidos</h1>
+                                        <h1>Lesiones diagnosticadas</h1>
                                     </div>
                                     <div class="card-body">
-                                        <a href="medico-general/resumen">
-                                            <!-- <app-atendidos-por-disciplina></app-atendidos-por-disciplina> -->
+                                        <a href="terapia-fisica/lesionesDiagnosticadas">
+                                            <app-lesiones-diagnosticadas-medico></app-lesiones-diagnosticadas-medico>
                                         </a>
                                     </div>
                                 </div>

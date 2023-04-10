@@ -13,6 +13,7 @@ import { EvaluacionesPorAtletaComponent } from './terapiaFisica/components/evalu
 import { TurnosComponent } from './terapiaFisica/components/turnos/turnos.component';
 import { ReportsComponent } from './terapiaFisica/reports/reports.component';
 import { DashboardTerapeutaComponent } from './terapiaFisica/components/dashboard-terapeuta/dashboard-terapeuta.component';
+import { LesionesDiagnosticadasReportComponent } from './terapiaFisica/components/lesiones-diagnosticadas-report/lesiones-diagnosticadas-report.component';
 
 const routes: Routes = [
   {
@@ -32,7 +33,7 @@ const routes: Routes = [
       {path:'resumen',component:ReportsComponent},
 
       {path:'dashboard',component:DashboardTerapeutaComponent},
-      {path:'diagnosticosEvaluados',component:DashboardTerapeutaComponent},
+      {path:'lesionesDiagnosticadas',component:LesionesDiagnosticadasReportComponent},
 
     ]
   },
