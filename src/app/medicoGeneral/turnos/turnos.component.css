@@ -44,3 +44,7 @@ mat-sidenav{
 .active{
   background-color: rgb(102, 102, 102);
 }
+
+mat-sidenav-content{
+  height: 723px;
+}

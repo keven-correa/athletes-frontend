@@ -47,6 +47,13 @@ ngOnInit(): void {
   this.terapiaFisicaService.detalleAtleta(this.id).subscribe(resp=>{
     this.atletas = resp;
     this.edadAtleta();     
+    if(localStorage.getItem('NombreAtleta')){
+      localStorage.removeItem('NombreAtleta');
+      localStorage.setItem('NombreAtleta',resp.name + " "+ resp.lastName)
+    }
+    else{
+      localStorage.setItem('NombreAtleta',resp.name + " "+ resp.lastName)
+    }
   }, (error) => {
     // Manejo de errores HTTP
     if (error.status === 401) {

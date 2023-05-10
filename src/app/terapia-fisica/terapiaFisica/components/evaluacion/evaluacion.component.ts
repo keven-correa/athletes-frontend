@@ -74,7 +74,7 @@ this._terapiaFisicaService.ConsultaDetalle(this.id).subscribe(resp=>{
   this.formulario=this.fb.group({    
     therapeuticDiagnosis:['',Validators.required],
     treatment:['',Validators.required],
-    ROM:[0,Validators.required],
+    ROM:[0,Validators.required,],
     remarks:['',Validators.required],
     painLevel:['',Validators.required],
     numberOfTherapies:['',Validators.required],

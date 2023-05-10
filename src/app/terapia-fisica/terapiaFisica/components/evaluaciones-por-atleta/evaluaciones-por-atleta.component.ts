@@ -21,6 +21,8 @@ export class EvaluacionesPorAtletaComponent {
   private _mobileQueryListener: () => void;
 
   referimiento:any[]=[];
+
+  atletaEnturno:any;
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
@@ -50,7 +52,8 @@ ngOnInit(): void {
  this._ruta.params.subscribe((params:Params)=>{
    this.id=params['id'];
  })
-
+  this.atletaEnturno = localStorage.getItem('NombreAtleta');
+  
   this.terapiaFisicaService.EvaluacionesPorAtleta(this.id).subscribe(resp=>{
     this.ELEMENT_DATA=resp
     console.log(resp)

@@ -25,6 +25,8 @@ export class NuevaTerapiaComponent {
 
   btnNuevaTerapia: boolean = false;
 
+  atletaEnturno:any;
+
   private _mobileQueryListener: () => void;
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
@@ -44,8 +46,10 @@ export class NuevaTerapiaComponent {
   ngOnInit() {
     this._ruta.params.subscribe((params: Params) => {
       this.id = params['id'];
-
     });
+
+  this.atletaEnturno = localStorage.getItem('NombreAtleta');
+
 
     this.idTerapeuta = Number(localStorage.getItem('idTerapeuta'));
 

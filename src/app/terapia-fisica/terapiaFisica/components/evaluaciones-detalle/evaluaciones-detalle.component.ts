@@ -20,6 +20,7 @@ export class EvaluacionesDetalleComponent {
   formulario!:FormGroup;
   consulta!:any;
 
+  atletaEnturno:any;
 mobileQuery: MediaQueryList; 
 
 private _mobileQueryListener: () => void;
@@ -40,9 +41,11 @@ constructor(private fb:FormBuilder,
 
   ngOnInit(){
   this._ruta.params.subscribe((params:Params)=>{
-    this.id=params['id'];
-    
+    this.id=params['id'];    
   });
+
+  this.atletaEnturno = localStorage.getItem('NombreAtleta');
+
   
 this._terapiaFisicaService.ConsultaDetalle(this.id).subscribe(resp=>{
   this.consulta=resp; 

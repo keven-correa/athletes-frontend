@@ -21,6 +21,7 @@ export class HistorialComponent implements OnInit {
 
   ELEMENT_DATA: AtletaI[] = [];
 
+  atletaEnturno:any;
 
   mobileQuery: MediaQueryList; 
 
@@ -29,7 +30,7 @@ export class HistorialComponent implements OnInit {
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['id', 'creadopor', 'fecha', 'diagnostico','mas'];
+  displayedColumns: string[] = [ 'creadopor', 'fecha', 'diagnostico','mas'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
 
@@ -54,6 +55,9 @@ export class HistorialComponent implements OnInit {
     this._ruta.params.subscribe((params: Params) => {
       this.id = params['id'];
     });
+
+    this.atletaEnturno = localStorage.getItem('NombreAtleta');
+
 
     this.medicoGeneralService.ConsultaById(this.id).subscribe((resp) => {
       this.ELEMENT_DATA=resp
