@@ -110,7 +110,8 @@ guardar(){
   console.log(this.formulario.value)
   this._terapiaFisicaService.NuevaEvaluacion(this.formulario.value).subscribe(resp=>{
     console.log(resp)
-    this.router.navigateByUrl("/terapia-fisica/atletas")
+    window.location.replace('/terapia-fisica/atletas');   
+
   },err=>{
     console.log(err)
   })

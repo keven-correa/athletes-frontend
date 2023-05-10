@@ -36,7 +36,8 @@ export class EditarTurnoComponent {
     Eliminar(){
       this.secretariaService.EliminarTurno(this.data).subscribe(resp=>{
         console.log(resp)
-        this.router.navigate(['/secretaria/turnos'])
+window.location.replace('/secretaria/turnos');   
+
 
       })
     this.bottomSheet.dismiss();
@@ -66,7 +67,8 @@ export class EditarTurnoComponent {
             console.log(resp)
           })         
         }
-       this.router.navigate(['/secretaria/turnos']);
+       window.location.replace('/secretaria/turnos');   
+
 
       }, (error) => {
         // Manejo de errores HTTP

@@ -58,7 +58,8 @@ ngOnDestroy(): void {
   }
   //Navegar en el menu
   disciplina() {
-    this.router.navigate(['/administrador/disciplinas'])
+    window.location.replace('/administrador/disciplinas');   
+
   }
   
   usuariosR() {

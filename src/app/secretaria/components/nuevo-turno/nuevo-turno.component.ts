@@ -80,7 +80,6 @@ export class NuevoTurnoComponent implements OnInit {
   
         this.mensajeError('Se ha producido un inconveniente al momento de la autenticacion, inicia sesion e intente de nuevo', 'error');
         this.secretariaService.logOut();
-        this.router.navigate(['/login'])
   
       } else if (error.status === 403) {
   
@@ -98,11 +97,8 @@ export class NuevoTurnoComponent implements OnInit {
       }
     }
     )
-
     this.bottomSheet.dismiss();
     window.location.replace('/secretaria/turnos');
-
-
   }
 
   mensajeError(mensaje: any, icono: any) {

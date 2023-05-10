@@ -26,7 +26,7 @@ export class DiagnosticosComponent {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['id', 'name', 'fecha',];
+  displayedColumns: string[] = [ 'name', 'fecha',];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
 

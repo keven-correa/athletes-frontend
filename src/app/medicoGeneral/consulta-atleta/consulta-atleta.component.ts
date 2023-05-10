@@ -125,7 +125,8 @@ export class ConsultaAtletaComponent implements OnInit {
   }
 
   atletasR() {
-    this.router.navigate(['/medico-general/atletas'])
+  window.location.replace('/medico-general/atletas');   
+
   }
   inicioR() {
     this.router.navigate(['/medico-general/dashboard'])

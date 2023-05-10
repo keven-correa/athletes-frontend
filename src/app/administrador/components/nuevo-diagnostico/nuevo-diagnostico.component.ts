@@ -31,7 +31,7 @@ export class NuevoDiagnosticoComponent implements OnInit {
 
     this.adminService.addDiagnostico(this.formulario.value).subscribe(resp=>{
       console.log(resp)
-    this.router.navigate(['/administrador/diagnosticos'])
+      window.location.replace('/administrador/diagnosticos');   
 
     })
   }

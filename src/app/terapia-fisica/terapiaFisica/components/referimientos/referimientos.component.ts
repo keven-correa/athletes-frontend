@@ -27,7 +27,7 @@ export class ReferimientosComponent implements OnInit {
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['id', 'name', 'lastName', 'discipline','date','mas'];
+  displayedColumns: string[] = [ 'name', 'lastName', 'discipline','date','mas'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   
 

@@ -94,7 +94,8 @@ this.edad=(calculateAge(dia))
  Actualizar(){
 this._secretariaservice.actualizarAtleta(this.id,this.formulario.value).subscribe(resp=>{
   
-this.router.navigate(['/secretaria/atletas'])
+window.location.replace('/secretaria/atletas');   
+
 }, (error) => {
   // Manejo de errores HTTP
   if (error.status === 401) {

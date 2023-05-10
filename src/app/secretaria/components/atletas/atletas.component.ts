@@ -24,7 +24,7 @@ export class AtletasComponent   implements AfterViewInit {
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['id', 'name', 'lastName', 'discipline','mas'];
+  displayedColumns: string[] = [ 'name', 'lastName', 'discipline','mas'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
   constructor(public dialog: MatDialog,

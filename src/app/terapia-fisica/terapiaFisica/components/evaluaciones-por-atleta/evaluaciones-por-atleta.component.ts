@@ -24,7 +24,7 @@ export class EvaluacionesPorAtletaComponent {
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['id', 'fecha','mas'];
+  displayedColumns: string[] = [ 'fecha','mas'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
   
 

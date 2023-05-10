@@ -25,7 +25,7 @@ export class AtletasComponent implements  AfterViewInit {
   
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['id', 'name', 'lastName', 'discipline','mas'];
+  displayedColumns: string[] = [ 'name', 'lastName', 'discipline','mas'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
   constructor(public dialog: MatDialog,
@@ -55,7 +55,6 @@ export class AtletasComponent implements  AfterViewInit {
 
         this.mensajeError('Se ha producido un inconveniente al momento de la autenticacion, inicia sesion e intente de nuevo', 'error');
         this.terapiaFisicaService.logOut();
-        this.router.navigate(['/login'])
 
       } else if (error.status === 403) {
 

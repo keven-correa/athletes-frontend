@@ -23,7 +23,7 @@ export class UsuariosComponent implements AfterViewInit {
 
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
-  displayedColumns: string[] = ['id', 'firstName', 'lastName', 'role','estado','cambioEstado'];
+  displayedColumns: string[] = [ 'firstName', 'lastName', 'role','estado','cambioEstado'];
   dataSource = new MatTableDataSource(this.ELEMENT_DATA);
 
 

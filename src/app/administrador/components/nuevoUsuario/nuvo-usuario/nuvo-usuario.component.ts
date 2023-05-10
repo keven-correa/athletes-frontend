@@ -67,7 +67,8 @@ ngOnDestroy(): void {
 }
 
 usuariosR() {
-  this.router.navigate(['/administrador/usuarios'])
+  window.location.replace('/administrador/usuarios');   
+
 }
 
 atletasR() {
